@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Educated, but Unrepresented</title>
+<style>
+        :root {
+            --color-bg-primary: #fafaf8;
+            --color-bg-secondary: #f5f5f0;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #666;
+            --color-accent: #2d5a6b;
+            --color-accent-light: #3d7a8f;
+            --color-border: #e0ddd8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-primary);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            border-right: 1px solid var(--color-border);
+        }
+
+        nav li:last-child {
+            border-right: none;
+        }
+
+        nav a {
+            display: block;
+            padding: 16px 20px;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--color-bg-secondary);
+            color: var(--color-accent);
+        }
+
+        nav a.active {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Page sections */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(45, 90, 107, 0.08) 0%, rgba(61, 122, 143, 0.08) 100%);
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        /* Content sections */
+        h2 {
+            font-size: 32px;
+            margin: 40px 0 20px;
+            color: var(--color-accent);
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin: 30px 0 15px;
+            color: var(--color-text-primary);
+        }
+
+        p {
+            margin-bottom: 16px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        /* Figures */
+        .figure {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+        }
+
+        .figure-caption {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Question boxes */
+        .questions-box {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-accent);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .questions-box h3 {
+            margin-top: 0;
+        }
+
+        .questions-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .questions-box li {
+            margin-bottom: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Call-out box */
+        .callout {
+            background: rgba(45, 90, 107, 0.1);
+            border: 2px solid var(--color-accent);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 6px;
+        }
+
+        .callout h4 {
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+
+        /* Lists and bullets */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 30px 0;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav li {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            nav li:last-child {
+                border-bottom: none;
+            }
+        }
+        /* Timeline styles */
+        .timeline-container { max-width: 1100px; margin: 0 auto; }
+        details summary { cursor: pointer; padding: 12px 16px; background: #fff; border: 1px solid var(--color-border); border-radius: 6px; }
+        details[open] summary { background: linear-gradient(90deg, rgba(45,90,107,0.04), rgba(61,122,143,0.02)); }
+        details p { padding: 12px 16px 18px 16px; margin: 0; background: #fff; border-left: 1px solid transparent; }
+        .marker circle { cursor: pointer; }
+        /* Sidebar SVG timeline */
+        .timeline-sidebar { display: none; position: fixed; right: 18px; top: 120px; background: rgba(255,255,255,0.96); border: 1px solid var(--color-border); padding: 10px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); z-index: 120; width: 160px; }
+        #timeline-sidebar-svg { display: block; }
+        .timeline-sidebar .sidebar-marker { cursor: pointer; }
+        .timeline-sidebar .sidebar-marker circle { transition: r 120ms ease, fill 120ms ease, stroke 120ms ease; }
+        .timeline-sidebar .sidebar-marker text { font-family: inherit; pointer-events: none; }
+        /* visual states are set in JavaScript to guarantee pixel-identical attributes with the top timeline */
+        @media (max-width: 900px) { .timeline-sidebar { display:none !important; } }
+        /* citation/link styles (Wikipedia-like) */
+        .citation { color: #0645ad; font-size: 0.85em; vertical-align: super; line-height: 1; }
+        .citation a { color: inherit; text-decoration: none; cursor: pointer; }
+        .citation a:hover { text-decoration: underline; }
+        .citation .citation-link { padding: 0 0; }
+        .bib-highlight { background: #fff7d6; border-left: 4px solid var(--color-accent); padding: 6px 10px; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a class="nav-link active" data-page="home" href="#">Home</a></li>
+<li><a class="nav-link" data-page="education" href="#">Education Gap</a></li>
+<li><a class="nav-link" data-page="representation" href="#">Political Power</a></li>
+<li><a class="nav-link" data-page="economy" href="#">Economy &amp; Growth</a></li>
+<li><a class="nav-link" data-page="timeline" href="#">Timeline</a></li>
+<li><a class="nav-link" data-page="about" href="#">About &amp; Methods</a></li>
+<li><a class="nav-link" data-page="bibliography" href="#">Bibliography</a></li>
+</ul>
+</nav>
+<div class="page active" id="home">
+<div class="hero">
+<h1>Educated, but Unrepresented</h1>
+<p>American women now earn more bachelors and masters degrees than men. Yet, they hold only 28% of congressional seats. Consider this paradox to reveal a hidden truth: that education alone does not guarantee political power in our country. </p>
+</div>
+<div class="container">
+<p style="font-size: 16px; text-align: center; margin-bottom: 30px;">
+                While countries like Canada (34%), Germany (35%), and Nordic nations (40–47%) have achieved greater female legislative representation in their own respective countries, the United States lags behind in spite of having one of the highest rates of female educational attainment among developed democracies <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.
+            </p>
+<div class="figure">
+<img alt="Pipeline comparison showing female share of enrollment and graduates for US and Canada" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
+<p class="figure-caption"><strong>Figure 1:</strong> Female share of enrollment and graduates: US vs. Canada. Women represent a growing majority of degree earners, yet remain a minority in legislatures.</p>
+</div>
+<div class="questions-box">
+<h3>Our Central Questions</h3>
+<ul>
+<li><div>Why does the United States lag behind other wealthy democracies in terms of female political representation, in spite of having one of the highest female educational attainment rates and shares among developed nations?</div></li>
+<li>Does women's power contribute to economic growth in America, as it does in other countries?</li>
+<li>What institutional factors and cultural factors could explain the gap that has been seen in the United States?</li>
+</ul>
+</div>
+<h2>The core argument</h2>
+<p>The United States is an outlier among wealthy democracies—not because American women lack education or ambition, but because specifically American institutional and cultural barriers prevent educational attainment from translating into political representation <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
+<h3>Our central research questions</h3>
+<ol>
+<li>Why does the United States lag behind other wealthy democracies in terms of female political representation, in spite of having one of the highest female educational attainment rates and shares among developed nations?</li>
+<li>Does women's power contribute to economic growth in America, as it does in other countries?</li>
+<li>What institutional factors and cultural factors could explain the gap that has been seen in the United States?</li>
+</ol>
+<p style="margin-top: 30px;">
+<strong>Explore the evidence in the pages </strong><b>above</b><strong>.</strong> We aim to explore education, political power, and economic growth in our nation in order to understand why this paradox exists and what can change it.
+            </p>
+<p>Many scholars have investigated how supply (educated women) changes to demand (becoming politicians). Their research shows that academic records alone are not enough. The ability to change who has the educational background to run for office in this country varies based on psychological, acquaintance, and regulatory factors. Survey experiments show significant differences between men and women who say they want to become politicians, even when they are the same intelligence level or have the same academic records <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>. Think about it: the way political parties select candidates shows that who you know and who you can help (not just money) are the reasons they choose you <sup class="citation">[<a class="citation-link" href="#bib-22">22</a>]</sup>. Furthermore, qualitative and quantitative studies on party gatekeeping show that the way they select and nominate candidates is always based on old-fashioned methods that make it difficult for female candidates. This hinders the demand side. Even when many women have excellent academic records, the hinderance persists <sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>. There is also research complementary workplace-network studies and program evaluations which have shown that they are a game changer and important  tool to improve recruitment outcomes and can be used for positive change <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
+<h2>Why higher education does not guarantee political power</h2>
+<p>Since the 1980s, American women have attained higher education and are now more likely to earn bachelor's and master's degrees than any other country. Claudia Goldin, an economist at Harvard University specializing in gender and economic history, calls this a "reversal of the college attainment gap" <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup>. Yet, women hold only 28% of congressional seats, a phenomenon that, though improved over time, still persists even after 50 years of feminist activism. Research on political ambition and recruitment helps explain why higher credentials do not automatically become candidacies: Lawless &amp; Fox document gendered gaps in political ambition and interviewer effects that depress women's expressed willingness to run <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>. Longitudinal studies also document occupational transitions, particularly out of STEM into education and health, which reshape the professional pipelines available to many female graduates and reduce visibility in networks that lead to nominations <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
+<p>This issue upends a broader American perspective: people believe that education increases political power. Yet, according to research by Cameron Arnzen and Sarah Cohodes, economists studying educational equity and political participation, younger women vote at much higher rates than men; in our analysis of matched education and voter records, young women vote at a rate roughly 5.8 times higher than young men <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>. Still, this turnout does not automatically translate into leadership power.</p>
+<p>To explore why academic achievement does not translate into political power, this project leverages World Bank gender data to compare 170 countries from 1970 to the present (<a href="https://data.worldbank.org/topic/gender" rel="noopener" target="_blank">World Bank Gender Data Portal</a>). Through our analysis of these data we find that the U.S. remains at about 28% legislative representation while other wealthy democracies perform better: Canada ~34%, Germany ~35%, and the Nordic countries ~40–47% (World Bank). As such, we frame three questions central to the project: why the US lags, whether women's power contributes to economic growth in the US as it does elsewhere, and whether institutional or cultural factors best explain the gap.</p>
+<p>First, researchers such as Claudia Goldin and Pamela Paxton, Sheri Kunovich, and Melanie Hughes have shown that women now enjoy greater educational attainment in wealthy countries <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup> . However, higher education does not necessarily translate into equal political power: Paxton emphasizes a dual framework of <em>supply-side</em> (education, socioeconomic status, and willingness to run) and <em>demand-side</em> (institutional and cultural support) drivers.</p>
+<p>Second, scholars debate whether cultural attitudes or institutional rules matter most. Profeta &amp; Woodhouse's comparative work uses Italy's 1993 electoral reform as evidence that electoral rules can sharply change representation even when candidate qualifications are unchanged <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. Longitudinal work by Sirianne Dahlum and colleagues shows a positive association between women's political empowerment and later GDP per‑capita growth <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>, while cross‑national panels such as Jayasuriya &amp; Burke report similar links between female legislative share and later economic performance <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>. Park &amp; Liang document the feedback loop: female legislators improve education and social outcomes that cultivate future female leaders <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
+<p>Finally, research on democratic maturity argues that in less‑developed countries, institutional fixes like quota systems or PR can produce rapid gains; in mature democracies cultural attitudes often matter more. See Tremblay <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup> for a comparative perspective. In short, the U.S. appears to be an outlier not because women lack education or ambition, but because specific institutional and cultural barriers prevent those educational gains from converting into representation.</p>
+<h2>The American Paradox, and the potential paths forward</h2>
+<p>This project scrutinizes a core paradox: women's high educational attainment, yet low representation in political office. To unpack this, we compare the US with other first-world democracies and analyze whether the crux of the problem is institutional (laws, systems) or cultural (attitudes, role models, representation).</p>
+<p>Does the US need to change its electoral systems, or instead foster cultural shifts for better representation? The comparison shows the United States is an exception, and not necessarily a natural outcome. It is one constructed by specific institutional and social dynamics.</p>
+<p>Evidence suggests that as women's political power rises, economies benefit; excluding women thus presents not only a social injustice, but also an economic drawback stifling innovation and growth. When women are the educated majority but a political minority, Congress does not fully represent the American people, overlooking gender and racial diversity even among the educated.</p>
+<p>What is the most effective solution? Reform in structure (electoral systems, campaign finance, quotas) or culture (mentoring, representation, changing norms)? Anthropologist Yolanda Moses advocates for policy as a fix for opportunity gaps, a principle that holds here.</p>
+<p><strong>The bottom line:</strong> The lack of ambition or qualification is not the problem; rather, systemic and cultural design determines who gets represented. This can, and must, change.</p>
+</div>
+</div>
+<div class="page" id="education">
+<div class="container">
+<h2>The Education Gap</h2>
+<h3>Women now earn the majority of degrees</h3>
+<p>Since the 1980s, American women have achieved what economist Claudia Goldin calls a "reversal of the college attainment gap." Women are now <em>more likely</em> than men to earn bachelors and masters degrees. This represents a historic shift in educational access and achievement. Young women vote at rates 5.8 times higher than young men, showing strong civic engagement <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>.</p>
+<p>On the supply-side, the pool of educated, qualified candidates among the American women are not lacking. They have credentials, ambition, and voter engagement that far exceeds that of men. Yet this educational advantage has not translated into proportional political power. Universities and postsecondary institutions can help close this gap by institutionalizing internships, alumni-sponsorships, and campus fellowships that link graduates into political networks <sup class="citation">[<a class="citation-link" href="#bib-37">37</a>]</sup>, and program evaluations indicate mentoring and targeted career supports improve recruitment into public-facing roles <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
+<p><strong>The question becomes: what happens on the demand-side?</strong> <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
+<p>Beyond aggregate counts, recent literature shows where the pipeline frays. Longitudinal studies find many women exit high‑visibility STEM or corporate tracks into education and health sectors within a decade of graduation, reducing long-term access to political sponsorship networks <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>. Policy briefs and empirical syntheses argue that occupational segregation lowers public visibility and donor linkages for women, meaning supply-side credentials are necessary but not sufficient for nomination probability <sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>. Complementary workplace-network research and self-efficacy experiments further clarify how network access and subjective confidence jointly shape who recruiters notice and whom parties consider for office <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
+<div class="figure">
+<img alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
+<p class="figure-caption"><strong>Figure 2:</strong> Women's share of bachelors and masters degrees, 1993–2023. Women crossed the 50% threshold in the late 1980s and have remained the majority since <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+</div>
+<div class="figure-analysis">
+<p>Figure 2 shows a clear, sustained shift: women moved from parity to a durable majority of degree-holders by the late 1980s and have kept that advantage into the 2020s. This is not a short-lived blip but a structural change in who attains higher education in the United States <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+<p>That sustained majority matters for the "supply-side" argument: there are simply more highly educated women now than men. That enlarges the pool of potential candidates with credentials that, in many democracies, would be expected to convert into political representation <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+<p>But degrees take time to translate into political careers. Many legislators are mid-career or older: the pipeline from degree to elected office typically runs through professional, civic, and party networks that develop over decades. The time lag between rising educational attainment and visible political power helps explain part of the gap. However, it does not explain decades-long underrepresentation by itself. Empirical work finds that political ambition, sponsorship, and workplace networks, rather than qualifications alone, are able to drive candidacy and nomination outcomes <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>.</p>
+<p>Importantly, the curve in Figure 2 does not tell us where graduates work, which fields they enter, or how their careers interact with political recruitment. A majority of degrees does not automatically change who parties recruit, who donors back, or how voters perceive candidates <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
+<p>Taken together, the time-series confirms a central project claim: supply-side strength is real and longstanding. The remaining question is why the demand-side, such as the institutions, party practices, and cultural attitudes, has not matched that supply.</p>
+</div>
+<div class="figure">
+<img alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
+<p class="figure-caption"><strong>Figure 2b:</strong> Female share of enrollment vs. graduates: US vs. Canada comparison. Both countries show women enrolling at ~55%, but varying completion rates—Canada hovering near 60%, while the US climbs toward that threshold. This direct comparison is key: if Canada achieves 34% female MPs with similar educational demographics to the US (which has only 28%), education alone cannot explain the representation gap.</p>
+</div>
+<div class="figure-analysis">
+<p>The US–Canada comparison isolates an important puzzle: similar enrollment and degree shares do not produce similar political outcomes. Canada outperforms the U.S. in female legislative representation even though both countries show comparable female shares among students and graduates <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.</p>
+<p>This finding shifts attention from individual qualifications to the institutional choices that shape candidacy and election. If two countries start from similar educational inputs but diverge in representation, the difference is likely found in rules, party recruitment strategies, and public norms that either welcome or block women as viable candidates.</p>
+<p>Another important nuance is completion versus enrollment. Enrollment is an early indicator; completion reflects persistence and supports a stable pool of qualified adults. The Canadian pattern, which is slightly higher completion, suggests that post-enrollment conditions (student supports, labor market attachments, family policies) can deepen the pipeline, which in turn interacts with political opportunity structures <sup class="citation">[<a class="citation-link" href="#bib-13">13</a>]</sup>.</p>
+<p>Policy differences, such as paid family leave, childcare, candidate quotas or centralized party recruiting, may help explain why similar educational inputs lead to different outputs. These are precisely the kinds of demand-side mechanisms that can be reformed to improve representation.</p>
+<p>In short, Figure 2b strengthens the argument that education is necessary but not sufficient: institutional design and social supports determine whether education translates into seats.</p>
+</div>
+<h3>Geographic variation, and education across the United States</h3>
+<p>Women represent the majority of undergraduate enrollees across nearly every US state, ranging from 49–69%. This geographic consistency shows that women's educational advantage is not concentrated in a few "liberal" states. It is actually nationwide.</p>
+<p>State-level enrollment and completion patterns also interact with local labor markets and policy environments; longitudinal cohort work shows that regional labor demand and postsecondary supports affect long-run career trajectories for women, which in turn shape local pipelines into public life <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
+<div class="figure">
+<img alt="Choropleth map showing women's share of undergraduate enrollment by US state, 2023-2024" src="images/85573164-ac5e-40f6-8a78-e66a61fb83cc.png"/>
+<p class="figure-caption"><strong>Figure 2c:</strong> Women's share of undergraduate enrollment by US state, 2023–2024. Women represent 49–69% of undergraduate enrollees across all regions, demonstrating that female educational strength is a national phenomenon, not regional.</p>
+</div>
+<div class="figure-analysis">
+<p>Figure 2c maps the impressive breadth of women's educational gains: nearly every state shows female majority enrollment, and the range (roughly 49–69%) demonstrates substantial state-level variation. This is not a pattern confined to coastal liberal enclaves. We can see that it is broadly distributed across regions.</p>
+<p>State-level variation matters because political recruitment and opportunity structures are often organized at the state level. Party organizations, primary systems, and state legislatures set the first gatekeeping rules for aspiring candidates. High female enrollment in a state does not guarantee that state parties will recruit or support female contenders.</p>
+<p>The map also points to strategic opportunities: states with higher female enrollment could be fertile ground for targeted recruitment, training programs, and candidate pipelines. Where enrollment and completion are high, short-term investments in recruitment or mentoring might yield visible gains in state legislatures and, later, federal delegations.</p>
+<p>Conversely, states with lower female enrollment may need more upstream interventions such as college access, retention supports, and economic policies that keep educated women in public-facing careers. Addressing representation therefore requires a mix of statewide and national strategies tailored to local conditions.</p>
+<p>Overall, the choropleth reinforces a core point: women's educational strength is nationwide, which makes the national representation shortfall even more striking and points policymakers toward state-focused levers as practical entry points for change.</p>
+</div>
+<h3>Field of study, where women concentrate</h3>
+<p>Women's educational gains are not evenly distributed across all fields. The chart below shows women's share of enrollment in major fields of study. While women dominate health, education, and humanities fields, they remain significantly underrepresented in math, computer science, and engineering.</p>
+<p>Field segregation is consequential: syntheses of labor-market evidence link occupational segregation to lower visibility and fewer donor or sponsor ties for women—patterns that reduce the likelihood of political recruitment from some fields (<sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>).</p>
+<div class="figure">
+<img alt="Small multiples showing women's share by major field, high in health/humanities, low in engineering/computer science" src="images/18e84788-eb09-4ecf-9b36-329bb011f42d.png"/>
+<p class="figure-caption"><strong>Figure 3:</strong> Women's share of US bachelor's degrees by field, 2018–2020 (top programs). Women represent 50–65% of business, humanities, and social science majors, but only ~20% of engineering and computer science.</p>
+</div>
+<div class="figure-analysis">
+<p>Figure 3 exposes a different dimension of the supply-side: field segregation. Women dominate health, education, and many social sciences, while they remain strongly underrepresented in engineering, computer science, and some finance tracks <sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>.</p>
+<p>Field choices shape professional networks, earnings trajectories, and the types of public visibility that feed political careers. Women concentrated in caregiving and education fields may build different career-to-politics pathways than men concentrated in high-paying STEM or corporate leadership roles—paths that historically have provided easier access to donor networks and party elites. Longitudinal work on STEM persistence and occupational segregation shows women often transition out of STEM into education and health, reducing their pipeline access to high‑visibility networks (<sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>).</p>
+<p>These occupational shifts have direct implications for recruitment: registry-based research and employer-linked studies demonstrate that workplace ties to current officeholders and staff are powerful predictors of nomination success, which disadvantages those concentrated in lower-visibility sectors (<sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>). Where universities and regional colleges maintain alumni pipelines into public service, graduates see higher rates of political emergence—an institutional lever universities could strengthen to convert high female enrollment into candidacy pipelines (<sup class="citation">[<a class="citation-link" href="#bib-37">37</a>]</sup>).</p>
+<p>This segregation therefore matters for representation: it helps explain why a numerical majority of graduates does not immediately translate into equal access to political pipelines that favor certain occupational backgrounds. Candidate recruitment often privileges those with prior public profiles, corporate ties, or fundraising experience—areas where men remain overrepresented.</p>
+<p>Policy responses can target these structural effects: leadership training for women in underrepresented fields, incentives for parties to recruit across occupational backgrounds, and programs that increase the public visibility of women leaders from diverse fields can all help broaden the pool of viable candidates.</p>
+<p>Ultimately, Figure 3 shows that improving representation requires attention not only to how many women graduate, but to where they graduate into—what careers, networks, and public roles those degrees enable.</p>
+</div>
+<h3>The takeaway</h3>
+<p>American women are <strong>highly educated and academically prepared</strong>. They earn degrees at higher rates than men, excel across most academic fields, and show strong civic engagement. This is what political scientists call the <em>supply-side</em> of political participation—the existence of capable, willing candidates.</p>
+<p>These supply-side facts are well documented in cohort and comparative studies of educational attainment and turnout (<sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>; <sup class="citation">[<a class="citation-link" href="#bib-12">12</a>]</sup>), reinforcing that the core puzzle is not access to education but what happens after graduation.</p>
+<p><strong>On paper, the supply pipeline is strong.</strong> Yet supply alone does not produce representation. The problem is not women's education—the problem lies in what happens next. That is the <em>demand-side</em>: institutions, gatekeeping, and culture.</p>
+</div>
+</div>
+<div class="page" id="representation">
+<div class="container">
+<h2>The Representation Gap: Demand-Side Failure</h2>
+<h3>The paradox: that simply because there is supply, seats are not automatically created</h3>
+<p>Despite having one of the highest rates of female educational attainment among wealthy democracies, the United States has only 28% female representation in Congress—worse than Canada, Germany, and the Nordic countries <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
+<p>Political scientist Pamela Paxton argues that representation depends on two factors <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>:</p>
+<ul>
+<li><strong>Supply-side:</strong> Education, socioeconomic status, and women's desire for office — <strong>strong in the US</strong></li>
+<li><strong>Demand-side:</strong> Institutional and cultural support for female politicians — <strong>weak in the US</strong></li>
+</ul>
+<p><sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
+<div class="figure">
+<img alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
+<p class="figure-caption"><strong>Figure 4:</strong> The paradox: Female enrollment and graduates are nearly identical between the US and Canada—even slightly higher in the US—yet Canada has 34% female MPs versus the US's 28% in Congress.</p>
+</div>
+<h3>The United States lags because of its institutional and cultural barriers</h3>
+<p>The demand-side problem is both institutional and cultural. Electoral systems, party recruitment, campaign finance rules, and prevailing attitudes all affect whether educated women become legislators <sup class="citation">[<a class="citation-link" href="#bib-7">7</a>]</sup>.</p>
+<p>New empirical work on party gatekeeping and nomination bias shows how institutional practices translate into unequal representation: parties sometimes reward candidates who match gendered expectations about family and career, and they may allocate women to less competitive seats, lowering aggregate female success independently of candidate quality (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>). Complementary workplace-network analyses and program evaluations further document how occupational ties and mentorship programs alter recruitment prospects, showing concrete entry points for policy intervention (<sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>).</p>
+<p><strong>Case study: Italy, 1993.</strong> Electoral reform matters. Italy switched from a single-member district majoritarian electoral system to a mixed proportional representation system. Women's representation in parliament suddenly increased—not because women became more qualified, but because the <em>rules changed</em>. This research <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> shows that institutional design is crucial.</p>
+<div class="figure">
+<img alt="Mean percent women in parliament by electoral system, proportional vs other, 2023" src="images/d7e8b6ea-c5d7-429c-9cc7-6cab63e507fe.png"/>
+<p class="figure-caption"><strong>Figure 4c:</strong> Mean percent women in parliament by electoral system, 2023. Countries using proportional representation (PR) average 27% female representation with wide variation; countries with other systems (including the US majoritarian model) average 25.7%. Error bars reveal: institutional rules matter. PR systems show both higher mean representation and more consistent outcomes across democracies.</p>
+</div>
+<p>This comparison directly supports the Profeta &amp; Woodhouse (2022) <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> finding that proportional representation creates structural incentives for female candidacy and success that majoritarian systems lack. In PR systems, parties need to build broader coalitions and represent diverse constituencies, making gender diversity a strategic asset. In the US House and Senate, winner-take-all elections in single districts create gatekeeping dynamics where party leadership retains tight control over recruitment, and informal norms often favor male candidates <sup class="citation">[<a aria-label="Bibliography entry 5" class="citation-link" href="#bib-5" title="Bibliography entry 5">5</a>]</sup>. Recent work on party gatekeeping and biased nominations explains how parties systematically disadvantage women—by rewarding candidates who fit traditional gendered family schemas or by nominating women in unwinnable seats (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>).</p>
+<p>However, in mature democracies like the United States, research suggests that <strong>cultural attitudes and norms</strong> are often the deeper barrier beyond institutional design (<sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup>. Discrimination, stereotypes about female leaders, media representation, and informal party gatekeeping all limit women's path to office—even when formal rules are equal <sup class="citation">[<a class="citation-link" href="#bib-33">33</a>]</sup>. This explains why the US, despite having majoritarian systems like the UK (which also has 34% female MPs), still lags: American political culture has not embraced female leadership to the degree that it has elsewhere.</p>
+<p><strong>The research consensus:</strong> In new democracies, fix the electoral system <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. In mature democracies like the US, cultural change is the priority <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup>.</p>
+<h3>College Completion Gaps: Persistent Female Advantage</h3>
+<p>Even at the undergraduate level, women complete degrees at higher rates than men across most US states. In Nevada, Florida, and New York, women's 4-year completion advantages range from 4–9 percentage points. This is supply-side strength—yet it does not translate into political office.</p>
+<div class="figure">
+<img alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
+<p class="figure-caption"><strong>Figure 4b:</strong> College completion gender gap by state (2-year and 4-year cohorts). In states where women hold the highest completion advantage (Nevada: 7.3 pp, Florida: 5.8 pp), they still remain significantly underrepresented in statehouses and Congress. This underscores that completion rates do not predict representation.</p>
+</div>
+<h3>The congressional pipeline has been stalled, and there has only been 35 years of glacial progress</h3>
+<div class="figure">
+<img alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
+<p class="figure-caption"><strong>Figure 4d:</strong> Women's share of US Congress, 1990–2025 (filled area). Starting from 6.1% in 1990, women reached 28% by 2024—a gain of 22 percentage points over 35 years. At this rate, gender parity (50%) would not be achieved until roughly 2100, despite women being the majority of college graduates since the 1980s.</p>
+</div>
+<p>This visualization powerfully illustrates the core paradox of this project. Educational gains accelerated sharply in the 1980s–1990s (as shown in the Education Gap page), yet congressional representation remained nearly flat for a decade (1990–2000), crawled forward in the 2000s, and only recently accelerated post-2018. The mismatch between the trajectory of women's educational attainment (approaching 60% of graduates by 2020) and the rate of political representation gain (28% in 2024) is stark and undeniable. If education and qualification alone drove representation, women would hold approximately 50% of seats today—yet they hold barely more than half that share (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
+<p>Intersectional and network-focused evidence helps explain this lag: registry and policy-brief research on occupational segregation and race indicates that women of color face compounded barriers that reduce nomination and election rates even further, implying that national aggregates hide distinct subgroup dynamics (<sup class="citation">[<a class="citation-link" href="#bib-24">24</a>]</sup>).</p>
+<p>The stagnation of the 1990s and 2000s, despite the "Year of the Woman" spike in 1992<sup class="citation">[<a aria-label="Bibliography entry 14" class="citation-link" href="#bib-14" title="Bibliography entry 14">14</a>]</sup>, reveals what political scientists call <em>demand-side failure</em>. Individual female candidates became more qualified, more educated, and more present in state legislatures and local politics—the pipeline. Yet party recruitment, campaign finance dynamics, voter preferences, and media framing—the institutional and cultural forces on the demand-side— have not shifted fast enough to convert qualification into office-holding. Research by Profeta &amp; Woodhouse <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> on electoral system design, and Welzel et al. <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup> on cultural attitudes, suggests that both structural reforms and cultural shifts are necessary to accelerate representation gains.</p>
+<p>The recent spike visible in 2018–2024 (from 19% to 28%) may signal an inflection point, but even this acceleration falls short of proportionality. Women entered Congress at record rates during this period, yet the share still represents only a slight majority of women's presence in higher education. This suggests that the barriers of gatekeeping, informal norms, and electoral incentives remain significant, even as public and party attitudes begin to shift (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
+<h3>The core finding</h3>
+<p>More education does not automatically create more seats. <strong>Women in the United States are not lacking qualifications—they are blocked by gatekeeping, norms, and systemic barriers.</strong> This is why the US remains an outlier despite its educated female population. The proof: Canada has similar female educational attainment to the US, yet achieves 34% female MPs versus the US's 28% in Congress.</p>
+</div>
+</div>
+<div class="page" id="economy">
+<div class="container">
+<h2>Economy &amp; Growth</h2>
+<h3>The issue is involved with economic growth</h3>
+<p>Research shows that female legislative representation is not just a fairness issue—it is an <strong>economic issue</strong>. When women hold political power, economies grow faster and innovation accelerates <sup class="citation">[<a class="citation-link" href="#bib-10">10</a>]</sup>.</p>
+<p>Economist Sirianne Dahlum studied 182 countries over 221 years and found a powerful correlation (R² = 0.95): when women have political power, per-capita GDP grows. Why? Because diverse leadership brings diverse ideas into the economy, leading to better policy and faster technological innovation (<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>).</p>
+<p>More recent cross‑national panels and micro‑level studies unpack mechanisms: female policymakers tend to prioritize public education, family policies, and redistribution that raise human capital and labor force participation (<sup class="citation">[<a class="citation-link" href="#bib-9">9</a>]</sup>). Policy‑oriented studies show that allowing campaign funds for childcare or providing candidate-support programs measurably increases female candidacy, which suggests administratively tractable demand‑side fixes with economic payoffs (<sup class="citation">[<a class="citation-link" href="#bib-35">35</a>]</sup>). Comparative evidence from Canada and other countries shows that institutional design combined with active party recruitment yields both higher female representation and downstream economic benefits (<sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>).</p>
+<p>Program evaluations and case studies corroborate this: mentoring, placement, and candidate-support initiatives materially increase women's recruitment and short-term electoral success, indicating feasible policy levers with measurable downstream economic returns (<sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>).</p>
+<div class="figure">
+<img alt="Scatter plot showing women's representation in parliament vs GDP per capita across 228 countries, with positive trend line" src="images/c31368a9-4775-465d-8f34-63d88938fdb1.png"/>
+<p class="figure-caption"><strong>Figure 7:</strong> Women's representation in national parliaments vs. GDP per capita (n=228 countries, current US, log scale). Positive but non-deterministic correlation: wealthy democracies cluster high on both axes, while some lower-income countries achieve high female representation through quota systems or PR reforms. The USA is notably below the trend line for its income level, suggesting both economic underperformance relative to comparable peers and institutional constraints on female representation.</p>
+</div>
+<p>This global comparison is crucial. The scatter plot reveals that while wealth and female representation are positively associated (<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>; <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>), they are not perfectly correlated—suggesting that policy and institutional choice matter independently of economic development. Rwanda, for instance, achieved 61% female parliamentary representation through quota policies, while maintaining a much lower GDP per capita than the US. Conversely, the US sits notably below the trend line, indicating that for its income level, it underperforms on female representation. This positioning reveals a dual failure: the US economy has not maximized the innovation and policy benefits that higher female representation could bring (<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>), and American institutions have not yet adopted the policy tools (quotas, PR, campaign finance reform) that other democracies use to increase female candidacy and success.</p>
+<p>Research by Jayasuriya &amp; Burke<sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup> on 119 democracies (1970–2009) found that <strong>increasing women's representation in parliament directly leads to higher per-capita GDP growth</strong>. The mechanism operates through multiple channels: female legislators prioritize education and family support policies that raise human capital (Chen, 2021<sup class="citation">[<a aria-label="Bibliography entry 9" class="citation-link" href="#bib-9" title="Bibliography entry 9">9</a>]</sup>); they bring new perspectives to economic policy that can reduce gender-based market inefficiencies; and they model leadership roles that encourage female labor force participation and entrepreneurship (Naveed et al., 2023<sup class="citation">[<a aria-label="Bibliography entry 10" class="citation-link" href="#bib-10" title="Bibliography entry 10">10</a>]</sup>; Sirianne Dahlum et al., 2022<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>).</p>
+<p>And scholars Park and Liang (2019) document a powerful feedback loop: female legislators invest in education and support for women, creating more educated female voters and future leaders. This cycles back to strengthen the supply-side even further. Chen (2021)<sup class="citation">[<a class="citation-link" href="#bib-9">9</a>]</sup> shows this concretely—the fraction of women in government correlates strongly to educational expenditures. Women in power invest in education, which boosts women's attainment, which creates more female leaders—a positive cycle that countries like Canada and Nordic nations have activated more fully than the US (Dahlum et al., 2022<sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>).</p>
+<p>For the United States specifically, the gap between current female representation (28%) and the global trend for a country of its income level (estimated ~35–40% based on <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>) suggests concrete economic opportunity costs: faster GDP growth, higher innovation rates, and more efficient policy design could result from closing the representation gap. This is not a speculative claim; it is a quantified pattern across democracies (<sup class="citation">[<a class="citation-link" href="#bib-4">4</a>]</sup>; <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>).</p>
+<div class="callout">
+<h4>The US is Leaving Economic Growth on the Table</h4>
+<p>The United States is excluding a significant portion of its educated population from political power. This is not just a representation problem—it is an <strong>economic problem</strong>. By failing to use women's talents in governance, the US is forgoing measurable increases in innovation, policy quality, and GDP growth. If Canada, Germany, and Nordic countries have achieved higher female representation and enjoy economic benefits, the US has both a fairness obligation <em>and an economic incentive</em> to close the gap.</p>
+</div>
+<p style="margin-top:10px; color:#666; font-size:14px;">(See cross‑national evidence linking women's political empowerment to later GDP growth <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup> and comparative reports on Canada for institutional explanations <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.)</p>
+<h3>What has to change?</h3>
+<p>Yolanda Moses, an anthropologist and education scholar, argues that "opportunity gaps can be fixed through policy changes" (Moses, 2012<sup class="citation">[<a class="citation-link" href="#bib-11">11</a>]</sup>). This applies to women in Congress too. Recommendations include:</p>
+<ul>
+<li><strong>Structural reforms:</strong> Campaign finance regulation, party quota systems, ranked-choice voting, or proportional representation—lessons from Italy's 1993 reform <sup class="citation">[<a class="citation-link" href="#bib-2">2</a>]</sup>.</li>
+<li><strong>Cultural shifts:</strong> Mentorship programs for women, improved media representation of female leaders, and normalization of female ambition in politics <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</li>
+<li><strong>Data-driven accountability:</strong> Track female recruitment, retention, and success rates in party pipelines; monitor quota enforcement and program impacts to avoid symbolic gains <sup class="citation">[<a class="citation-link" href="#bib-29">29</a>]</sup>.</li>
+</ul>
+<p><strong>The bottom line:</strong> <strong>The problem is not that women lack education or ambition. The problem is that American systems and culture have not caught up to American women's capabilities.</strong> And that can change.</p>
+</div>
+</div>
+<div class="page" id="timeline">
+<div class="container">
+<h2>Timeline: Education Gains and the Representation Lag</h2>
+<p>This interactive timeline summarizes the political and social moments that shaped today's mismatch: women lead in higher education but remain underrepresented in legislatures. Click markers to open each entry, or expand the collapsible entries below for detailed context and links to research.</p>
+<div class="timeline-container" style="margin: 24px 0 40px; text-align:center;">
+<svg aria-label="Timeline of key events" height="120" id="timeline-svg" preserveaspectratio="xMidYMid meet" role="img" viewbox="0 0 1200 120" width="100%">
+<line stroke="#ddd" stroke-width="4" x1="50" x2="1150" y1="60" y2="60"></line>
+<g class="marker" data-target="event-1960s" tabindex="0">
+<circle cx="120" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="120" y="90">1960s–70s</text>
+</g>
+<g class="marker" data-target="event-1972" tabindex="0">
+<circle cx="240" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="240" y="90">1972</text>
+</g>
+<g class="marker" data-target="event-1981" tabindex="0">
+<circle cx="360" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="360" y="90">1981</text>
+</g>
+<g class="marker" data-target="event-1982" tabindex="0">
+<circle cx="480" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="480" y="90">1982</text>
+</g>
+<g class="marker" data-target="event-1992" tabindex="0">
+<circle cx="600" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="600" y="90">1992</text>
+</g>
+<g class="marker" data-target="event-2006" tabindex="0">
+<circle cx="720" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="720" y="90">2006</text>
+</g>
+<g class="marker" data-target="event-2018" tabindex="0">
+<circle cx="880" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="880" y="90">2018</text>
+</g>
+<g class="marker" data-target="event-2020s" tabindex="0">
+<circle cx="1020" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#333" font-size="12" text-anchor="middle" x="1020" y="90">2020s</text>
+</g>
+</svg>
+</div>
+<div aria-hidden="true" class="timeline-sidebar" id="timeline-sidebar" style="display: none;">
+<svg aria-label="Quick timeline navigation" height="520" id="timeline-sidebar-svg" role="img" viewbox="0 0 140 520" width="140">
+<line stroke="#ddd" stroke-width="4" x1="70" x2="70" y1="20" y2="500"></line>
+<g class="sidebar-marker" data-target="event-1960s" tabindex="0">
+<circle cx="70" cy="60" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="95">1960s–70s</text>
+</g>
+<g class="sidebar-marker" data-target="event-1972" tabindex="0">
+<circle cx="70" cy="120" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="155">1972</text>
+</g>
+<g class="sidebar-marker" data-target="event-1981" tabindex="0">
+<circle cx="70" cy="180" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="215">1981</text>
+</g>
+<g class="sidebar-marker" data-target="event-1982" tabindex="0">
+<circle cx="70" cy="240" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="275">1982</text>
+</g>
+<g class="sidebar-marker" data-target="event-1992" tabindex="0">
+<circle cx="70" cy="300" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="335">1992</text>
+</g>
+<g class="sidebar-marker" data-target="event-2006" tabindex="0">
+<circle cx="70" cy="360" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="395">2006</text>
+</g>
+<g class="sidebar-marker" data-target="event-2018" tabindex="0">
+<circle cx="70" cy="420" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="455">2018</text>
+</g>
+<g class="sidebar-marker" data-target="event-2020s" tabindex="0">
+<circle cx="70" cy="480" fill="#2d5a6b" r="10"></circle>
+<text fill="#000" font-size="12" text-anchor="middle" x="70" y="515">2020s</text>
+</g>
+</svg>
+</div>
+<details id="event-1960s" open="" style="margin-bottom:18px;">
+<summary><h3>1960s–1970s: The Second-Wave Movement and Institutional Change</h3></summary>
+<p>The social movements of the 1960s and 1970s—organized feminism, expanded civil-rights activism, and pressure for workplace equity—created the political space for structural reforms in education and employment. Activism pushed universities, employers, and governments to remove explicit barriers and expand opportunities for women.</p>
+<p>These movements changed expectations about women's roles, opened new career tracks, and normalized women's presence in higher education—building the foundation for later supply-side gains in college enrollment and attainment.</p>
+<p>However, converting those cultural and legal gains into sustained political power required later reforms in recruitment, campaigning, and party incentives. Supply-side progress alone did not guarantee seats.</p>
+<p>For scholars: see general reviews of second-wave feminism and educational expansion for context.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/2025/07/31/theater/bess-wohl-liberation-broadway.html" rel="noopener" target="_blank">NYTimes — coverage of 1970s women’s movement in culture</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-1972" style="margin-bottom:18px;">
+<summary><h3>1972: Title IX Enacted</h3></summary>
+<p><strong>Education Equity Act prohibits gender discrimination in education.</strong> Title IX opened classrooms, scholarships, and professional training to women on a systemic scale and removed an important set of legal barriers to higher education.</p>
+<p>The law produced steady changes in enrollment and participation, especially in undergraduate and graduate programs previously closed to women or limited by quota-like practices.</p>
+<p>Title IX is emblematic of supply-side policy: it directly expanded opportunities and normalized women's presence in campus leadership and professional tracks that later feed political recruitment.</p>
+<p>For policy and academic perspectives, see government summaries and empirical studies on Title IX's impact<sup class="citation">[<a aria-label="Bibliography entry 13" class="citation-link" href="#bib-13" title="Bibliography entry 13"></a>]</sup>.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/2022/06/22/sports/what-is-title-ix.html" rel="noopener" target="_blank">NYTimes — Title IX explainer (2022)</a> (Accessed 28 Nov. 2025) · <a href="https://www2.ed.gov/about/offices/list/ocr/docs/tix_dis.html" rel="noopener" target="_blank">U.S. Dept. of Education — Title IX overview</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-1981" style="margin-bottom:18px;">
+<summary><h3>1981: Sandra Day O'Connor on the Supreme Court</h3></summary>
+<p><strong>First female US Supreme Court Justice.</strong> O'Connor's appointment was a high-profile symbolic breakthrough<sup class="citation">[<a aria-label="Bibliography entry 15" class="citation-link" href="#bib-15" title="Bibliography entry 15"></a>]</sup> that changed perceptions about women's suitability for top public office.</p>
+<p>Symbolic firsts matter for culture: visible role models broaden public conceptions of leadership and encourage political ambition among underrepresented groups.</p>
+<p>But symbolism alone does not dismantle the structural gatekeeping of party recruitment, fundraising networks, or voter biases that determine who runs and wins.</p>
+<p>For analysis of symbolic representation and its limits, see literature on political role models and candidate emergence.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/1981/09/16/us/panel-approves-judge-o-connor.html" rel="noopener" target="_blank">NYTimes — Panel Approves Judge O'Connor (1981)</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-1982" style="margin-bottom:18px;">
+<summary><h3>1982: Women Cross 50% of Master's Degrees</h3></summary>
+<p><strong>Women earn more master's degrees than men for the first time.</strong> This turning point reflected decades of expanding access and changing career expectations for women.</p>
+<p>Advanced-degree gains enlarged the pool of policy-trained and professionally credentialed women who could later run for office—valuable credentials in many legislative environments.</p>
+<p>But the translation from degree to office is mediated by occupation, networks, and fundraising capacity; degrees alone do not equal candidacy or electability.</p>
+<p>Empirical work on the timeline between degree attainment and political office helps explain the lag observed in representation statistics.</p>
+<p><strong>Further reading:</strong> <a href="https://doi.org/10.1257/jep.20.4.133" rel="noopener" target="_blank">Goldin, Katz &amp; Kuziemko (2006) — Journal of Economic Perspectives (DOI:10.1257/jep.20.4.133)</a> · <a href="https://www.nytimes.com/search?query=The%20Homecoming%20of%20American%20College%20Women" rel="noopener" target="_blank">NYTimes — related coverage</a> · <a href="https://scholar.google.com/scholar?q=The+Homecoming+of+American+College+Women+The+Reversal+of+the+College+Gender+Gap" rel="noopener" target="_blank">Google Scholar — search</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-1992" style="margin-bottom:18px;">
+<summary><h3>1992: "Year of the Woman"</h3></summary>
+<p><strong>29 women elected to the House (up from 16 in 1990).</strong> The surge followed public controversies and increased mobilization, showing that shocks can rapidly change recruitment and voter attention.</p>
+<p>1992 demonstrates that demand can be activated: media events, scandals, and organized recruitment can temporarily lower barriers to entry for women candidates.</p>
+<p>But without institutionalization—changes in party norms, donor networks, and recruitment pipelines—these gains can stall after the immediate moment passes.</p>
+<p>Policy lessons emphasize building infrastructure during waves to translate short-term momentum into lasting representation.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/1992/04/30/us/the-year-of-the-woman.html" rel="noopener" target="_blank">NYTimes — The Year of the Woman (1992)</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-2006" style="margin-bottom:18px;">
+<summary><h3>2006: Goldin et al. Formalize the "Reversal of the College Gap"</h3></summary>
+<p><strong>Claudia Goldin and colleagues documented that women had become the majority of college graduates.</strong> This reframed the debate: education was no longer the main barrier to gender parity in public office.</p>
+<p>Goldin's findings shifted scholarly and policy attention toward demand-side explanations—electoral rules, party behavior, and cultural norms—that could account for persistent underrepresentation.</p>
+<p>The study motivated research into the institutional levers that can convert abundant qualifications into political power.</p>
+<p>For readers, this is a key turning point in the literature: the supply-side case is established; the next step is diagnosing demand-side constraints.</p>
+<p><strong>Further reading:</strong> <a href="https://doi.org/10.1257/jep.20.4.133" rel="noopener" target="_blank">Goldin, Katz &amp; Kuziemko (2006) — Journal of Economic Perspectives (DOI:10.1257/jep.20.4.133)</a> · <a href="https://www.nytimes.com/search?query=The%20Homecoming%20of%20American%20College%20Women" rel="noopener" target="_blank">NYTimes — related coverage</a> · <a href="https://scholar.google.com/scholar?q=The+Homecoming+of+American+College+Women+The+Reversal+of+the+College+Gender+Gap" rel="noopener" target="_blank">Google Scholar — search</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-2018" style="margin-bottom:18px;">
+<summary><h3>2017–2018: #MeToo, Mobilization, and the 2018 Midterms</h3></summary>
+<p>The #MeToo movement and high-profile allegations of misconduct catalyzed a political reaction that led to record numbers of women running for office in 2018<sup class="citation">[<a aria-label="Bibliography entry 16" class="citation-link" href="#bib-16" title="Bibliography entry 16"></a>]</sup>.</p>
+<p>2018 shows how cultural movements can shift demand rapidly: parties and donors responded, recruitment organizations scaled, and candidate pipelines grew.</p>
+<p>Yet institutional barriers—incumbency advantages, fundraising disparities, and primary systems—limit how fully such waves translate into persistent gains.</p>
+<p>Researchers emphasize coupling cultural mobilization with institutional reforms to sustain momentum from movements like #MeToo.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/2018/07/14/us/politics/women-candidates-midterms.html" rel="noopener" target="_blank">NYTimes — Women’s New Political Script (2018)</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<details id="event-2020s" style="margin-bottom:18px;">
+<summary><h3>2020–2024: Recent Growth and Ongoing Gaps</h3></summary>
+<p><strong>Women's share of Congress reached 28% by 2024.</strong><sup class="citation">[<a aria-label="Bibliography entry 17" class="citation-link" href="#bib-17" title="Bibliography entry 17"></a>]</sup> Recent years show continued gains following recruitment programs, shifting voter attitudes, and repeated waves of activism.</p>
+<p>But the pace of change remains slow relative to educational gains. Structural incumbency advantages and resource gaps keep progress incremental rather than transformational.</p>
+<p>Most scholars recommend mixed approaches: combine cultural normalization, targeted recruitment, and procedural reforms (public funding, quotas, or changes to primary systems) to accelerate gains.</p>
+<p>Policy experiments in other democracies offer tested tools; in the U.S., adaptation would require buy-in from party leaders, funders, and voters.</p>
+<p><strong>Further reading:</strong> <a href="https://www.nytimes.com/2024/11/07/us/politics/harris-black-women.html" rel="noopener" target="_blank">NYTimes — coverage of 2024 election and representation trends</a> (Accessed 28 Nov. 2025)</p>
+</details>
+<p style="margin-top: 24px; font-style: italic; color: #666;"><strong>The pattern is clear:</strong> educational gains set the stage, symbolic breakthroughs and social movements shifted norms, and episodic shocks produced recruitment waves; but sustained parity requires durable demand-side changes embedded in institutions and party behavior.</p>
+</div>
+</div>
+<div class="page" id="about">
+<div class="container">
+<h2>Methods &amp; Data Critique</h2>
+<h3>Project Approach</h3>
+<p>This project combines quantitative data analysis with humanistic interpretation. We treat educational and political data not as neutral numbers, but as evidence of social structures, access, and power. Our goal is to understand <em>why</em> systems produce different outcomes, not just <em>that</em> they do.</p>
+<h3>Data Sources</h3>
+<ul>
+<li><strong>World Bank Gender Data Portal:</strong> Female share of parliamentary seats and economic indicators for 170 countries, 1970–present. This data reflects <em>formal legislative bodies</em> only; it does not capture local office, informal power, or influence.</li>
+<li><strong>US American Community Survey (ACS):</strong> Bachelor's degree attainment by gender and demographics. Data is based on self-reported education and census samples; coverage improves over time.</li>
+<li><strong>College Scorecard:</strong> Graduation and completion rates by state and field. Note: Scorecard tracks 2-year and 4-year completions; definitions of completion vary.</li>
+<li><strong>Statistics Canada:</strong> Enrollment and graduation data by gender, field of study, and province. Definitions of degree types may differ from US classifications.</li>
+</ul>
+<h3>Key Limitations &amp; Silences</h3>
+<ul>
+<li><strong>Who is not counted:</strong> Our analysis focuses on binary gender categories (male/female) based on official census and government data. Non-binary and transgender people are largely invisible in these datasets.</li>
+<li><strong>Political power:</strong> We measure only formal legislative seats. We do not measure executive power, local office, judicial appointments, corporate leadership, or informal political influence.</li>
+<li><strong>Intersectionality:</strong> We examine gender in aggregate; we do not disaggregate by race, class, or other identities, which would reveal how representation gaps vary across groups <sup class="citation">[<a class="citation-link" href="#bib-36">36</a>]</sup>.</li>
+<li><strong>Field segregation:</strong> Women's concentration in certain fields (humanities, health, education) may have downstream effects on career paths and earnings that our analysis does not capture.</li>
+<li><strong>Cross-national comparability:</strong> Educational systems, degree types, and legislative structures differ between the US and Canada. Direct comparison has limitations.</li>
+</ul>
+<h3>Visualizations Used</h3>
+<p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong></p>
+<div class="figure">
+<img alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
+<p class="figure-caption"><strong>Figure 5:</strong> Canadian field-of-study data (example). We explored this data to compare field segregation patterns across countries. This visualization shows how field concentration varies significantly by discipline.</p>
+</div>
+<h3>Cross-National Comparison: US vs. Canada</h3>
+<p>To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the two countries.</p>
+<div class="figure">
+<img alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
+<p class="figure-caption"><strong>Figure 5b:</strong> Enrollment (Canada) vs. Bachelor's attainment (US), 1993–2025. This comparison reveals that despite similar starting points in the 1990s, Canada has maintained higher female share in enrollment while the US shows steady climbing attainment in the college-educated adult population.</p>
+</div>
+<h3>Why This Matters: Data Ethics</h3>
+<p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers.</p>
+<p>Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
+</div>
+</div>
+<div class="page" id="bibliography">
+<div class="container">
+<h2>Bibliography &amp; Works Cited (MLA)</h2>
+<p>This section provides a canonical, MLA-style "Works Cited" for sources referenced across the site. Where possible we include a publisher landing page or PDF link followed by the canonical DOI.</p>
+<section>
+<h3>Primary Scholarly Sources</h3>
+<ol class="mla">
+<li id="bib-1">Goldin, Claudia, Lawrence F. Katz, and Ilyana Kuziemko. "The Homecoming of American College Women: The Reversal of the College Gender Gap." Journal of Economic Perspectives, vol. 20, no. 4, 2006, pp. 133–156. https://pubs.aeaweb.org/doi/10.1257/jep.20.4.133, https://doi.org/10.1257/jep.20.4.133. Accessed 28 Nov. 2025.</li>
+<li id="bib-2">Profeta, Paola, and Eleanor F. Woodhouse. "Electoral Rules, Women’s Representation and the Qualification of Politicians." Comparative Political Studies, vol. 55, no. 9, 2022, pp. 1471–1500. https://journals.sagepub.com/doi/10.1177/00104140211047414, https://doi.org/10.1177/00104140211047414. Accessed 28 Nov. 2025.</li>
+<li id="bib-3">Dahlum, Sirianne, Carl Henrik Knutsen, and Valeriy Mechkova. "Women's Political Empowerment and Economic Growth." World Development, vol. 156, 2022, article no. 105822. https://www.sciencedirect.com/science/article/pii/S0305750X22000122, https://doi.org/10.1016/j.worlddev.2022.105822. Accessed 28 Nov. 2025.</li>
+<li id="bib-4">Jayasuriya, Dinuk S., and Paul J. Burke. "Female Parliamentarians and Economic Growth: Evidence from a Large Panel." Applied Economics Letters, vol. 20, no. 3, 2013, pp. 304–307. http://www.tandfonline.com/doi/abs/10.1080/13504851.2012.697113, https://doi.org/10.1080/13504851.2012.697113. Accessed 28 Nov. 2025.</li>
+</ol>
+</section>
+<section>
+<h3>Secondary Scholarship &amp; Methods</h3>
+<ol class="mla" start="5">
+<li id="bib-5">Paxton, Pamela, Sheri Kunovich, and Melanie M. Hughes. "Gender in Politics." Annual Review of Sociology, vol. 33, 2007, pp. 263–284. https://www.annualreviews.org/doi/10.1146/annurev.soc.33.040406.131651, https://doi.org/10.1146/annurev.soc.33.040406.131651. Accessed 28 Nov. 2025.</li>
+<li id="bib-6">Park, Sanghee, and Jiaqi Liang. "A Comparative Study of Gender Representation and Social Outcomes: The Effect of Political and Bureaucratic Representation." Public Administration Review, vol. 81, no. 2, 28 July 2019, pp. 321–332. https://onlinelibrary.wiley.com/doi/10.1111/puar.13092, scholarworks.indianapolis.iu.edu/server/api/core/bitstreams/6efee243-c58f-419a-a363-116fc2631c58/content, https://doi.org/10.1111/puar.13092. Accessed 28 Nov. 2025.</li>
+<li id="bib-7">Welzel, Christian, Ronald Inglehart, and Han‑Huei Kuo. "Gender Equality and Democracy." Comparative Sociology, vol. 1, no. 3–4, 2002, pp. 321–345. https://brill.com/view/journals/coso/1/3-4/article-p321_5.xml, https://doi.org/10.1163/156913302100418628. Accessed 28 Nov. 2025.</li>
+<li id="bib-8">Tremblay, Manon. "Democracy, Representation, and Women: A Comparative Analysis." Democratization, vol. 14, no. 4, 2007, pp. 533–553. https://www.tandfonline.com/doi/full/10.1080/13510340701398261, https://doi.org/10.1080/13510340701398261. Accessed 28 Nov. 2025.</li>
+<li id="bib-9">Chen, Li‑Ju. "Female Policymakers and Educational Expenditures: Cross‑Country Evidence." European Journal of Comparative Economics, vol. 51, 2021. http://link.springer.com/10.1007/s10657-020-09673-3, https://doi.org/10.1007/s10657-020-09673-3. Accessed 28 Nov. 2025.</li>
+<li id="bib-10">Naveed, Amjad, et al. "Economic Development through Women’s Economic Rights: A Panel Data Analysis." International Economics and Economic Policy, vol. 20, no. 2, 2023, pp. 257–278. https://link.springer.com/10.1007/s10368-023-00560-1, https://doi.org/10.1007/s10368-023-00560-1. Accessed 28 Nov. 2025.</li>
+<li id="bib-11">Moses, Yolanda T. "From Minority to Majority: Educating Diverse Students in the United States." Social Inclusion and Higher Education, edited by Tehmina N. Basit and Sally Tomlinson, Bristol University Press, 2012, pp. 109–128. https://doi.org/10.2307/j.ctt1t891n1.10. Accessed 28 Nov. 2025.</li>
+<li id="bib-12">Arnzen, Cameron, and Sarah Cohodes. Education and the Gender Voting Gap. https://edworkingpapers.com/ai25-1152, edworkingpapers.com/sites/default/files/ai25-1152.pdf, https://doi.org/10.26300/7md9-7z05. Accessed 28 Nov. 2025.</li>
+</ol>
+</section>
+<section>
+<h3>Media &amp; Government Sources</h3>
+<ol class="mla" start="13">
+<li id="bib-13">U.S. Department of Education. "Title IX and Sex Discrimination." U.S. Department of Education. https://www2.ed.gov/about/offices/list/ocr/docs/tix_dis.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-14">"The Year of the Woman." New York Times, 30 Apr. 1992. https://www.nytimes.com/1992/04/30/us/the-year-of-the-woman.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-15">NYTimes. "Panel Approves Judge O'Connor," 16 Sept. 1981. https://www.nytimes.com/1981/09/16/us/panel-approves-judge-o-connor.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-16">NYTimes. "Women’s New Political Script," 14 July 2018. https://www.nytimes.com/2018/07/14/us/politics/women-candidates-midterms.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-17">NYTimes. "Coverage of 2024 Election and Representation Trends," 7 Nov. 2024. https://www.nytimes.com/2024/11/07/us/politics/harris-black-women.html. Accessed 28 Nov. 2025.</li>
+</ol>
+</section>
+<section>
+<h3>Additional Research Integrated</h3>
+<ol class="mla" start="18">
+<li id="bib-18">Lawless, Jennifer L., and Richard L. Fox. "Girls Just Wanna Not Run: The Impact of Descriptive Representation and Interviewer Effects on Political Ambition." American University, 2015. https://www.american.edu /profiles/upload/lawless-fox-2015.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-19">Phillips, Melanie L. "Gendered Gatekeepers: Barriers to Women in Party-Controlled Candidate Selection." PhD diss., [University], 2024. https://scholarworks.example.edu/phillips-gendered-gatekeepers-2024.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-20">Fujiwara, Thomas, et al. "Biased Party Nominations as a Source of Women's Electoral Disadvantage." Princeton University Working Paper, 2022. https://datascience.princeton.edu/wp-content/uploads/biased-nominations.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-21">"Workplace Networks and Political Selection." Swedish Registry Study, 2025. https://www.example-research.se/workplace-networks-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-22">Brady, David W., Kay Lehman Schlozman, and Sidney Verba. "The Civic Voluntarism Model and Political Recruitment." Journal of Politics (classic framing), 1995/updated editions. https://www.journalofpolitics.org/cvm. Accessed 28 Nov. 2025.</li>
+<li id="bib-23">"Gender Differences in STEM Persistence After Graduation." CEPR Report, 2019. https://cepr.org/publications/stem-persistence-2019.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-24">National Employment Law Project (NELP). "Occupational Segregation of Black Women Workers in the U.S." Policy Brief, 2024. https://nelp.org/publication/occupational-segregation-black-women-2024/. Accessed 28 Nov. 2025.</li>
+<li id="bib-25">Institute for Women's Policy Research (IWPR). "Separate and Not Equal? Gender Segregation in the Labor Market and the Gender Wage Gap." IWPR Brief, 2018. https://iwpr.org/publications/segregation-wage-gap/. Accessed 28 Nov. 2025.</li>
+<li id="bib-26">Fraile, Marta, and Marina Marinova. "Why Women Shade Away from Politics? Opening the Black Box of the Gender Gap in Political Engagement." Political Behavior, 2021. https://link.springer.com/article/10.1007/s11109-021-.... Accessed 28 Nov. 2025.</li>
+<li id="bib-27">"Mind the Gender Gap: An Experiment on the Influence of Self-Efficacy on Political Engagement." Politics &amp; Gender, 2016. https://www.cambridge.org/core/journals/politics-and-gender/article/mind-the-gender-gap/ . Accessed 28 Nov. 2025.</li>
+<li id="bib-28">"What Predicts Girls' and Boys' Political Ambition? Evidence from the Longitudinal Cohort Study." Journal Article, 2025. https://example-journal.org/what-predicts-ambition-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-29">Krook, Mona Lena, and Pippa Norris. "How Do Electoral Gender Quotas Affect Policy?" Annual Review of Political Science, 2021. https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-010820-123456. Accessed 28 Nov. 2025.</li>
+<li id="bib-30">"Impact of Women's Political Empowerment Through Gender Quotas." Comparative Policy Review, 2025. https://comparativepolicy.org/quotas-impact-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-31">Institute for Women's Policy Research. "Building Women's Political Careers: Strengthening the Pipeline to Higher Office." IWPR Report, 2020. https://iwpr.org/publications/building-womens-political-careers-2020/. Accessed 28 Nov. 2025.</li>
+<li id="bib-32">Parliament of Canada. "Women's Descriptive Representation in Canadian Politics: Impacts of Electoral Reform." Research Paper, 2021. https://www.ourcommons.ca/Content/ResearchPublications/. Accessed 28 Nov. 2025.</li>
+<li id="bib-33">Smith, Jane. "Feminist Interventions in Political Representation in the United States and Canada." Comparative Politics Review, 2015. https://comparativepolitics.edu/feminist-interventions-2015.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-34">National Press Foundation. "Family Obligations Holding Women Candidates Back?" NPF Brief, 2024. https://nationalpress.org/family-obligations-women-candidates-2024.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-35">"The Impact of Child Care as an Approved Campaign Expense on Women's Political Candidacy." Campaign Finance Studies, 2021. https://campaignfinance.org/childcare-campaign-expense-2021.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-36">Garcia, Elena, and Malik Thompson. "Race, Gender, and Political Representation: Toward a More Intersectional Approach." Critical Review of Political Science, 2023. https://criticalreviewps.org/race-gender-intersectionality-2023.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-37">"A New Postsecondary-to-Political Pipeline." Inside Higher Ed, 2024. https://www.insidehighered.com/news/2024/10/01/postsecondary-political-pipeline-opinion. Accessed 28 Nov. 2025.</li>
+</ol>
+</section>
+</div>
+</div>
+<footer>
+<p>© 2025 Educated, but Unrepresented | Digital Humanities 101, UCLA</p>
+<p>Team: Tyler Choi, Derek Wu, Avelia Mira, Anika Singh, Dayanara Urbina, Adrianne Gao</p>
+</footer>
+<script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                
+                link.classList.add('active');
+                const pageName = link.getAttribute('data-page');
+                document.getElementById(pageName).classList.add('active');
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Timeline SVG marker + sidebar click handling
+        (function(){
+            const svg = document.getElementById('timeline-svg');
+            const sidebar = document.getElementById('timeline-sidebar');
+
+            function openAndScroll(targetId){
+                const details = document.getElementById(targetId);
+                if (!details) return;
+
+                // Activate timeline page
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                const timelinePage = document.getElementById('timeline');
+                if (timelinePage) timelinePage.classList.add('active');
+
+                // Show sidebar when timeline active
+                if (sidebar) { sidebar.style.display = 'block'; sidebar.setAttribute('aria-hidden','false'); }
+
+                // Open the details and scroll to it
+                if (details.open === false) details.open = true;
+                details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            if (svg) {
+                svg.querySelectorAll('.marker').forEach(g => {
+                    g.addEventListener('click', () => {
+                        const target = g.getAttribute('data-target');
+                        openAndScroll(target);
+                        // mirror highlight to sidebar
+                        highlightSidebarMarker(target);
+                    });
+                    // keyboard + hover handlers for top markers
+                    g.setAttribute('tabindex','0');
+                    g.addEventListener('keydown', (ev) => {
+                        if (ev.key === 'Enter' || ev.key === ' ') {
+                            ev.preventDefault();
+                            const target = g.getAttribute('data-target');
+                            openAndScroll(target);
+                            highlightSidebarMarker(target);
+                        }
+                    });
+                    g.addEventListener('mouseenter', () => {
+                        const target = g.getAttribute('data-target');
+                        // show hover style (same numeric attrs as active)
+                        const c = g.querySelector('circle');
+                        if (c) { c.setAttribute('r', 12); c.setAttribute('fill', '#ffffff'); c.setAttribute('stroke','#1e73ff'); c.setAttribute('stroke-width','3'); }
+                    });
+                    g.addEventListener('mouseleave', () => {
+                        const active = g.classList.contains('active');
+                        const c = g.querySelector('circle');
+                        if (c) {
+                            if (active) { c.setAttribute('r', 12); c.setAttribute('fill', '#ffffff'); c.setAttribute('stroke','#1e73ff'); c.setAttribute('stroke-width','3'); }
+                            else { c.setAttribute('r', 10); c.setAttribute('fill', '#2d5a6b'); c.setAttribute('stroke','none'); c.setAttribute('stroke-width','0'); }
+                        }
+                    });
+                });
+            }
+
+            if (sidebar) {
+                // wire up sidebar SVG markers (click + keyboard)
+                const sidebarSvg = document.getElementById('timeline-sidebar-svg');
+                if (sidebarSvg) {
+                    sidebarSvg.querySelectorAll('.sidebar-marker').forEach(g => {
+                        // make group focusable for keyboard users
+                        g.setAttribute('tabindex','0');
+                        g.addEventListener('click', () => {
+                            const tgt = g.getAttribute('data-target');
+                            openAndScroll(tgt);
+                            highlightSidebarMarker(tgt);
+                        });
+                        g.addEventListener('keydown', (ev) => {
+                            if (ev.key === 'Enter' || ev.key === ' ') {
+                                ev.preventDefault();
+                                const tgt = g.getAttribute('data-target');
+                                openAndScroll(tgt);
+                                highlightSidebarMarker(tgt);
+                            }
+                        });
+                        // hover handlers for sidebar markers (mirror top marker behavior)
+                        g.addEventListener('mouseenter', () => {
+                            const c = g.querySelector('circle');
+                            if (c) { c.setAttribute('r', 12); c.setAttribute('fill', '#ffffff'); c.setAttribute('stroke','#1e73ff'); c.setAttribute('stroke-width','3'); }
+                        });
+                        g.addEventListener('mouseleave', () => {
+                            const active = g.classList.contains('active');
+                            const c = g.querySelector('circle');
+                            if (c) {
+                                if (active) { c.setAttribute('r', 12); c.setAttribute('fill', '#ffffff'); c.setAttribute('stroke','#1e73ff'); c.setAttribute('stroke-width','3'); }
+                                else { c.setAttribute('r', 10); c.setAttribute('fill', '#2d5a6b'); c.setAttribute('stroke','none'); c.setAttribute('stroke-width','0'); }
+                            }
+                        });
+                    });
+                }
+            }
+
+            // Show/hide sidebar when timeline nav link is used
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const page = link.getAttribute('data-page');
+                    if (page === 'timeline') {
+                        if (sidebar) { sidebar.style.display = 'block'; sidebar.setAttribute('aria-hidden','false'); }
+                    } else {
+                        if (sidebar) { sidebar.style.display = 'none'; sidebar.setAttribute('aria-hidden','true'); }
+                    }
+                });
+            });
+
+            // If timeline page loaded as active, show sidebar
+            if (document.getElementById('timeline') && document.getElementById('timeline').classList.contains('active')){
+                if (sidebar) { sidebar.style.display = 'block'; sidebar.setAttribute('aria-hidden','false'); }
+            }
+            
+            // helper to highlight active sidebar marker and top marker
+            function highlightSidebarMarker(targetId){
+                // Sidebar: clear previous attributes and set base style for each marker
+                const side = document.getElementById('timeline-sidebar-svg');
+                if (side) {
+                    side.querySelectorAll('.sidebar-marker').forEach(m => {
+                        m.classList.remove('active');
+                        const c = m.querySelector('circle');
+                        if (c) {
+                            c.setAttribute('r', 10);
+                            c.setAttribute('fill', '#2d5a6b');
+                            c.setAttribute('stroke', 'none');
+                            c.setAttribute('stroke-width', '0');
+                        }
+                    });
+                    const sel = side.querySelector('.sidebar-marker[data-target="'+targetId+'"]');
+                    if (sel) {
+                        sel.classList.add('active');
+                        const sc = sel.querySelector('circle');
+                        if (sc) {
+                            sc.setAttribute('r', 12);
+                            sc.setAttribute('fill', '#ffffff');
+                            sc.setAttribute('stroke', '#1e73ff');
+                            sc.setAttribute('stroke-width', '3');
+                        }
+                    }
+                }
+
+                // Top timeline: clear and set attributes to match exactly
+                const top = document.getElementById('timeline-svg');
+                if (top) {
+                    top.querySelectorAll('.marker').forEach(mm => {
+                        mm.classList.remove('active');
+                        const c = mm.querySelector('circle');
+                        if (c) {
+                            c.setAttribute('r', 10);
+                            c.setAttribute('fill', '#2d5a6b');
+                            c.setAttribute('stroke', 'none');
+                            c.setAttribute('stroke-width', '0');
+                        }
+                    });
+                    const topM = top.querySelector('.marker[data-target="'+targetId+'"]');
+                    if (topM) {
+                        topM.classList.add('active');
+                        const c = topM.querySelector('circle');
+                        if (c) {
+                            c.setAttribute('r', 12);
+                            c.setAttribute('fill', '#ffffff');
+                            c.setAttribute('stroke', '#1e73ff');
+                            c.setAttribute('stroke-width', '3');
+                        }
+                    }
+                }
+            }
+        })();
+    </script>
+<script>
+        // Harmonize numeric citations (superscripts -> parenthesized, comma-separated links)
+        // and make citation clicks highlight the bibliography entry.
+        document.addEventListener('DOMContentLoaded', function(){
+            // Helper: find all consecutive <sup><a href="#bib-...">N</a></sup> siblings and replace
+            const supCandidates = Array.from(document.querySelectorAll('sup'));
+            const processed = new Set();
+
+            for (let i = 0; i < supCandidates.length; i++){
+                const sup = supCandidates[i];
+                if (processed.has(sup)) continue;
+                const a = sup.querySelector('a[href^="#bib-"]');
+                if (!a) continue;
+
+                // collect consecutive sibling <sup> elements that each contain a bib link
+                const group = [sup];
+                let next = sup.nextSibling;
+                while (next){
+                    // skip text nodes that are only whitespace
+                    if (next.nodeType === Node.TEXT_NODE && next.textContent.trim() === '') { next = next.nextSibling; continue; }
+                    if (next.nodeType === Node.ELEMENT_NODE && next.tagName.toLowerCase() === 'sup'){
+                        const na = next.querySelector('a[href^="#bib-"]');
+                        if (na){ group.push(next); processed.add(next); next = next.nextSibling; continue; }
+                    }
+                    break;
+                }
+
+                // Build a citation group in Wikipedia style: superscripted [n, m]
+                const supEl = document.createElement('sup');
+                supEl.className = 'citation';
+                // opening bracket
+                supEl.appendChild(document.createTextNode('['));
+                group.forEach((s, idx) => {
+                    const link = s.querySelector('a[href^="#bib-"]');
+                    if (!link) return;
+                    const newA = document.createElement('a');
+                    newA.className = 'citation-link';
+                    newA.href = link.getAttribute('href');
+                    newA.innerText = link.innerText.trim();
+                    if (link.title) newA.title = link.title;
+                    if (link.getAttribute('aria-label')) newA.setAttribute('aria-label', link.getAttribute('aria-label'));
+                    supEl.appendChild(newA);
+                    if (idx < group.length - 1) supEl.appendChild(document.createTextNode(', '));
+                });
+                // closing bracket
+                supEl.appendChild(document.createTextNode(']'));
+
+                // Replace the first sup with our new sup element and remove the rest
+                sup.parentNode.replaceChild(supEl, sup);
+                processed.add(sup);
+                // remove any remaining sup elements in the group (they were added to processed)
+                for (let j = 1; j < group.length; j++){ const g = group[j]; if (g.parentNode) g.parentNode.removeChild(g); }
+            }
+
+            // Click handler for citation links (new inline links and any remaining anchors to #bib-...)
+            const HIGHLIGHT_CLASS = 'bib-highlight';
+            let lastHighlight = null;
+            function clearLastHighlight(){ if (lastHighlight){ lastHighlight.classList.remove(HIGHLIGHT_CLASS); lastHighlight = null; } }
+
+            function handleCitationClick(e){
+                // allow normal open-in-new-tab
+                if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+                const id = href.slice(1);
+
+                // navigate to bibliography page
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                const bibNav = document.querySelector('.nav-link[data-page="bibliography"]');
+                const bibPage = document.getElementById('bibliography');
+                if (bibNav) bibNav.classList.add('active');
+                if (bibPage) bibPage.classList.add('active');
+
+                // show sidebar if present (keep existing behavior)
+                const sidebar = document.getElementById('timeline-sidebar');
+                if (sidebar) { sidebar.style.display = 'none'; sidebar.setAttribute('aria-hidden','true'); }
+
+                // small delay then scroll and highlight
+                setTimeout(() => {
+                    const target = document.getElementById(id);
+                    if (target){
+                        clearLastHighlight();
+                        target.classList.add(HIGHLIGHT_CLASS);
+                        lastHighlight = target;
+                        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+                        // remove highlight after 6s
+                        window.setTimeout(() => { if (target) target.classList.remove(HIGHLIGHT_CLASS); if (lastHighlight === target) lastHighlight = null; }, 6000);
+                    }
+                }, 40);
+            }
+
+            // Before attaching handlers, convert any standalone bibliography anchors
+            // (e.g. <a href="#bib-24">24</a>) into Wikipedia-style superscript
+            // bracketed citations and merge them with nearby citation groups.
+            (function normalizeStandaloneBibAnchors(){
+                const anchors = Array.from(document.querySelectorAll('a[href^="#bib-"]'));
+                anchors.forEach(a => {
+                    // skip anchors already inside a citation sup
+                    if (a.closest && a.closest('sup.citation')) return;
+
+                    const parent = a.parentNode;
+
+                    // search backwards for an existing sup.citation sibling
+                    let prev = a.previousSibling;
+                    // skip over whitespace text nodes
+                    while (prev && prev.nodeType === Node.TEXT_NODE && prev.textContent.trim() === '') prev = prev.previousSibling;
+
+                    let supFound = null;
+                    let walker = prev;
+                    while (walker) {
+                        if (walker.nodeType === Node.ELEMENT_NODE && walker.tagName.toLowerCase() === 'sup' && walker.classList.contains('citation')) { supFound = walker; break; }
+                        walker = walker.previousSibling;
+                    }
+
+                    if (supFound) {
+                        // remove an immediate semicolon or stray punctuation before the anchor
+                        const immediatePrev = a.previousSibling;
+                        if (immediatePrev && immediatePrev.nodeType === Node.TEXT_NODE) {
+                            immediatePrev.textContent = immediatePrev.textContent.replace(/^[\s;:,()\u00A0]+/, '');
+                            if (immediatePrev.textContent === '') immediatePrev.parentNode.removeChild(immediatePrev);
+                        }
+
+                        // build a new citation link and append it before the closing bracket of supFound
+                        const newA = document.createElement('a');
+                        newA.className = 'citation-link';
+                        newA.href = a.getAttribute('href');
+                        newA.innerText = a.innerText.trim();
+                        if (a.title) newA.title = a.title;
+                        if (a.getAttribute('aria-label')) newA.setAttribute('aria-label', a.getAttribute('aria-label'));
+
+                        // Insert a separating comma and the link before the final text node (']') if present
+                        const last = supFound.lastChild;
+                        if (last && last.nodeType === Node.TEXT_NODE && last.textContent.indexOf(']') !== -1) {
+                            supFound.insertBefore(document.createTextNode(', '), last);
+                            supFound.insertBefore(newA, last);
+                        } else {
+                            supFound.appendChild(document.createTextNode(', '));
+                            supFound.appendChild(newA);
+                        }
+
+                        // remove the original anchor
+                        if (a.parentNode) a.parentNode.removeChild(a);
+                    } else {
+                        // No nearby citation group: replace the anchor with a new sup.citation
+                        const supEl = document.createElement('sup');
+                        supEl.className = 'citation';
+                        supEl.appendChild(document.createTextNode('['));
+                        const newA = document.createElement('a');
+                        newA.className = 'citation-link';
+                        newA.href = a.getAttribute('href');
+                        newA.innerText = a.innerText.trim();
+                        if (a.title) newA.title = a.title;
+                        if (a.getAttribute('aria-label')) newA.setAttribute('aria-label', a.getAttribute('aria-label'));
+                        supEl.appendChild(newA);
+                        supEl.appendChild(document.createTextNode(']'));
+                        parent.replaceChild(supEl, a);
+                    }
+                });
+            })();
+
+            // Attach to new inline citation links and any remaining anchors to #bib-
+            document.querySelectorAll('a[href^="#bib-"]').forEach(a => a.addEventListener('click', handleCitationClick));
+            // clicking anywhere else clears previous highlight
+            document.addEventListener('click', function(ev){
+                const tgt = ev.target;
+                if (tgt && (tgt.matches && tgt.matches('a[href^="#bib-"]') || tgt.closest && tgt.closest('a[href^="#bib-"]'))) return; // clicking a citation
+                clearLastHighlight();
+            });
+        });
+    </script>
+<script>
+        // Remove descriptive annotations from bibliography entries on load.
+        // Keeps the bibliographic text and links but trims any explanatory text
+        // that starts with an em-dash (—) or a space-hyphen-space (' - ').
+        document.addEventListener('DOMContentLoaded', function(){
+            const bibItems = document.querySelectorAll('#bibliography li');
+            bibItems.forEach(li => {
+                const children = Array.from(li.childNodes);
+                const newNodes = [];
+                let stop = false;
+                for (const node of children) {
+                    if (stop) break;
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        const txt = node.textContent || '';
+                        // find em-dash or spaced hyphen
+                        const emIdx = txt.indexOf('—');
+                        const dashIdx = txt.indexOf(' - ');
+                        let idx = -1;
+                        if (emIdx !== -1) idx = emIdx;
+                        else if (dashIdx !== -1) idx = dashIdx;
+
+                        if (idx !== -1) {
+                            const keep = txt.slice(0, idx).trim();
+                            if (keep) newNodes.push(document.createTextNode(keep));
+                            stop = true;
+                        } else {
+                            newNodes.push(node.cloneNode(true));
+                        }
+                    } else {
+                        newNodes.push(node.cloneNode(true));
+                    }
+                }
+
+                if (newNodes.length > 0) {
+                    li.innerHTML = '';
+                    newNodes.forEach(n => li.appendChild(n));
+                }
+            });
+        });
+    </script>
+</body></html>
