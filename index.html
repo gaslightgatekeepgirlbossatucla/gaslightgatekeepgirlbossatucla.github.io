@@ -164,7 +164,8 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: var(--spacing-2xl) var(--spacing-lg);
+            /* Tighten top padding so content sits closer under the hero/nav */
+            padding: var(--spacing-lg) var(--spacing-lg);
             animation: fadeInUp 0.8s ease-out;
         }
 
@@ -201,10 +202,11 @@
         /* Hero section */
         .hero {
             text-align: center;
-            padding: var(--spacing-2xl) var(--spacing-xl);
+            padding: var(--spacing-lg) var(--spacing-lg);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
             border-radius: 24px;
-            margin: var(--spacing-xl) auto var(--spacing-2xl);
+            /* Reduce bottom spacing so following content sits closer */
+            margin: var(--spacing-md) auto var(--spacing-lg);
             max-width: 1200px;
             box-shadow: var(--shadow-2xl);
             position: relative;
@@ -263,7 +265,8 @@
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(32px, 4vw, 42px);
-            margin: var(--spacing-2xl) 0 var(--spacing-lg);
+            /* Tighten top margin so headings sit closer to preceding content */
+            margin: var(--spacing-md) 0 var(--spacing-lg);
             color: var(--text-primary);
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -341,7 +344,7 @@
             border-left: 5px solid;
             border-image: linear-gradient(180deg, var(--primary), var(--secondary)) 1;
             padding: var(--spacing-xl);
-            margin: var(--spacing-xl) 0;
+            margin: var(--spacing-md) 0;
             border-radius: 16px;
             box-shadow: var(--shadow-md);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -705,6 +708,28 @@
         .figure-analysis p:last-child {
             margin-bottom: 0;
         }
+        /* Slight, site-wide font size increases requested by the user. */
+        /* These overrides are intentionally modest to avoid layout breakage. */
+        :root { --font-scale-adjust: 1.12; }
+
+        /* Base/body bump (affects elements using rem/em sizing and baseline text) */
+        body { font-size: 18px; }
+
+        /* Override commonly used pixel sizes to make text slightly larger */
+        p { font-size: 19px !important; }
+        li, .questions-box li { font-size: 17px !important; }
+        nav a { font-size: 15px !important; }
+        .figure-caption { font-size: 16px !important; }
+        details summary { font-size: 17px !important; }
+        footer { font-size: 15px !important; }
+
+        /* Responsive adjustments: keep increases smaller on narrow screens */
+        @media (max-width: 768px) {
+            nav a { font-size: 13px !important; }
+            p { font-size: 17px !important; }
+            li, .questions-box li { font-size: 16px !important; }
+            .figure-caption { font-size: 15px !important; }
+        }
     </style>
 </head>
 <body>
@@ -726,13 +751,6 @@
 <p>American women now earn more bachelors and masters degrees than men. Yet, they hold only 28% of congressional seats. Consider this paradox to reveal a hidden truth: that education alone does not guarantee political power in our country. </p>
 </div>
 <div class="container">
-<p style="font-size: 18px; text-align: center; margin-bottom: 40px; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
-                While countries like Canada (34%), Germany (35%), and Nordic nations (40–47%) have achieved greater female legislative representation in their own respective countries, the United States lags behind in spite of having one of the highest rates of female educational attainment among developed democracies <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.
-            </p>
-<div class="figure">
-<img alt="Pipeline comparison showing female share of enrollment and graduates for US and Canada" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
-<p class="figure-caption"><strong>Figure 1:</strong> Female share of enrollment and graduates: US vs. Canada. Women represent a growing majority of degree earners, yet remain a minority in legislatures.</p>
-</div>
 <div class="questions-box">
 <h3>Our Central Questions</h3>
 <ul>
