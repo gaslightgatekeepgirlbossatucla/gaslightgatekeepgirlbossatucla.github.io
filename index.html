@@ -4,8 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Educated, but Unrepresented</title>
+    <meta name="description" content="Educated, but Unrepresented — research on why women's educational gains haven't translated to equal political representation in the US.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
         
         :root {
             /* Modern Color Palette */
@@ -353,6 +356,7 @@
         }
 
         .figure img {
+            display: block;
             max-width: 100%;
             height: auto;
             border-radius: 16px;
@@ -832,27 +836,23 @@
             color: var(--text-secondary);
             line-height: 1.8;
         }
-        /* Slight, site-wide font size increases requested by the user. */
-        /* These overrides are intentionally modest to avoid layout breakage. */
-        :root { --font-scale-adjust: 1.12; }
-
-        /* Base/body bump (affects elements using rem/em sizing and baseline text) */
-        body { font-size: 18px; }
-
-        /* Override commonly used pixel sizes to make text slightly larger */
-        p { font-size: 19px !important; }
-        li, .questions-box li { font-size: 17px !important; }
-        nav a { font-size: 15px !important; }
-        .figure-caption { font-size: 16px !important; }
-        details summary { font-size: 17px !important; }
-        footer { font-size: 15px !important; }
+        /* Typographic scale (use rems for consistent, accessible sizing) */
+        :root { --font-scale-adjust: 1; }
+        html { font-size: 100%; } /* 16px */
+        body { font-size: 1rem; }
+        p { font-size: 1.0625rem; }
+        li, .questions-box li { font-size: 1rem; }
+        nav a { font-size: 0.9375rem; }
+        .figure-caption { font-size: 0.9375rem; }
+        details summary { font-size: 1rem; }
+        footer { font-size: 0.9375rem; }
 
         /* Responsive adjustments: keep increases smaller on narrow screens */
         @media (max-width: 768px) {
-            nav a { font-size: 13px !important; }
-            p { font-size: 17px !important; }
-            li, .questions-box li { font-size: 16px !important; }
-            .figure-caption { font-size: 15px !important; }
+            nav a { font-size: 0.8125rem; }
+            p { font-size: 1rem; }
+            li, .questions-box li { font-size: 0.95rem; }
+            .figure-caption { font-size: 0.9375rem; }
         }
         /* Scroll-snap sections */
         body {
@@ -1022,7 +1022,7 @@
             <p>Finally, research on democratic maturity argues that in less‑developed countries, institutional fixes like quota systems or PR can produce rapid gains; in mature democracies cultural attitudes often matter more. See Tremblay <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup> for a comparative perspective. In short, the U.S. appears to be an outlier not because women lack education or ambition, but because specific institutional and cultural barriers prevent those educational gains from converting into representation.</p>
         </div>
         <div class="figure">
-<img alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
+    <img loading="lazy" alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
 <p class="figure-caption"><strong>Figure 2:</strong> Women's share of bachelors and masters degrees, 1993–2023. Women crossed the 50% threshold in the late 1980s and have remained the majority since <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
 </div>
 <div class="figure-analysis">
@@ -1033,7 +1033,7 @@
 <p>Taken together, the time-series confirms a central project claim: supply-side strength is real and longstanding. The remaining question is why the demand-side, such as the institutions, party practices, and cultural attitudes, has not matched that supply.</p>
 </div>
 <div class="figure">
-<img alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
+<img loading="lazy" alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
 <p class="figure-caption"><strong>Figure 2b:</strong> Female share of enrollment vs. graduates: US vs. Canada comparison. Both countries show women enrolling at ~55%, but varying completion rates—Canada hovering near 60%, while the US climbs toward that threshold. This direct comparison is key: if Canada achieves 34% female MPs with similar educational demographics to the US (which has only 28%), education alone cannot explain the representation gap.</p>
 </div>
 <div class="figure-analysis">
@@ -1049,7 +1049,7 @@
 <p>State-level enrollment and completion patterns also interact with local labor markets and policy environments; longitudinal cohort work shows that regional labor demand and postsecondary supports affect long-run career trajectories for women, which in turn shape local pipelines into public life <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
 </div>
 <div class="figure">
-<img alt="Choropleth map showing women's share of undergraduate enrollment by US state, 2023-2024" src="images/85573164-ac5e-40f6-8a78-e66a61fb83cc.png"/>
+<img loading="lazy" alt="Choropleth map showing women's share of undergraduate enrollment by US state, 2023-2024" src="images/85573164-ac5e-40f6-8a78-e66a61fb83cc.png"/>
 <p class="figure-caption"><strong>Figure 2c:</strong> Women's share of undergraduate enrollment by US state, 2023–2024. Women represent 49–69% of undergraduate enrollees across all regions, demonstrating that female educational strength is a national phenomenon, not regional.</p>
 </div>
 <div class="figure-analysis">
@@ -1065,7 +1065,7 @@
 <p>Field segregation is consequential: syntheses of labor-market evidence link occupational segregation to lower visibility and fewer donor or sponsor ties for women—patterns that reduce the likelihood of political recruitment from some fields (<sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>).</p>
 </div>
 <div class="figure">
-<img alt="Small multiples showing women's share by major field, high in health/humanities, low in engineering/computer science" src="images/18e84788-eb09-4ecf-9b36-329bb011f42d.png"/>
+<img loading="lazy" alt="Small multiples showing women's share by major field, high in health/humanities, low in engineering/computer science" src="images/18e84788-eb09-4ecf-9b36-329bb011f42d.png"/>
 <p class="figure-caption"><strong>Figure 3:</strong> Women's share of US bachelor's degrees by field, 2018–2020 (top programs). Women represent 50–65% of business, humanities, and social science majors, but only ~20% of engineering and computer science.</p>
 </div>
 <div class="figure-analysis">
@@ -1098,7 +1098,7 @@
             <p><sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
         </div>
         <div class="figure">
-<img alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
+        <img loading="lazy" alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
 <p class="figure-caption"><strong>Figure 4:</strong> The paradox: Female enrollment and graduates are nearly identical between the US and Canada—even slightly higher in the US—yet Canada has 34% female MPs versus the US's 28% in Congress.</p>
 </div>
 <h3>The United States lags because of its institutional and cultural barriers</h3>
@@ -1110,7 +1110,7 @@
             </div>
         </div>
 <div class="figure">
-<img alt="Mean percent women in parliament by electoral system, proportional vs other, 2023" src="images/d7e8b6ea-c5d7-429c-9cc7-6cab63e507fe.png"/>
+<img loading="lazy" alt="Mean percent women in parliament by electoral system, proportional vs other, 2023" src="images/d7e8b6ea-c5d7-429c-9cc7-6cab63e507fe.png"/>
 <p class="figure-caption"><strong>Figure 4c:</strong> Mean percent women in parliament by electoral system, 2023. Countries using proportional representation (PR) average 27% female representation with wide variation; countries with other systems (including the US majoritarian model) average 25.7%. Error bars reveal: institutional rules matter. PR systems show both higher mean representation and more consistent outcomes across democracies.</p>
 </div>
         <div class="figure-analysis">
@@ -1125,12 +1125,12 @@
             <p>Even at the undergraduate level, women complete degrees at higher rates than men across most US states. In Nevada, Florida, and New York, women's 4-year completion advantages range from 4–9 percentage points. This is supply-side strength—yet it does not translate into political office.</p>
         </div>
 <div class="figure">
-<img alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
+<img loading="lazy" alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
 <p class="figure-caption"><strong>Figure 4b:</strong> College completion gender gap by state (2-year and 4-year cohorts). In states where women hold the highest completion advantage (Nevada: 7.3 pp, Florida: 5.8 pp), they still remain significantly underrepresented in statehouses and Congress. This underscores that completion rates do not predict representation.</p>
 </div>
 <h3>The congressional pipeline has been stalled, and there has only been 35 years of glacial progress</h3>
 <div class="figure">
-<img alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
+<img loading="lazy" alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
 <p class="figure-caption"><strong>Figure 4d:</strong> Women's share of US Congress, 1990–2025 (filled area). Starting from 6.1% in 1990, women reached 28% by 2024—a gain of 22 percentage points over 35 years. At this rate, gender parity (50%) would not be achieved until roughly 2100, despite women being the majority of college graduates since the 1980s.</p>
 </div>
         <div class="figure-analysis">
@@ -1158,7 +1158,7 @@
             <p>Program evaluations and case studies corroborate this: mentoring, placement, and candidate-support initiatives materially increase women's recruitment and short-term electoral success, indicating feasible policy levers with measurable downstream economic returns (<sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>).</p>
         </div>
         <div class="figure">
-<img alt="Scatter plot showing women's representation in parliament vs GDP per capita across 228 countries, with positive trend line" src="images/c31368a9-4775-465d-8f34-63d88938fdb1.png"/>
+        <img loading="lazy" alt="Scatter plot showing women's representation in parliament vs GDP per capita across 228 countries, with positive trend line" src="images/c31368a9-4775-465d-8f34-63d88938fdb1.png"/>
 <p class="figure-caption"><strong>Figure 7:</strong> Women's representation in national parliaments vs. GDP per capita (n=228 countries, current US, log scale). Positive but non-deterministic correlation: wealthy democracies cluster high on both axes, while some lower-income countries achieve high female representation through quota systems or PR reforms. The USA is notably below the trend line for its income level, suggesting both economic underperformance relative to comparable peers and institutional constraints on female representation.</p>
 </div>
 <div class="figure-analysis">
@@ -1194,7 +1194,7 @@
     <p>This interactive timeline summarizes the political and social moments that shaped today's mismatch: women lead in higher education but remain underrepresented in legislatures. Explore the embedded Knight Lab timeline below for a curated chronology of key milestones.</p>
 </div>
 <div class="timeline-embed">
-    <iframe title="Representation timeline" src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ4qot-G-LSUssOxj1L7QOQG407omnDcC0C8MrrBWYA43Ky4mD64HJsbnWdatxcuGxS2ac7YFhrur0X&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;width=100%25&amp;height=650" allowfullscreen></iframe>
+    <iframe loading="lazy" title="Representation timeline" src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ4qot-G-LSUssOxj1L7QOQG407omnDcC0C8MrrBWYA43Ky4mD64HJsbnWdatxcuGxS2ac7YFhrur0X&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;width=100%25&amp;height=650" allowfullscreen></iframe>
 </div>
 </div>
 </div>
@@ -1229,7 +1229,7 @@
             <p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong></p>
         </div>
 <div class="figure">
-<img alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
+<img loading="lazy" alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
 <p class="figure-caption"><strong>Figure 5:</strong> Canadian field-of-study data (example). We explored this data to compare field segregation patterns across countries. This visualization shows how field concentration varies significantly by discipline.</p>
 </div>
 <h3>Cross-National Comparison: US vs. Canada</h3>
@@ -1237,7 +1237,7 @@
             <p>To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the two countries.</p>
         </div>
 <div class="figure">
-<img alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
+<img loading="lazy" alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
 <p class="figure-caption"><strong>Figure 5b:</strong> Enrollment (Canada) vs. Bachelor's attainment (US), 1993–2025. This comparison reveals that despite similar starting points in the 1990s, Canada has maintained higher female share in enrollment while the US shows steady climbing attainment in the college-educated adult population.</p>
 </div>
 <h3>Why This Matters: Data Ethics</h3>
@@ -1253,7 +1253,7 @@
                 <!-- Tyler Choi -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Tyler" alt="Tyler Choi placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Tyler" alt="Tyler Choi placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Tyler Choi</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -1267,7 +1267,7 @@
                 <!-- Derek Wu -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Derek" alt="Derek Wu placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Derek" alt="Derek Wu placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Derek Wu</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -1281,7 +1281,7 @@
                 <!-- Avelia Mira -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Avelia" alt="Avelia Mira placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Avelia" alt="Avelia Mira placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Avelia Mira</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -1295,7 +1295,7 @@
                 <!-- Anika Singh -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Anika" alt="Anika Singh placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Anika" alt="Anika Singh placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Anika Singh</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -1309,7 +1309,7 @@
                 <!-- Dayanara Urbina -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Dayanara" alt="Dayanara Urbina placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Dayanara" alt="Dayanara Urbina placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Dayanara Urbina</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
@@ -1323,7 +1323,7 @@
                 <!-- Adrianne Gao -->
                 <details class="team-card" role="listitem">
                     <summary>
-                        <img class="team-avatar" src="https://via.placeholder.com/200?text=Adrianne" alt="Adrianne Gao placeholder face"/>
+                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Adrianne" alt="Adrianne Gao placeholder face"/>
                         <div class="team-meta">
                             <span class="team-name">Adrianne Gao</span>
                             <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
