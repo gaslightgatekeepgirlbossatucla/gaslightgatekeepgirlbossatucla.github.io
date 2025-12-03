@@ -854,14 +854,28 @@
         }
 
         .team-member-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
         }
 
         .team-member-contact-link:hover {
             color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .team-member-contact-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         @media (max-width: 768px) {
@@ -945,7 +959,8 @@
 <li><a class="nav-link" data-page="representation" href="#">Political Power</a></li>
 <li><a class="nav-link" data-page="economy" href="#">Economy &amp; Growth</a></li>
 <li><a class="nav-link" data-page="timeline" href="#">Timeline</a></li>
-<li><a class="nav-link" data-page="about" href="#">About &amp; Methods</a></li>
+<li><a class="nav-link" data-page="about" href="#">About</a></li>
+<li><a class="nav-link" data-page="methods" href="#">Methods</a></li>
 <li><a class="nav-link" data-page="bibliography" href="#">Bibliography</a></li>
 </ul>
 </nav>
@@ -1170,6 +1185,159 @@
 </div>
 <div class="page" id="about">
 <div class="container">
+<h2>About</h2>
+<section class="team-section">
+<h3>Project Team</h3>
+<div class="team-grid">
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Tyler Choi (he/they)</div>
+<div class="team-member-role">Data Visualization Specialist</div>
+</div>
+<div class="team-member-bio">
+<p>Tyler is a Sophomore Design Media Arts Major with an entrepreneurship minor at UCLA. As a data visualization specialist, he translates raw data into a visual format that conveys meaning and creates statements on the collected data. Outside of class, Tyler is an Resident Assistant, record collector, UI/UX designer, product designer, and creative.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Designed and created data visualizations that translate research findings into accessible graphics</li>
+<li>Developed visual statements on collected data to answer research questions</li>
+<li>Contributed to UI/UX design decisions for the project website</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/tyler-choi-design/" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Avelia Mira (she/her)</div>
+<div class="team-member-role">Data Specialist</div>
+</div>
+<div class="team-member-bio">
+<p>Avelia is a junior transfer with a Statistics and Data Science major and a Digital Humanities Minor at UCLA. In her role as a data specialist, she did data wrangling with the multiple datasets in the project and split it into multiple CSVs to make visualization an easier project. In her free time, she plays Pikmin Bloom (to her partner's dismay) and spends time with loved ones.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Led data wrangling and cleaning for multiple project datasets</li>
+<li>Organized data into multiple CSVs to facilitate visualization work</li>
+<li>Prepared datasets for analysis and visual representation</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/avelia-mira/" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Derek Wu (he/him)</div>
+<div class="team-member-role">Web Designer</div>
+</div>
+<div class="team-member-bio">
+<p>Derek is a senior studying Computer Science at UCLA. In his role as web designer, he crafted intuitive designs and visuals for the project for a seamless user experience. Outside of class and work, he plays volleyball, hikes, cooks, and loves traveling and exploring new places.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Designed and implemented the website's user interface and visual design</li>
+<li>Crafted intuitive designs for seamless user experience</li>
+<li>Developed responsive layouts and interactive elements</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/derekwu15" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Dayanara Urbina (she/her/ella)</div>
+<div class="team-member-role">Editor</div>
+</div>
+<div class="team-member-bio">
+<p>Dayanara is a third-year Communications student with a specialization in Computing at UCLA and a minor in Information and Media Literacy. As the editor, she helped reformulate the research questions and develop the narrative direction. Outside of class she likes to read, thrift, and is passionate about product marketing.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Reformulated research questions to strengthen the project's focus</li>
+<li>Developed the narrative direction and editorial structure</li>
+<li>Edited content for clarity and coherence across all sections</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="http://www.linkedin.com/in/dayanara-urbina124" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Anika Singh (she/her)</div>
+<div class="team-member-role">Project Manager</div>
+</div>
+<div class="team-member-bio">
+<p>Anika is a fourth year majoring in Statistics and Data Science and minoring in Data Science Engineering at UCLA. As the Project Manger, she translates complex technical goals into clear action for the team. Outside of class, she likes to read, bake, dance, and travel.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Managed project timeline and coordinated team workflows</li>
+<li>Translated complex technical goals into clear action items</li>
+<li>Facilitated communication and collaboration across team members</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/anika67/" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="team-member">
+<div class="team-member-header">
+<div class="team-member-name">Adrianne Gaor (she/her)</div>
+<div class="team-member-role">Content Developer</div>
+</div>
+<div class="team-member-bio">
+<p>Adrianne is a third year theater major and is, hoping to, minor in digital humanities! As the content developer, Adrianne contributed to finalizing data analysis and statements that summarize the overview of the website's description. Outside of class, she enjoys music, dance, film, and trying new cafes around LA!</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Finalized data analysis and research statements</li>
+<li>Developed content summaries for website sections</li>
+<li>Contributed to writing and content development across the project</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/adrianne-gaor-b0a04a275" target="_blank" rel="noopener" class="team-member-contact-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div class="page" id="methods">
+<div class="container">
 <h2>Methods &amp; Data Critique</h2>
 <h3>Project Approach</h3>
 <p>This project combines quantitative data analysis with humanistic interpretation. We treat educational and political data not as neutral numbers, but as evidence of social structures, access, and power. Our goal is to understand <em>why</em> systems produce different outcomes, not just <em>that</em> they do.</p>
@@ -1203,137 +1371,6 @@
 <h3>Why This Matters: Data Ethics</h3>
 <p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers.</p>
 <p>Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
-
-<section class="team-section">
-<h3>Project Team</h3>
-<div class="team-grid">
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Tyler Choi (he/they)</div>
-<div class="team-member-role">Data Visualization Specialist</div>
-</div>
-<div class="team-member-bio">
-<p>Tyler is a Sophomore Design Media Arts Major with an entrepreneurship minor at UCLA. As a data visualization specialist, he translates raw data into a visual format that conveys meaning and creates statements on the collected data. Outside of class, Tyler is an Resident Assistant, record collector, UI/UX designer, product designer, and creative.</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Designed and created data visualizations that translate research findings into accessible graphics</li>
-<li>Developed visual statements on collected data to answer research questions</li>
-<li>Contributed to UI/UX design decisions for the project website</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="https://www.linkedin.com/in/tyler-choi-design/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Avelia Mira (she/her)</div>
-<div class="team-member-role">Data Specialist</div>
-</div>
-<div class="team-member-bio">
-<p>Avelia is a junior transfer with a Statistics and Data Science major and a Digital Humanities Minor at UCLA. In her role as a data specialist, she did data wrangling with the multiple datasets in the project and split it into multiple CSVs to make visualization an easier project. In her free time, she plays Pikmin Bloom (to her partner's dismay) and spends time with loved ones.</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Led data wrangling and cleaning for multiple project datasets</li>
-<li>Organized data into multiple CSVs to facilitate visualization work</li>
-<li>Prepared datasets for analysis and visual representation</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="https://www.linkedin.com/in/avelia-mira/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Derek Wu (he/him)</div>
-<div class="team-member-role">Web Designer</div>
-</div>
-<div class="team-member-bio">
-<p>Derek is a senior studying Computer Science at UCLA. In his role as web designer, he crafted intuitive designs and visuals for the project for a seamless user experience. Outside of class and work, he plays volleyball, hikes, cooks, and loves traveling and exploring new places.</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Designed and implemented the website's user interface and visual design</li>
-<li>Crafted intuitive designs for seamless user experience</li>
-<li>Developed responsive layouts and interactive elements</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="https://www.linkedin.com/in/derekwu15" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Dayanara Urbina (she/her/ella)</div>
-<div class="team-member-role">Editor</div>
-</div>
-<div class="team-member-bio">
-<p>Dayanara is a third-year Communications student with a specialization in Computing at UCLA and a minor in Information and Media Literacy. As the editor, she helped reformulate the research questions and develop the narrative direction. Outside of class she likes to read, thrift, and is passionate about product marketing.</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Reformulated research questions to strengthen the project's focus</li>
-<li>Developed the narrative direction and editorial structure</li>
-<li>Edited content for clarity and coherence across all sections</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="http://www.linkedin.com/in/dayanara-urbina124" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Anika Singh (she/her)</div>
-<div class="team-member-role">Project Manager</div>
-</div>
-<div class="team-member-bio">
-<p>Anika is a fourth year majoring in Statistics and Data Science and minoring in Data Science Engineering at UCLA. As the Project Manger, she translates complex technical goals into clear action for the team. Outside of class, she likes to read, bake, dance, and travel.</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Managed project timeline and coordinated team workflows</li>
-<li>Translated complex technical goals into clear action items</li>
-<li>Facilitated communication and collaboration across team members</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="https://www.linkedin.com/in/anika67/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-
-<div class="team-member">
-<div class="team-member-header">
-<div class="team-member-name">Adrianne Gaor (she/her)</div>
-<div class="team-member-role">Content Developer</div>
-</div>
-<div class="team-member-bio">
-<p>Adrianne is a third year theater major and is, hoping to, minor in digital humanities! As the content developer, Adrianne contributed to finalizing data analysis and statements that summarize the overview of the website's description. Outside of class, she enjoys music, dance, film, and trying new cafes around LA!</p>
-</div>
-<div class="team-member-contributions">
-<h4>Project Contributions:</h4>
-<ul>
-<li>Finalized data analysis and research statements</li>
-<li>Developed content summaries for website sections</li>
-<li>Contributed to writing and content development across the project</li>
-</ul>
-</div>
-<div class="team-member-contacts">
-<a href="https://www.linkedin.com/in/adrianne-gaor-b0a04a275" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
-</div>
-</div>
-</div>
-</section>
 </div>
 </div>
 <div class="page" id="bibliography">
