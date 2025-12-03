@@ -29,6 +29,14 @@
             --warning: #f59e0b;
             --error: #ef4444;
             
+            /* Pastel Colors - Light/transparent versions of theme colors */
+            --pastel-indigo: rgba(99, 102, 241, 0.08);
+            --pastel-purple: rgba(139, 92, 246, 0.08);
+            --pastel-pink: rgba(236, 72, 153, 0.08);
+            --pastel-indigo-light: rgba(99, 102, 241, 0.12);
+            --pastel-purple-light: rgba(139, 92, 246, 0.12);
+            --pastel-pink-light: rgba(236, 72, 153, 0.12);
+            
             /* Shadows */
             --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -60,7 +68,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.7;
             color: var(--text-primary);
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            background: #ffffff;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -162,10 +170,9 @@
 
         /* Main container */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            /* Tighten top padding so content sits closer under the hero/nav */
-            padding: var(--spacing-lg) var(--spacing-lg);
+            padding: var(--spacing-xl) var(--spacing-xl);
             animation: fadeInUp 0.8s ease-out;
         }
 
@@ -202,13 +209,12 @@
         /* Hero section */
         .hero {
             text-align: center;
-            padding: var(--spacing-lg) var(--spacing-lg);
+            padding: var(--spacing-2xl) var(--spacing-xl);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            border-radius: 24px;
-            /* Reduce bottom spacing so following content sits closer */
-            margin: var(--spacing-md) auto var(--spacing-lg);
-            max-width: 1200px;
-            box-shadow: var(--shadow-2xl);
+            border-radius: 0;
+            margin: 0;
+            max-width: 100%;
+            box-shadow: none;
             position: relative;
             overflow: hidden;
         }
@@ -254,43 +260,81 @@
             font-size: clamp(18px, 2.5vw, 22px);
             color: rgba(255, 255, 255, 0.95);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto var(--spacing-xl);
             line-height: 1.8;
             position: relative;
             z-index: 1;
             font-weight: 400;
         }
 
-        /* Content sections */
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 42px);
-            /* Tighten top margin so headings sit closer to preceding content */
-            margin: var(--spacing-md) 0 var(--spacing-lg);
-            color: var(--text-primary);
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .hero-panels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 900px;
+            margin: var(--spacing-xl) auto 0;
             position: relative;
-            padding-bottom: var(--spacing-md);
+            z-index: 1;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+        .hero-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-panel strong {
+            display: block;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-white);
+        }
+
+        .hero-panel p {
+            font-size: clamp(15px, 2vw, 17px);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-panels {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+        }
+
+        /* Content sections */
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(36px, 4vw, 48px);
+            margin: var(--spacing-2xl) 0 var(--spacing-lg);
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
         }
 
         h3 {
-            font-size: clamp(22px, 3vw, 28px);
+            font-size: clamp(24px, 3vw, 32px);
             margin: var(--spacing-xl) 0 var(--spacing-md);
             color: var(--text-primary);
             font-weight: 700;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
         }
 
         p {
@@ -306,15 +350,14 @@
             text-align: center;
             background: var(--bg-card);
             padding: var(--spacing-xl);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            box-shadow: none;
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
         .figure:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
+            box-shadow: var(--shadow-sm);
         }
 
         .figure img {
@@ -340,23 +383,18 @@
 
         /* Question boxes */
         .questions-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-            border-left: 5px solid;
-            border-image: linear-gradient(180deg, var(--primary), var(--secondary)) 1;
+            background: var(--pastel-indigo);
+            border: 1px solid rgba(99, 102, 241, 0.15);
             padding: var(--spacing-xl);
-            margin: var(--spacing-md) 0;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-right: 1px solid var(--border);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            margin: var(--spacing-xl) 0;
+            border-radius: 12px;
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
 
         .questions-box:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-xl);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+            background: var(--pastel-indigo-light);
+            border-color: rgba(99, 102, 241, 0.25);
         }
 
         .timeline-embed {
@@ -395,37 +433,18 @@
 
         /* Call-out box */
         .callout {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
-            border: 2px solid;
-            border-image: linear-gradient(135deg, var(--accent), var(--primary)) 1;
+            background: var(--pastel-pink);
+            border: 1px solid rgba(236, 72, 153, 0.15);
             padding: var(--spacing-xl);
             margin: var(--spacing-xl) 0;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .callout::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(99, 102, 241, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            border-radius: 12px;
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
 
         .callout:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .callout:hover::before {
-            opacity: 1;
+            background: var(--pastel-pink-light);
+            border-color: rgba(236, 72, 153, 0.25);
         }
 
         .callout h4 {
@@ -466,13 +485,13 @@
 
         /* Footer */
         footer {
-            border-top: 2px solid var(--border);
+            border-top: 1px solid var(--border);
             padding: var(--spacing-2xl) 0;
             margin-top: var(--spacing-2xl);
             text-align: center;
             font-size: 14px;
             color: var(--text-secondary);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
+            background: #ffffff;
         }
 
         footer p {
@@ -482,13 +501,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                padding: var(--spacing-xl) var(--spacing-lg);
-                margin: var(--spacing-lg) var(--spacing-md);
-                border-radius: 16px;
+                padding: var(--spacing-xl) var(--spacing-md);
             }
 
             .container {
-                padding: var(--spacing-xl) var(--spacing-md);
+                padding: var(--spacing-lg) var(--spacing-md);
             }
 
             nav ul {
@@ -511,27 +528,21 @@
 
             .figure {
                 padding: var(--spacing-md);
-                border-radius: 16px;
             }
 
             .questions-box,
             .callout {
                 padding: var(--spacing-lg);
-                border-radius: 16px;
-            }
-
-            h2::after {
-                width: 60px;
             }
         }
         /* Timeline styles */
         .timeline-container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
+            max-width: 100%;
+            margin: 0; 
             padding: var(--spacing-xl);
             background: var(--bg-card);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            box-shadow: none;
             border: 1px solid var(--border);
         }
 
@@ -540,14 +551,14 @@
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: var(--pastel-indigo);
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         details summary { 
             cursor: pointer; 
             padding: var(--spacing-lg) var(--spacing-xl); 
-            background: var(--bg-card); 
+            background: transparent; 
             border: none;
             border-radius: 12px;
             font-weight: 600;
@@ -573,12 +584,12 @@
         }
 
         details summary:hover {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            background: rgba(99, 102, 241, 0.1);
             color: var(--primary);
         }
 
         details[open] summary { 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+            background: rgba(99, 102, 241, 0.15);
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             color: var(--primary);
@@ -592,9 +603,7 @@
         details p { 
             padding: var(--spacing-lg) var(--spacing-xl); 
             margin: 0; 
-            background: var(--bg-card); 
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, var(--primary), var(--secondary)) 1;
+            background: rgba(255, 255, 255, 0.6);
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             animation: slideDown 0.3s ease-out;
@@ -706,13 +715,9 @@
         .figure-analysis {
             margin: var(--spacing-xl) 0;
             padding: var(--spacing-xl);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
-            border-radius: 16px;
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, var(--primary-light), var(--secondary)) 1;
-            border-right: 1px solid var(--border);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            background: var(--pastel-indigo);
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         .figure-analysis p {
@@ -730,71 +735,138 @@
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             margin-top: var(--spacing-xl);
         }
 
         .team-member {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
+            border-bottom: 1px solid var(--border);
             padding: var(--spacing-xl);
-            box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
         }
 
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
         .team-member:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.02);
         }
 
         .team-member-header {
+            display: flex;
+            flex-direction: column;
             margin-bottom: var(--spacing-md);
         }
 
         .team-member-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             line-height: 1.3;
         }
 
         .team-member-role {
-            font-size: 15px;
-            color: var(--primary);
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
         }
 
-        .team-member-linkedin {
-            display: inline-block;
-            font-size: 14px;
+        .team-member:nth-child(1) .team-member-role,
+        .team-member:nth-child(4) .team-member-role {
             color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
         }
 
-        .team-member-linkedin:hover {
+        .team-member:nth-child(2) .team-member-role,
+        .team-member:nth-child(5) .team-member-role {
             color: var(--secondary);
-            text-decoration: underline;
+        }
+
+        .team-member:nth-child(3) .team-member-role,
+        .team-member:nth-child(6) .team-member-role {
+            color: var(--accent);
         }
 
         .team-member-bio {
             color: var(--text-secondary);
             line-height: 1.8;
             font-size: 16px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member-contributions {
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member-contributions h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-member-contributions ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .team-member-contributions li {
+            padding-left: var(--spacing-lg);
+            position: relative;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .team-member-contributions li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .team-member:nth-child(1) .team-member-contributions li::before,
+        .team-member:nth-child(4) .team-member-contributions li::before {
+            color: var(--primary);
+        }
+
+        .team-member:nth-child(2) .team-member-contributions li::before,
+        .team-member:nth-child(5) .team-member-contributions li::before {
+            color: var(--secondary);
+        }
+
+        .team-member:nth-child(3) .team-member-contributions li::before,
+        .team-member:nth-child(6) .team-member-contributions li::before {
+            color: var(--accent);
+        }
+
+        .team-member-contacts {
+            display: flex;
+            gap: var(--spacing-md);
             margin-top: var(--spacing-md);
         }
 
+        .team-member-contact-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .team-member-contact-link:hover {
+            color: var(--primary);
+        }
+
         @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-md);
+            .team-member {
+                padding: var(--spacing-lg);
             }
         }
 
@@ -802,10 +874,10 @@
         .intro-panel {
             margin: var(--spacing-xl) 0;
             padding: var(--spacing-xl);
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04), rgba(99, 102, 241, 0.04));
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
+            background: var(--pastel-purple);
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            box-shadow: none;
         }
 
         .intro-panel p,
@@ -881,6 +953,16 @@
 <div class="hero">
 <h1>Educated, but Unrepresented</h1>
 <p>American women now earn more bachelors and masters degrees than men. Yet, they hold only 28% of congressional seats. Consider this paradox to reveal a hidden truth: that education alone does not guarantee political power in our country. </p>
+<div class="hero-panels">
+<div class="hero-panel">
+<strong>60%</strong>
+<p>Share of bachelor's and master's degrees now earned by women in the US—raising the stakes for the representation gap.</p>
+</div>
+<div class="hero-panel">
+<strong>28%</strong>
+<p>Current share of women in Congress, demonstrating that educational gains still lag in translating to seats.</p>
+</div>
+</div>
 </div>
 <div class="container">
 <div class="questions-box">
@@ -1129,10 +1211,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Tyler Choi (he/they)</div>
 <div class="team-member-role">Data Visualization Specialist</div>
-<a href="https://www.linkedin.com/in/tyler-choi-design/" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
-<p>Tyler is a Sophomore Design Media Arts Major with an entrepreneurship minor at UCLA. As a data visualization specialist, he translates raw data into a visual format that conveys meaning and creates statements on the collected data. As a result, he is able to contribute in providing answers to the research questions on this project. Outside of class, Tyler is an Resident Assistant, record collector, UI/UX designer, product designer, and creative.</p>
+<p>Tyler is a Sophomore Design Media Arts Major with an entrepreneurship minor at UCLA. As a data visualization specialist, he translates raw data into a visual format that conveys meaning and creates statements on the collected data. Outside of class, Tyler is an Resident Assistant, record collector, UI/UX designer, product designer, and creative.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Designed and created data visualizations that translate research findings into accessible graphics</li>
+<li>Developed visual statements on collected data to answer research questions</li>
+<li>Contributed to UI/UX design decisions for the project website</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/tyler-choi-design/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 
@@ -1140,10 +1232,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Avelia Mira (she/her)</div>
 <div class="team-member-role">Data Specialist</div>
-<a href="https://www.linkedin.com/in/avelia-mira/" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
 <p>Avelia is a junior transfer with a Statistics and Data Science major and a Digital Humanities Minor at UCLA. In her role as a data specialist, she did data wrangling with the multiple datasets in the project and split it into multiple CSVs to make visualization an easier project. In her free time, she plays Pikmin Bloom (to her partner's dismay) and spends time with loved ones.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Led data wrangling and cleaning for multiple project datasets</li>
+<li>Organized data into multiple CSVs to facilitate visualization work</li>
+<li>Prepared datasets for analysis and visual representation</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/avelia-mira/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 
@@ -1151,10 +1253,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Derek Wu (he/him)</div>
 <div class="team-member-role">Web Designer</div>
-<a href="https://www.linkedin.com/in/derekwu15" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
 <p>Derek is a senior studying Computer Science at UCLA. In his role as web designer, he crafted intuitive designs and visuals for the project for a seamless user experience. Outside of class and work, he plays volleyball, hikes, cooks, and loves traveling and exploring new places.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Designed and implemented the website's user interface and visual design</li>
+<li>Crafted intuitive designs for seamless user experience</li>
+<li>Developed responsive layouts and interactive elements</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/derekwu15" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 
@@ -1162,10 +1274,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Dayanara Urbina (she/her/ella)</div>
 <div class="team-member-role">Editor</div>
-<a href="http://www.linkedin.com/in/dayanara-urbina124" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
 <p>Dayanara is a third-year Communications student with a specialization in Computing at UCLA and a minor in Information and Media Literacy. As the editor, she helped reformulate the research questions and develop the narrative direction. Outside of class she likes to read, thrift, and is passionate about product marketing.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Reformulated research questions to strengthen the project's focus</li>
+<li>Developed the narrative direction and editorial structure</li>
+<li>Edited content for clarity and coherence across all sections</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="http://www.linkedin.com/in/dayanara-urbina124" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 
@@ -1173,10 +1295,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Anika Singh (she/her)</div>
 <div class="team-member-role">Project Manager</div>
-<a href="https://www.linkedin.com/in/anika67/" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
 <p>Anika is a fourth year majoring in Statistics and Data Science and minoring in Data Science Engineering at UCLA. As the Project Manger, she translates complex technical goals into clear action for the team. Outside of class, she likes to read, bake, dance, and travel.</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Managed project timeline and coordinated team workflows</li>
+<li>Translated complex technical goals into clear action items</li>
+<li>Facilitated communication and collaboration across team members</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/anika67/" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 
@@ -1184,10 +1316,20 @@
 <div class="team-member-header">
 <div class="team-member-name">Adrianne Gaor (she/her)</div>
 <div class="team-member-role">Content Developer</div>
-<a href="https://www.linkedin.com/in/adrianne-gaor-b0a04a275" target="_blank" rel="noopener" class="team-member-linkedin">LinkedIn →</a>
 </div>
 <div class="team-member-bio">
 <p>Adrianne is a third year theater major and is, hoping to, minor in digital humanities! As the content developer, Adrianne contributed to finalizing data analysis and statements that summarize the overview of the website's description. Outside of class, she enjoys music, dance, film, and trying new cafes around LA!</p>
+</div>
+<div class="team-member-contributions">
+<h4>Project Contributions:</h4>
+<ul>
+<li>Finalized data analysis and research statements</li>
+<li>Developed content summaries for website sections</li>
+<li>Contributed to writing and content development across the project</li>
+</ul>
+</div>
+<div class="team-member-contacts">
+<a href="https://www.linkedin.com/in/adrianne-gaor-b0a04a275" target="_blank" rel="noopener" class="team-member-contact-link">LinkedIn</a>
 </div>
 </div>
 </div>
