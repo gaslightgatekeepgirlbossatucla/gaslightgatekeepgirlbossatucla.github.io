@@ -4,11 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Educated, but Unrepresented</title>
-    <meta name="description" content="Educated, but Unrepresented — research on why women's educational gains haven't translated to equal political representation in the US.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
         
         :root {
             /* Modern Color Palette */
@@ -31,6 +28,14 @@
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
+            
+            /* Pastel Colors - Light/transparent versions of theme colors */
+            --pastel-indigo: rgba(99, 102, 241, 0.08);
+            --pastel-purple: rgba(139, 92, 246, 0.08);
+            --pastel-pink: rgba(236, 72, 153, 0.08);
+            --pastel-indigo-light: rgba(99, 102, 241, 0.12);
+            --pastel-purple-light: rgba(139, 92, 246, 0.12);
+            --pastel-pink-light: rgba(236, 72, 153, 0.12);
             
             /* Shadows */
             --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -63,7 +68,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.7;
             color: var(--text-primary);
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            background: #ffffff;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -165,20 +170,10 @@
 
         /* Main container */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            /* Tighten top padding so content sits closer under the hero/nav */
-            padding: var(--spacing-lg) var(--spacing-lg);
+            padding: var(--spacing-xl) var(--spacing-xl);
             animation: fadeInUp 0.8s ease-out;
-        }
-
-        .page > .container {
-            background: linear-gradient(180deg, rgba(248, 250, 252, 0.9), rgba(255, 255, 255, 0.85));
-            border-radius: 28px;
-            box-shadow: var(--shadow-2xl);
-            border: 1px solid rgba(226, 232, 240, 0.7);
-            padding: var(--spacing-lg);
-            margin-bottom: var(--spacing-2xl);
         }
 
         @keyframes fadeInUp {
@@ -214,12 +209,12 @@
         /* Hero section */
         .hero {
             text-align: center;
-            padding: var(--spacing-lg) var(--spacing-lg);
+            padding: var(--spacing-2xl) var(--spacing-xl);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            border-radius: 24px;
-            margin: var(--spacing-md) auto var(--spacing-lg);
-            max-width: 1200px;
-            box-shadow: var(--shadow-2xl);
+            border-radius: 0;
+            margin: 0;
+            max-width: 100%;
+            box-shadow: none;
             position: relative;
             overflow: hidden;
         }
@@ -265,7 +260,7 @@
             font-size: clamp(18px, 2.5vw, 22px);
             color: rgba(255, 255, 255, 0.95);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto var(--spacing-xl);
             line-height: 1.8;
             position: relative;
             z-index: 1;
@@ -273,62 +268,73 @@
         }
 
         .hero-panels {
-            margin-top: var(--spacing-lg);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: var(--spacing-md);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 900px;
+            margin: var(--spacing-xl) auto 0;
             position: relative;
             z-index: 1;
         }
 
         .hero-panel {
-            background: rgba(255, 255, 255, 0.1);
-            padding: var(--spacing-md);
-            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(8px);
-            box-shadow: var(--shadow-lg);
-            color: var(--text-white);
+            border-radius: 20px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: left;
-            min-height: 120px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-panel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
         .hero-panel strong {
             display: block;
-            font-size: 36px;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
             line-height: 1;
-            margin-bottom: 6px;
+            margin-bottom: var(--spacing-md);
             color: var(--text-white);
+        }
+
+        .hero-panel p {
+            font-size: clamp(15px, 2vw, 17px);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-panels {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
         }
 
         /* Content sections */
         h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 42px);
-            margin: var(--spacing-md) 0 var(--spacing-lg);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(36px, 4vw, 48px);
+            margin: var(--spacing-2xl) 0 var(--spacing-lg);
             color: var(--text-primary);
             font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(129, 140, 248, 0.12));
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: var(--spacing-lg) var(--spacing-xl);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
         }
 
         h3 {
-            font-size: clamp(20px, 2.8vw, 28px);
-            margin: var(--spacing-md) 0;
+            font-size: clamp(24px, 3vw, 32px);
+            margin: var(--spacing-xl) 0 var(--spacing-md);
             color: var(--text-primary);
             font-weight: 700;
-            letter-spacing: -0.3px;
-            display: block;
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(99, 102, 241, 0.12);
-            background: linear-gradient(180deg, rgba(99, 102, 241, 0.03), rgba(255, 255, 255, 0.85));
-            box-shadow: var(--shadow-sm);
+            letter-spacing: -0.5px;
+            line-height: 1.3;
         }
 
         p {
@@ -344,36 +350,21 @@
             text-align: center;
             background: var(--bg-card);
             padding: var(--spacing-xl);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            box-shadow: none;
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
         .figure:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
+            box-shadow: var(--shadow-sm);
         }
 
         .figure img {
-            display: block;
             max-width: 100%;
             height: auto;
-            border-radius: 16px;
+            border-radius: 12px;
             transition: transform 0.4s ease;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            padding: var(--spacing-md);
-            background: #ffffff;
-            box-sizing: border-box;
-        }
-
-        .text-panel {
-            background: var(--bg-card);
-            border: 1px solid rgba(226, 232, 240, 0.6);
-            border-radius: 20px;
-            padding: var(--spacing-xl);
-            margin-bottom: var(--spacing-xl);
             box-shadow: var(--shadow-md);
         }
 
@@ -392,39 +383,43 @@
 
         /* Question boxes */
         .questions-box {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-            border-left: 5px solid;
-            border-image: linear-gradient(180deg, var(--primary), var(--secondary)) 1;
+            background: var(--pastel-indigo);
+            border: 1px solid rgba(99, 102, 241, 0.15);
             padding: var(--spacing-xl);
-            margin: var(--spacing-md) 0;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-right: 1px solid var(--border);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            margin: var(--spacing-xl) 0;
+            border-radius: 12px;
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
 
         .questions-box:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-xl);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+            background: var(--pastel-indigo-light);
+            border-color: rgba(99, 102, 241, 0.25);
         }
 
-        .timeline-embed {
-            margin: var(--spacing-2xl) 0;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: var(--bg-card);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-        }
+.timeline-embed {
+    margin: var(--spacing-2xl) 0;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    width: 100vw; /* Full viewport width */
+    max-width: none; /* Remove max-width restriction */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 var(--spacing-xl); /* Add side padding */
+}
 
-        .timeline-embed iframe {
-            width: 100%;
-            height: 650px;
-            border: 0;
-        }
+.timeline-embed iframe {
+    width: 100%;
+    height: 900px; /* Increased height */
+    min-height: 900px;
+    padding-top: 40px;
+    display: block;
+}
+
 
         .questions-box h3 {
             margin-top: 0;
@@ -447,37 +442,18 @@
 
         /* Call-out box */
         .callout {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
-            border: 2px solid;
-            border-image: linear-gradient(135deg, var(--accent), var(--primary)) 1;
+            background: var(--pastel-pink);
+            border: 1px solid rgba(236, 72, 153, 0.15);
             padding: var(--spacing-xl);
             margin: var(--spacing-xl) 0;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .callout::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(99, 102, 241, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            border-radius: 12px;
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
 
         .callout:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .callout:hover::before {
-            opacity: 1;
+            background: var(--pastel-pink-light);
+            border-color: rgba(236, 72, 153, 0.25);
         }
 
         .callout h4 {
@@ -518,13 +494,13 @@
 
         /* Footer */
         footer {
-            border-top: 2px solid var(--border);
+            border-top: 1px solid var(--border);
             padding: var(--spacing-2xl) 0;
             margin-top: var(--spacing-2xl);
             text-align: center;
             font-size: 14px;
             color: var(--text-secondary);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
+            background: #ffffff;
         }
 
         footer p {
@@ -534,13 +510,11 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                padding: var(--spacing-xl) var(--spacing-lg);
-                margin: var(--spacing-lg) var(--spacing-md);
-                border-radius: 16px;
+                padding: var(--spacing-xl) var(--spacing-md);
             }
 
             .container {
-                padding: var(--spacing-xl) var(--spacing-md);
+                padding: var(--spacing-lg) var(--spacing-md);
             }
 
             nav ul {
@@ -563,24 +537,21 @@
 
             .figure {
                 padding: var(--spacing-md);
-                border-radius: 16px;
             }
 
             .questions-box,
             .callout {
                 padding: var(--spacing-lg);
-                border-radius: 16px;
             }
-
         }
         /* Timeline styles */
         .timeline-container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
+            max-width: 100%;
+            margin: 0; 
             padding: var(--spacing-xl);
             background: var(--bg-card);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            box-shadow: none;
             border: 1px solid var(--border);
         }
 
@@ -589,18 +560,18 @@
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: var(--pastel-indigo);
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         details summary { 
             cursor: pointer; 
             padding: var(--spacing-lg) var(--spacing-xl); 
-            background: var(--bg-card); 
+            background: transparent; 
             border: none;
             border-radius: 12px;
             font-weight: 600;
-            font-size: 16px;
+                font-size: 16px;
             color: var(--text-primary);
             transition: all 0.3s ease;
             user-select: none;
@@ -615,19 +586,19 @@
             content: '+';
             position: absolute;
             right: var(--spacing-xl);
-            font-size: 24px;
+                font-size: 24px;
             font-weight: 300;
             color: var(--primary);
             transition: transform 0.3s ease;
         }
 
         details summary:hover {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            background: rgba(99, 102, 241, 0.1);
             color: var(--primary);
         }
 
         details[open] summary { 
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+            background: rgba(99, 102, 241, 0.15);
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             color: var(--primary);
@@ -641,9 +612,7 @@
         details p { 
             padding: var(--spacing-lg) var(--spacing-xl); 
             margin: 0; 
-            background: var(--bg-card); 
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, var(--primary), var(--secondary)) 1;
+            background: rgba(255, 255, 255, 0.6);
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
             animation: slideDown 0.3s ease-out;
@@ -755,13 +724,9 @@
         .figure-analysis {
             margin: var(--spacing-xl) 0;
             padding: var(--spacing-xl);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%);
-            border-radius: 16px;
-            border-left: 4px solid;
-            border-image: linear-gradient(180deg, var(--primary-light), var(--secondary)) 1;
-            border-right: 1px solid var(--border);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            background: var(--pastel-indigo);
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         .figure-analysis p {
@@ -773,14 +738,169 @@
             margin-bottom: 0;
         }
 
+        /* Team section styles */
+        .team-section {
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: var(--spacing-xl);
+        }
+
+        .team-member {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: var(--spacing-xl);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
+        .team-member:hover {
+            background: rgba(99, 102, 241, 0.02);
+        }
+
+        .team-member-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .team-member-role {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member:nth-child(1) .team-member-role,
+        .team-member:nth-child(4) .team-member-role {
+            color: var(--primary);
+        }
+
+        .team-member:nth-child(2) .team-member-role,
+        .team-member:nth-child(5) .team-member-role {
+            color: var(--secondary);
+        }
+
+        .team-member:nth-child(3) .team-member-role,
+        .team-member:nth-child(6) .team-member-role {
+            color: var(--accent);
+        }
+
+        .team-member-bio {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member-contributions {
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-member-contributions h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-member-contributions ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .team-member-contributions li {
+            padding-left: var(--spacing-lg);
+            position: relative;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .team-member-contributions li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .team-member:nth-child(1) .team-member-contributions li::before,
+        .team-member:nth-child(4) .team-member-contributions li::before {
+            color: var(--primary);
+        }
+
+        .team-member:nth-child(2) .team-member-contributions li::before,
+        .team-member:nth-child(5) .team-member-contributions li::before {
+            color: var(--secondary);
+        }
+
+        .team-member:nth-child(3) .team-member-contributions li::before,
+        .team-member:nth-child(6) .team-member-contributions li::before {
+            color: var(--accent);
+        }
+
+        .team-member-contacts {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .team-member-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .team-member-contact-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .team-member-contact-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .team-member {
+                padding: var(--spacing-lg);
+            }
+        }
+
         /* Intro panels */
         .intro-panel {
             margin: var(--spacing-xl) 0;
             padding: var(--spacing-xl);
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04), rgba(99, 102, 241, 0.04));
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
+            background: var(--pastel-purple);
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            box-shadow: none;
         }
 
         .intro-panel p,
@@ -802,57 +922,27 @@
             color: var(--text-secondary);
             line-height: 1.8;
         }
-        
-        .paragraph-chunk {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(14, 165, 233, 0.07));
-            border: 1px solid rgba(59, 130, 246, 0.35);
-            border-radius: 22px;
-            padding: var(--spacing-xl);
-            margin: var(--spacing-xl) 0;
-            box-shadow: var(--shadow-md);
-        }
+        /* Slight, site-wide font size increases requested by the user. */
+        /* These overrides are intentionally modest to avoid layout breakage. */
+        :root { --font-scale-adjust: 1.12; }
 
-        .paragraph-chunk.alt {
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(249, 115, 22, 0.1));
-            border-color: rgba(249, 115, 22, 0.45);
-        }
+        /* Base/body bump (affects elements using rem/em sizing and baseline text) */
+        body { font-size: 18px; }
 
-        .paragraph-chunk p {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .central-questions-block h3 {
-            display: block;
-            margin: 0 0 var(--spacing-md);
-            padding: 0;
-            letter-spacing: -0.3px;
-            font-size: clamp(22px, 3vw, 28px);
-            color: var(--text-primary);
-        }
-
-        .central-questions-block ol {
-            margin: 0;
-            padding-left: var(--spacing-xl);
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-        /* Typographic scale (use rems for consistent, accessible sizing) */
-        :root { --font-scale-adjust: 1; }
-        html { font-size: 100%; } /* 16px */
-        body { font-size: 1rem; }
-        p { font-size: 1.0625rem; }
-        li, .questions-box li { font-size: 1rem; }
-        nav a { font-size: 0.9375rem; }
-        .figure-caption { font-size: 0.9375rem; }
-        details summary { font-size: 1rem; }
-        footer { font-size: 0.9375rem; }
+        /* Override commonly used pixel sizes to make text slightly larger */
+        p { font-size: 19px !important; }
+        li, .questions-box li { font-size: 17px !important; }
+        nav a { font-size: 15px !important; }
+        .figure-caption { font-size: 16px !important; }
+        details summary { font-size: 17px !important; }
+        footer { font-size: 15px !important; }
 
         /* Responsive adjustments: keep increases smaller on narrow screens */
         @media (max-width: 768px) {
-            nav a { font-size: 0.8125rem; }
-            p { font-size: 1rem; }
-            li, .questions-box li { font-size: 0.95rem; }
-            .figure-caption { font-size: 0.9375rem; }
+            nav a { font-size: 13px !important; }
+            p { font-size: 17px !important; }
+            li, .questions-box li { font-size: 16px !important; }
+            .figure-caption { font-size: 15px !important; }
         }
         /* Scroll-snap sections */
         body {
@@ -867,66 +957,6 @@
             padding-bottom: var(--spacing-md);
             width: 100%;
         }
-
-        /* (Removed specific #about h3 block — global h3 now boxed site-wide) */
-
-        /* Team grid for About page */
-        #about .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        #about .team-card {
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 160ms ease, box-shadow 160ms ease;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-        }
-
-        #about .team-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        #about .team-card summary {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            cursor: pointer;
-            list-style: none;
-            user-select: none;
-            background: transparent;
-            border: none;
-        }
-
-        #about .team-avatar {
-            width: 84px;
-            height: 84px;
-            object-fit: cover;
-            border-radius: 8px;
-            background: linear-gradient(180deg, #e6eefc, #fff);
-            border: 1px solid rgba(99,102,241,0.12);
-            flex-shrink: 0;
-        }
-
-        #about .team-meta { display:flex; flex-direction:column; }
-        #about .team-name { font-weight:700; color:var(--text-primary); font-size:16px; }
-        #about .team-linkedin { font-size:13px; color:var(--primary); text-decoration:none; margin-top:6px; }
-
-        #about .team-bio {
-            padding: var(--spacing-md);
-            border-top: 1px solid var(--border);
-            background: linear-gradient(180deg, rgba(248,250,252,0.6), rgba(255,255,255,0.6));
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Reduce summary marker visibility for team cards */
-        #about .team-card summary::after { right: 12px; }
     </style>
 </head>
 <body>
@@ -937,8 +967,9 @@
 <li><a class="nav-link" data-page="education" href="#">Education Gap</a></li>
 <li><a class="nav-link" data-page="representation" href="#">Political Power</a></li>
 <li><a class="nav-link" data-page="economy" href="#">Economy &amp; Growth</a></li>
-<li><a class="nav-link" data-page="timeline" href="#">Timeline</a></li>
-<li><a class="nav-link" data-page="about" href="#">About &amp; Methods</a></li>
+<li><a class="nav-link" data-page="home" href="#" onclick="showHomeAndScrollToTimeline(event)">Timeline</a></li>
+<li><a class="nav-link" data-page="team" href="#">The Team</a></li>
+<li><a class="nav-link" data-page="methods" href="#">Methods</a></li>
 <li><a class="nav-link" data-page="bibliography" href="#">Bibliography</a></li>
 </ul>
 </nav>
@@ -946,16 +977,16 @@
 <div class="hero">
 <h1>Educated, but Unrepresented</h1>
 <p>American women now earn more bachelors and masters degrees than men. Yet, they hold only 28% of congressional seats. Consider this paradox to reveal a hidden truth: that education alone does not guarantee political power in our country. </p>
-        <div class="hero-panels">
-            <div class="hero-panel">
-                <strong>60%</strong>
-                <p>Share of bachelor’s and master’s degrees now earned by women in the US—raising the stakes for the representation gap.</p>
-            </div>
-            <div class="hero-panel">
-                <strong>28%</strong>
-                <p>Current share of women in Congress, demonstrating that educational gains still lag in translating to seats.</p>
-            </div>
-        </div>
+<div class="hero-panels">
+<div class="hero-panel">
+<strong>60%</strong>
+<p>Share of bachelor's and master's degrees now earned by women in the US—raising the stakes for the representation gap.</p>
+</div>
+<div class="hero-panel">
+<strong>28%</strong>
+<p>Current share of women in Congress, demonstrating that educational gains still lag in translating to seats.</p>
+</div>
+</div>
 </div>
 <div class="container">
 <div class="questions-box">
@@ -966,63 +997,135 @@
 <li>What institutional factors and cultural factors could explain the gap that has been seen in the United States?</li>
 </ul>
 </div>
-<h2>The core argument</h2>
-<div class="paragraph-chunk alt">
-<p>The United States is an outlier among wealthy democracies—not because American women lack education or ambition, but because specifically American institutional and cultural barriers prevent educational attainment from translating into political representation <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
-<p style="margin-top: 30px;">
-<strong>Explore the evidence in the pages </strong><b>above</b><strong>.</strong> We aim to explore education, political power, and economic growth in our nation in order to understand why this paradox exists and what can change it.
-            </p>
-</div>
-<div class="paragraph-chunk alt central-questions-block">
-    <h3>Our central research questions</h3>
-    <ol>
-        <li>Why does the United States lag behind other wealthy democracies in terms of female political representation, in spite of having one of the highest female educational attainment rates and shares among developed nations?</li>
-        <li>Does women's power contribute to economic growth in America, as it does in other countries?</li>
-        <li>What institutional factors and cultural factors could explain the gap that has been seen in the United States?</li>
-    </ol>
-</div>
-<div class="paragraph-chunk">
+
 <p>Many scholars have investigated how supply (educated women) changes to demand (becoming politicians). Their research shows that academic records alone are not enough. The ability to change who has the educational background to run for office in this country varies based on psychological, acquaintance, and regulatory factors. Survey experiments show significant differences between men and women who say they want to become politicians, even when they are the same intelligence level or have the same academic records <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>. Think about it: the way political parties select candidates shows that who you know and who you can help (not just money) are the reasons they choose you <sup class="citation">[<a class="citation-link" href="#bib-22">22</a>]</sup>. Furthermore, qualitative and quantitative studies on party gatekeeping show that the way they select and nominate candidates is always based on old-fashioned methods that make it difficult for female candidates. This hinders the demand side. Even when many women have excellent academic records, the hinderance persists <sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>. There is also research complementary workplace-network studies and program evaluations which have shown that they are a game changer and important  tool to improve recruitment outcomes and can be used for positive change <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
+
+<div class="tableau-container">
+    <div class='tableauPlaceholder' id='viz1764738850521' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img 
+                    alt='Which first world countries have the highest proportion of women serving in parliament in 2024?' 
+                    src='https://public.tableau.com/static/images/DQ/DQQMPHDC6/1_rss.png' 
+                    style='border: none' 
+                />
+            </a>
+        </noscript>
+        
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https://public.tableau.com/' />
+            <param name='embed_code_version' value='3' />
+            <param name='path' value='shared/DQQMPHDC6' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/DQ/DQQMPHDC6/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+        </object>
+    </div>
 </div>
-<h2>Why higher education does not guarantee political power</h2>
-<div class="paragraph-chunk">
-<p>Since the 1980s, American women have attained higher education and are now more likely to earn bachelor's and master's degrees than any other country. Claudia Goldin, an economist at Harvard University specializing in gender and economic history, calls this a "reversal of the college attainment gap" <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup>. Yet, women hold only 28% of congressional seats, a phenomenon that, though improved over time, still persists even after 50 years of feminist activism. Research on political ambition and recruitment helps explain why higher credentials do not automatically become candidacies: Lawless &amp; Fox document gendered gaps in political ambition and interviewer effects that depress women's expressed willingness to run <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>. Longitudinal studies also document occupational transitions, particularly out of STEM into education and health, which reshape the professional pipelines available to many female graduates and reduce visibility in networks that lead to nominations <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
-<p>This issue upends a broader American perspective: people believe that education increases political power. Yet, according to research by Cameron Arnzen and Sarah Cohodes, economists studying educational equity and political participation, younger women vote at much higher rates than men; in our analysis of matched education and voter records, young women vote at a rate roughly 5.8 times higher than young men <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>. Still, this turnout does not automatically translate into leadership power.</p>
-<p>To explore why academic achievement does not translate into political power, this project leverages World Bank gender data to compare 170 countries from 1970 to the present (<a href="https://data.worldbank.org/topic/gender" rel="noopener" target="_blank">World Bank Gender Data Portal</a>). Through our analysis of these data we find that the U.S. remains at about 28% legislative representation while other wealthy democracies perform better: Canada ~34%, Germany ~35%, and the Nordic countries ~40–47% (World Bank). As such, we frame three questions central to the project: why the US lags, whether women's power contributes to economic growth in the US as it does elsewhere, and whether institutional or cultural factors best explain the gap.</p>
+
+
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1764738850521');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        
+        vizElement.style.width = '100%';
+        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
 </div>
-<div class="paragraph-chunk alt">
-<p>First, researchers such as Claudia Goldin and Pamela Paxton, Sheri Kunovich, and Melanie Hughes have shown that women now enjoy greater educational attainment in wealthy countries <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup> . However, higher education does not necessarily translate into equal political power: Paxton emphasizes a dual framework of <em>supply-side</em> (education, socioeconomic status, and willingness to run) and <em>demand-side</em> (institutional and cultural support) drivers.</p>
-<p>Second, scholars debate whether cultural attitudes or institutional rules matter most. Profeta &amp; Woodhouse's comparative work uses Italy's 1993 electoral reform as evidence that electoral rules can sharply change representation even when candidate qualifications are unchanged <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. Longitudinal work by Sirianne Dahlum and colleagues shows a positive association between women's political empowerment and later GDP per‑capita growth <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>, while cross‑national panels such as Jayasuriya &amp; Burke report similar links between female legislative share and later economic performance <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>. Park &amp; Liang document the feedback loop: female legislators improve education and social outcomes that cultivate future female leaders <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
-<p>Finally, research on democratic maturity argues that in less‑developed countries, institutional fixes like quota systems or PR can produce rapid gains; in mature democracies cultural attitudes often matter more. See Tremblay <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup> for a comparative perspective. In short, the U.S. appears to be an outlier not because women lack education or ambition, but because specific institutional and cultural barriers prevent those educational gains from converting into representation.</p>
+
+
+<div class="container"> 
+    <h2>Why higher education does not guarantee political power</h2>
+    <p>Since the 1980s, American women have attained higher education and are now more likely to earn bachelor's and master's degrees than any other country. Claudia Goldin, an economist at Harvard University specializing in gender and economic history, calls this a "reversal of the college attainment gap" <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup>. Yet, women hold only 28% of congressional seats, a phenomenon that, though improved over time, still persists even after 50 years of feminist activism. Research on political ambition and recruitment helps explain why higher credentials do not automatically become candidacies: Lawless &amp; Fox document gendered gaps in political ambition and interviewer effects that depress women's expressed willingness to run <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>. Longitudinal studies also document occupational transitions, particularly out of STEM into education and health, which reshape the professional pipelines available to many female graduates and reduce visibility in networks that lead to nominations <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
+    <p>This issue upends a broader American perspective: people believe that education increases political power. Yet, according to research by Cameron Arnzen and Sarah Cohodes, economists studying educational equity and political participation, younger women vote at much higher rates than men; in our analysis of matched education and voter records, young women vote at a rate roughly 5.8 times higher than young men <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>. Still, this turnout does not automatically translate into leadership power.</p>
+    <p>To explore why academic achievement does not translate into political power, this project leverages World Bank gender data to compare 170 countries from 1970 to the present (<a href="https://data.worldbank.org/topic/gender" rel="noopener" target="_blank">World Bank Gender Data Portal</a>). Through our analysis of these data we find that the U.S. remains at about 28% legislative representation while other wealthy democracies perform better: Canada ~34%, Germany ~35%, and the Nordic countries ~40–47% (World Bank). As such, we frame three questions central to the project: why the US lags, whether women's power contributes to economic growth in the US as it does elsewhere, and whether institutional or cultural factors best explain the gap.</p>
+    <p>First, researchers such as Claudia Goldin and Pamela Paxton, Sheri Kunovich, and Melanie Hughes have shown that women now enjoy greater educational attainment in wealthy countries <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup> . However, higher education does not necessarily translate into equal political power: Paxton emphasizes a dual framework of <em>supply-side</em> (education, socioeconomic status, and willingness to run) and <em>demand-side</em> (institutional and cultural support) drivers.</p>
+    <p>Second, scholars debate whether cultural attitudes or institutional rules matter most. Profeta &amp; Woodhouse's comparative work uses Italy's 1993 electoral reform as evidence that electoral rules can sharply change representation even when candidate qualifications are unchanged <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. Longitudinal work by Sirianne Dahlum and colleagues shows a positive association between women's political empowerment and later GDP per‑capita growth <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>, while cross‑national panels such as Jayasuriya &amp; Burke report similar links between female legislative share and later economic performance <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>. Park &amp; Liang document the feedback loop: female legislators improve education and social outcomes that cultivate future female leaders <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
+    <p>Finally, research on democratic maturity argues that in less‑developed countries, institutional fixes like quota systems or PR can produce rapid gains; in mature democracies cultural attitudes often matter more. See Tremblay <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup> for a comparative perspective. In short, the U.S. appears to be an outlier not because women lack education or ambition, but because specific institutional and cultural barriers prevent those educational gains from converting into representation.</p>
+
+    <h2>The core argument</h2>
+    <p>The United States is an outlier among wealthy democracies—not because American women lack education or ambition, but because specifically American institutional and cultural barriers prevent educational attainment from translating into political representation <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
 </div>
-<h2>The American Paradox, and the potential paths forward</h2>
-<div class="paragraph-chunk alt">
+
+<div class="container" id="timeline-section">
+    <h2 class="timeline-title">A Timeline of Education Gains and the Representation Lag</h2>
+    
+    <div class="timeline-embed">
+        <iframe title="Representation timeline" src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ4qot-G-LSUssOxj1L7QOQG407omnDcC0C8MrrBWYA43Ky4mD64HJsbnWdatxcuGxS2ac7YFhrur0X&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;width=100%25&amp;height=900&amp;color=%23ec4899&amp;text_color=%230f172a&amp;bg_color=%23f8fafc&amp;type_color=%238b5cf6&amp;tab_color=%236366f1" allowfullscreen></iframe>
+    </div>
+</div>
+
+<style>
+/* Colorful heading without box */
+.timeline-title {
+    text-align: center;
+    margin: var(--spacing-2xl) 0 var(--spacing-lg) 0;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 700;
+}
+
+/* Keep your existing timeline-embed styles */
+.timeline-embed {
+    margin: var(--spacing-2xl) 0;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    background: 
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+    overflow: hidden;
+}
+
+.timeline-embed iframe {
+    width: 100%;
+    height: 900px;
+    min-height: 900px;
+    border: 0;
+    display: block;
+    background: transparent;
+}
+</style>
+
+<!-- New container for the content after timeline -->
+<div class="container">
+    <h2>The American Paradox, and the potential paths forward</h2>
 <p>This project scrutinizes a core paradox: women's high educational attainment, yet low representation in political office. To unpack this, we compare the US with other first-world democracies and analyze whether the crux of the problem is institutional (laws, systems) or cultural (attitudes, role models, representation).</p>
 <p>Does the US need to change its electoral systems, or instead foster cultural shifts for better representation? The comparison shows the United States is an exception, and not necessarily a natural outcome. It is one constructed by specific institutional and social dynamics.</p>
-</div>
-<div class="paragraph-chunk">
 <p>Evidence suggests that as women's political power rises, economies benefit; excluding women thus presents not only a social injustice, but also an economic drawback stifling innovation and growth. When women are the educated majority but a political minority, Congress does not fully represent the American people, overlooking gender and racial diversity even among the educated.</p>
 <p>What is the most effective solution? Reform in structure (electoral systems, campaign finance, quotas) or culture (mentoring, representation, changing norms)? Anthropologist Yolanda Moses advocates for policy as a fix for opportunity gaps, a principle that holds here.</p>
 <p><strong>The bottom line:</strong> The lack of ambition or qualification is not the problem; rather, systemic and cultural design determines who gets represented. This can, and must, change.</p>
 </div>
 </div>
-</div>
 <div class="page" id="education">
 <div class="container">
 <h2>The Education Gap</h2>
-        <h3>Women now earn the majority of degrees</h3>
+<h3>Women now earn the majority of degrees</h3>
         <div class="intro-panel">
-            <p>Since the 1980s, American women have achieved what economist Claudia Goldin calls a "reversal of the college attainment gap." Women are now <em>more likely</em> than men to earn bachelors and masters degrees. This represents a historic shift in educational access and achievement. Young women vote at rates 5.8 times higher than young men, showing strong civic engagement <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>.</p>
-            <p>On the supply-side, the pool of educated, qualified candidates among the American women are not lacking. They have credentials, ambition, and voter engagement that far exceeds that of men. Yet this educational advantage has not translated into proportional political power. Universities and postsecondary institutions can help close this gap by institutionalizing internships, alumni-sponsorships, and campus fellowships that link graduates into political networks <sup class="citation">[<a class="citation-link" href="#bib-37">37</a>]</sup>, and program evaluations indicate mentoring and targeted career supports improve recruitment into public-facing roles <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
-            <p><strong>The question becomes: what happens on the demand-side?</strong> <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
-            <p>Beyond aggregate counts, recent literature shows where the pipeline frays. Longitudinal studies find many women exit high‑visibility STEM or corporate tracks into education and health sectors within a decade of graduation, reducing long-term access to political sponsorship networks <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>. Policy briefs and empirical syntheses argue that occupational segregation lowers public visibility and donor linkages for women, meaning supply-side credentials are necessary but not sufficient for nomination probability <sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>. Complementary workplace-network research and self-efficacy experiments further clarify how network access and subjective confidence jointly shape who recruiters notice and whom parties consider for office <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
+<p>Since the 1980s, American women have achieved what economist Claudia Goldin calls a "reversal of the college attainment gap." Women are now <em>more likely</em> than men to earn bachelors and masters degrees. This represents a historic shift in educational access and achievement. Young women vote at rates 5.8 times higher than young men, showing strong civic engagement <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>.</p>
+<p>On the supply-side, the pool of educated, qualified candidates among the American women are not lacking. They have credentials, ambition, and voter engagement that far exceeds that of men. Yet this educational advantage has not translated into proportional political power. Universities and postsecondary institutions can help close this gap by institutionalizing internships, alumni-sponsorships, and campus fellowships that link graduates into political networks <sup class="citation">[<a class="citation-link" href="#bib-37">37</a>]</sup>, and program evaluations indicate mentoring and targeted career supports improve recruitment into public-facing roles <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
+<p><strong>The question becomes: what happens on the demand-side?</strong> <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
+<p>Beyond aggregate counts, recent literature shows where the pipeline frays. Longitudinal studies find many women exit high‑visibility STEM or corporate tracks into education and health sectors within a decade of graduation, reducing long-term access to political sponsorship networks <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>. Policy briefs and empirical syntheses argue that occupational segregation lowers public visibility and donor linkages for women, meaning supply-side credentials are necessary but not sufficient for nomination probability <sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>. Complementary workplace-network research and self-efficacy experiments further clarify how network access and subjective confidence jointly shape who recruiters notice and whom parties consider for office <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
             <p>To explore why academic achievement does not translate into political power, this project leverages World Bank gender data to compare 170 countries from 1970 to the present (<a href="https://data.worldbank.org/topic/gender" rel="noopener" target="_blank">World Bank Gender Data Portal</a>). Through our analysis of these data we find that the U.S. remains at about 28% legislative representation while other wealthy democracies perform better: Canada ~34%, Germany ~35%, and the Nordic countries ~40–47% (World Bank). As such, we frame three questions central to the project: why the US lags, whether women's power contributes to economic growth in the US as it does elsewhere, and whether institutional or cultural factors best explain the gap.</p>
             <p>First, researchers such as Claudia Goldin and Pamela Paxton, Sheri Kunovich, and Melanie Hughes have shown that women now enjoy greater educational attainment in wealthy countries <sup class="citation">[<a aria-label="Bibliography entry 1" class="citation-link" href="#bib-1" title="Bibliography entry 1">1</a>]</sup> . However, higher education does not necessarily translate into equal political power: Paxton emphasizes a dual framework of <em>supply-side</em> (education, socioeconomic status, and willingness to run) and <em>demand-side</em> (institutional and cultural support) drivers.</p>
             <p>Second, scholars debate whether cultural attitudes or institutional rules matter most. Profeta &amp; Woodhouse's comparative work uses Italy's 1993 electoral reform as evidence that electoral rules can sharply change representation even when candidate qualifications are unchanged <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. Longitudinal work by Sirianne Dahlum and colleagues shows a positive association between women's political empowerment and later GDP per‑capita growth <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>, while cross‑national panels such as Jayasuriya &amp; Burke report similar links between female legislative share and later economic performance <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>. Park &amp; Liang document the feedback loop: female legislators improve education and social outcomes that cultivate future female leaders <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
             <p>Finally, research on democratic maturity argues that in less‑developed countries, institutional fixes like quota systems or PR can produce rapid gains; in mature democracies cultural attitudes often matter more. See Tremblay <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup> for a comparative perspective. In short, the U.S. appears to be an outlier not because women lack education or ambition, but because specific institutional and cultural barriers prevent those educational gains from converting into representation.</p>
         </div>
-        <div class="figure">
-    <img loading="lazy" alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
+<div class="figure">
+<img alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
 <p class="figure-caption"><strong>Figure 2:</strong> Women's share of bachelors and masters degrees, 1993–2023. Women crossed the 50% threshold in the late 1980s and have remained the majority since <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
 </div>
 <div class="figure-analysis">
@@ -1033,7 +1136,7 @@
 <p>Taken together, the time-series confirms a central project claim: supply-side strength is real and longstanding. The remaining question is why the demand-side, such as the institutions, party practices, and cultural attitudes, has not matched that supply.</p>
 </div>
 <div class="figure">
-<img loading="lazy" alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
+<img alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
 <p class="figure-caption"><strong>Figure 2b:</strong> Female share of enrollment vs. graduates: US vs. Canada comparison. Both countries show women enrolling at ~55%, but varying completion rates—Canada hovering near 60%, while the US climbs toward that threshold. This direct comparison is key: if Canada achieves 34% female MPs with similar educational demographics to the US (which has only 28%), education alone cannot explain the representation gap.</p>
 </div>
 <div class="figure-analysis">
@@ -1044,12 +1147,10 @@
 <p>In short, Figure 2b strengthens the argument that education is necessary but not sufficient: institutional design and social supports determine whether education translates into seats.</p>
 </div>
 <h3>Geographic variation, and education across the United States</h3>
-<div class="paragraph-chunk alt">
 <p>Women represent the majority of undergraduate enrollees across nearly every US state, ranging from 49–69%. This geographic consistency shows that women's educational advantage is not concentrated in a few "liberal" states. It is actually nationwide.</p>
 <p>State-level enrollment and completion patterns also interact with local labor markets and policy environments; longitudinal cohort work shows that regional labor demand and postsecondary supports affect long-run career trajectories for women, which in turn shape local pipelines into public life <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
-</div>
 <div class="figure">
-<img loading="lazy" alt="Choropleth map showing women's share of undergraduate enrollment by US state, 2023-2024" src="images/85573164-ac5e-40f6-8a78-e66a61fb83cc.png"/>
+<img alt="Choropleth map showing women's share of undergraduate enrollment by US state, 2023-2024" src="images/85573164-ac5e-40f6-8a78-e66a61fb83cc.png"/>
 <p class="figure-caption"><strong>Figure 2c:</strong> Women's share of undergraduate enrollment by US state, 2023–2024. Women represent 49–69% of undergraduate enrollees across all regions, demonstrating that female educational strength is a national phenomenon, not regional.</p>
 </div>
 <div class="figure-analysis">
@@ -1060,12 +1161,10 @@
 <p>Overall, the choropleth reinforces a core point: women's educational strength is nationwide, which makes the national representation shortfall even more striking and points policymakers toward state-focused levers as practical entry points for change.</p>
 </div>
 <h3>Field of study, where women concentrate</h3>
-<div class="paragraph-chunk">
 <p>Women's educational gains are not evenly distributed across all fields. The chart below shows women's share of enrollment in major fields of study. While women dominate health, education, and humanities fields, they remain significantly underrepresented in math, computer science, and engineering.</p>
 <p>Field segregation is consequential: syntheses of labor-market evidence link occupational segregation to lower visibility and fewer donor or sponsor ties for women—patterns that reduce the likelihood of political recruitment from some fields (<sup class="citation">[<a class="citation-link" href="#bib-25">25</a>]</sup>).</p>
-</div>
 <div class="figure">
-<img loading="lazy" alt="Small multiples showing women's share by major field, high in health/humanities, low in engineering/computer science" src="images/18e84788-eb09-4ecf-9b36-329bb011f42d.png"/>
+<img alt="Small multiples showing women's share by major field, high in health/humanities, low in engineering/computer science" src="images/18e84788-eb09-4ecf-9b36-329bb011f42d.png"/>
 <p class="figure-caption"><strong>Figure 3:</strong> Women's share of US bachelor's degrees by field, 2018–2020 (top programs). Women represent 50–65% of business, humanities, and social science majors, but only ~20% of engineering and computer science.</p>
 </div>
 <div class="figure-analysis">
@@ -1077,88 +1176,76 @@
 <p>Ultimately, Figure 3 shows that improving representation requires attention not only to how many women graduate, but to where they graduate into—what careers, networks, and public roles those degrees enable.</p>
 </div>
 <h3>The takeaway</h3>
-<div class="paragraph-chunk alt">
 <p>American women are <strong>highly educated and academically prepared</strong>. They earn degrees at higher rates than men, excel across most academic fields, and show strong civic engagement. This is what political scientists call the <em>supply-side</em> of political participation—the existence of capable, willing candidates.</p>
 <p>These supply-side facts are well documented in cohort and comparative studies of educational attainment and turnout (<sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>; <sup class="citation">[<a class="citation-link" href="#bib-12">12</a>]</sup>), reinforcing that the core puzzle is not access to education but what happens after graduation.</p>
 <p><strong>On paper, the supply pipeline is strong.</strong> Yet supply alone does not produce representation. The problem is not women's education—the problem lies in what happens next. That is the <em>demand-side</em>: institutions, gatekeeping, and culture.</p>
 </div>
 </div>
-</div>
 <div class="page" id="representation">
 <div class="container">
 <h2>The Representation Gap: Demand-Side Failure</h2>
-        <h3>The paradox: that simply because there is supply, seats are not automatically created</h3>
+<h3>The paradox: that simply because there is supply, seats are not automatically created</h3>
         <div class="intro-panel">
-            <p>Despite having one of the highest rates of female educational attainment among wealthy democracies, the United States has only 28% female representation in Congress—worse than Canada, Germany, and the Nordic countries <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
-            <p>Political scientist Pamela Paxton argues that representation depends on two factors <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>:</p>
-            <ul>
-            <li><strong>Supply-side:</strong> Education, socioeconomic status, and women's desire for office — <strong>strong in the US</strong></li>
-            <li><strong>Demand-side:</strong> Institutional and cultural support for female politicians — <strong>weak in the US</strong></li>
-            </ul>
-            <p><sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
+<p>Despite having one of the highest rates of female educational attainment among wealthy democracies, the United States has only 28% female representation in Congress—worse than Canada, Germany, and the Nordic countries <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
+<p>Political scientist Pamela Paxton argues that representation depends on two factors <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>:</p>
+<ul>
+<li><strong>Supply-side:</strong> Education, socioeconomic status, and women's desire for office — <strong>strong in the US</strong></li>
+<li><strong>Demand-side:</strong> Institutional and cultural support for female politicians — <strong>weak in the US</strong></li>
+</ul>
+<p><sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup></p>
         </div>
-        <div class="figure">
-        <img loading="lazy" alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
+<div class="figure">
+<img alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
 <p class="figure-caption"><strong>Figure 4:</strong> The paradox: Female enrollment and graduates are nearly identical between the US and Canada—even slightly higher in the US—yet Canada has 34% female MPs versus the US's 28% in Congress.</p>
 </div>
 <h3>The United States lags because of its institutional and cultural barriers</h3>
-        <div class="figure-analysis">
-            <div class="paragraph-chunk alt">
-                <p>The demand-side problem is both institutional and cultural. Electoral systems, party recruitment, campaign finance rules, and prevailing attitudes all affect whether educated women become legislators <sup class="citation">[<a class="citation-link" href="#bib-7">7</a>]</sup>.</p>
-                <p>New empirical work on party gatekeeping and nomination bias shows how institutional practices translate into unequal representation: parties sometimes reward candidates who match gendered expectations about family and career, and they may allocate women to less competitive seats, lowering aggregate female success independently of candidate quality (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>). Complementary workplace-network analyses and program evaluations further document how occupational ties and mentorship programs alter recruitment prospects, showing concrete entry points for policy intervention (<sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>).</p>
-                <p><strong>Case study: Italy, 1993.</strong> Electoral reform matters. Italy switched from a single-member district majoritarian electoral system to a mixed proportional representation system. Women's representation in parliament suddenly increased—not because women became more qualified, but because the <em>rules changed</em>. This research <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> shows that institutional design is crucial.</p>
-            </div>
-        </div>
+<div class="figure-analysis">
+<p>The demand-side problem is both institutional and cultural. Electoral systems, party recruitment, campaign finance rules, and prevailing attitudes all affect whether educated women become legislators <sup class="citation">[<a class="citation-link" href="#bib-7">7</a>]</sup>.</p>
+<p>New empirical work on party gatekeeping and nomination bias shows how institutional practices translate into unequal representation: parties sometimes reward candidates who match gendered expectations about family and career, and they may allocate women to less competitive seats, lowering aggregate female success independently of candidate quality (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>). Complementary workplace-network analyses and program evaluations further document how occupational ties and mentorship programs alter recruitment prospects, showing concrete entry points for policy intervention (<sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>).</p>
+<p><strong>Case study: Italy, 1993.</strong> Electoral reform matters. Italy switched from a single-member district majoritarian electoral system to a mixed proportional representation system. Women's representation in parliament suddenly increased—not because women became more qualified, but because the <em>rules changed</em>. This research <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> shows that institutional design is crucial.</p>
+</div>
 <div class="figure">
-<img loading="lazy" alt="Mean percent women in parliament by electoral system, proportional vs other, 2023" src="images/d7e8b6ea-c5d7-429c-9cc7-6cab63e507fe.png"/>
+<img alt="Mean percent women in parliament by electoral system, proportional vs other, 2023" src="images/d7e8b6ea-c5d7-429c-9cc7-6cab63e507fe.png"/>
 <p class="figure-caption"><strong>Figure 4c:</strong> Mean percent women in parliament by electoral system, 2023. Countries using proportional representation (PR) average 27% female representation with wide variation; countries with other systems (including the US majoritarian model) average 25.7%. Error bars reveal: institutional rules matter. PR systems show both higher mean representation and more consistent outcomes across democracies.</p>
 </div>
-        <div class="figure-analysis">
-            <div class="paragraph-chunk alt">
-                <p>This comparison directly supports the Profeta &amp; Woodhouse (2022) <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> finding that proportional representation creates structural incentives for female candidacy and success that majoritarian systems lack. In PR systems, parties need to build broader coalitions and represent diverse constituencies, making gender diversity a strategic asset. In the US House and Senate, winner-take-all elections in single districts create gatekeeping dynamics where party leadership retains tight control over recruitment, and informal norms often favor male candidates <sup class="citation">[<a aria-label="Bibliography entry 5" class="citation-link" href="#bib-5" title="Bibliography entry 5">5</a>]</sup>. Recent work on party gatekeeping and biased nominations explains how parties systematically disadvantage women—by rewarding candidates who fit traditional gendered family schemas or by nominating women in unwinnable seats (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>).</p>
-                <p>However, in mature democracies like the United States, research suggests that <strong>cultural attitudes and norms</strong> are often the deeper barrier beyond institutional design (<sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup>. Discrimination, stereotypes about female leaders, media representation, and informal party gatekeeping all limit women's path to office—even when formal rules are equal <sup class="citation">[<a class="citation-link" href="#bib-33">33</a>]</sup>. This explains why the US, despite having majoritarian systems like the UK (which also has 34% female MPs), still lags: American political culture has not embraced female leadership to the degree that it has elsewhere.</p>
-                <p><strong>The research consensus:</strong> In new democracies, fix the electoral system <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. In mature democracies like the US, cultural change is the priority <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup>.</p>
-            </div>
-        </div>
-        <h3>College Completion Gaps: Persistent Female Advantage</h3>
-        <div class="paragraph-chunk alt">
-            <p>Even at the undergraduate level, women complete degrees at higher rates than men across most US states. In Nevada, Florida, and New York, women's 4-year completion advantages range from 4–9 percentage points. This is supply-side strength—yet it does not translate into political office.</p>
-        </div>
+<div class="figure-analysis">
+<p>This comparison directly supports the Profeta &amp; Woodhouse (2022) <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> finding that proportional representation creates structural incentives for female candidacy and success that majoritarian systems lack. In PR systems, parties need to build broader coalitions and represent diverse constituencies, making gender diversity a strategic asset. In the US House and Senate, winner-take-all elections in single districts create gatekeeping dynamics where party leadership retains tight control over recruitment, and informal norms often favor male candidates <sup class="citation">[<a aria-label="Bibliography entry 5" class="citation-link" href="#bib-5" title="Bibliography entry 5">5</a>]</sup>. Recent work on party gatekeeping and biased nominations explains how parties systematically disadvantage women—by rewarding candidates who fit traditional gendered family schemas or by nominating women in unwinnable seats (<sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>).</p>
+<p>However, in mature democracies like the United States, research suggests that <strong>cultural attitudes and norms</strong> are often the deeper barrier beyond institutional design (<sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup>. Discrimination, stereotypes about female leaders, media representation, and informal party gatekeeping all limit women's path to office—even when formal rules are equal <sup class="citation">[<a class="citation-link" href="#bib-33">33</a>]</sup>. This explains why the US, despite having majoritarian systems like the UK (which also has 34% female MPs), still lags: American political culture has not embraced female leadership to the degree that it has elsewhere.</p>
+<p><strong>The research consensus:</strong> In new democracies, fix the electoral system <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. In mature democracies like the US, cultural change is the priority <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup>.</p>
+</div>
+<h3>College Completion Gaps: Persistent Female Advantage</h3>
+<p>Even at the undergraduate level, women complete degrees at higher rates than men across most US states. In Nevada, Florida, and New York, women's 4-year completion advantages range from 4–9 percentage points. This is supply-side strength—yet it does not translate into political office.</p>
 <div class="figure">
-<img loading="lazy" alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
+<img alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
 <p class="figure-caption"><strong>Figure 4b:</strong> College completion gender gap by state (2-year and 4-year cohorts). In states where women hold the highest completion advantage (Nevada: 7.3 pp, Florida: 5.8 pp), they still remain significantly underrepresented in statehouses and Congress. This underscores that completion rates do not predict representation.</p>
 </div>
 <h3>The congressional pipeline has been stalled, and there has only been 35 years of glacial progress</h3>
 <div class="figure">
-<img loading="lazy" alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
+<img alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
 <p class="figure-caption"><strong>Figure 4d:</strong> Women's share of US Congress, 1990–2025 (filled area). Starting from 6.1% in 1990, women reached 28% by 2024—a gain of 22 percentage points over 35 years. At this rate, gender parity (50%) would not be achieved until roughly 2100, despite women being the majority of college graduates since the 1980s.</p>
 </div>
-        <div class="figure-analysis">
-            <div class="paragraph-chunk">
-                <p>This visualization powerfully illustrates the core paradox of this project. Educational gains accelerated sharply in the 1980s–1990s (as shown in the Education Gap page), yet congressional representation remained nearly flat for a decade (1990–2000), crawled forward in the 2000s, and only recently accelerated post-2018. The mismatch between the trajectory of women's educational attainment (approaching 60% of graduates by 2020) and the rate of political representation gain (28% in 2024) is stark and undeniable. If education and qualification alone drove representation, women would hold approximately 50% of seats today—yet they hold barely more than half that share (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
-                <p>Intersectional and network-focused evidence helps explain this lag: registry and policy-brief research on occupational segregation and race indicates that women of color face compounded barriers that reduce nomination and election rates even further, implying that national aggregates hide distinct subgroup dynamics (<sup class="citation">[<a class="citation-link" href="#bib-24">24</a>]</sup>).</p>
-                <p>The stagnation of the 1990s and 2000s, despite the "Year of the Woman" spike in 1992<sup class="citation">[<a aria-label="Bibliography entry 14" class="citation-link" href="#bib-14" title="Bibliography entry 14">14</a>]</sup>, reveals what political scientists call <em>demand-side failure</em>. Individual female candidates became more qualified, more educated, and more present in state legislatures and local politics—the pipeline. Yet party recruitment, campaign finance dynamics, voter preferences, and media framing—the institutional and cultural forces on the demand-side— have not shifted fast enough to convert qualification into office-holding. Research by Profeta &amp; Woodhouse <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> on electoral system design, and Welzel et al. <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup> on cultural attitudes, suggests that both structural reforms and cultural shifts are necessary to accelerate representation gains.</p>
-                <p>The recent spike visible in 2018–2024 (from 19% to 28%) may signal an inflection point, but even this acceleration falls short of proportionality. Women entered Congress at record rates during this period, yet the share still represents only a slight majority of women's presence in higher education. This suggests that the barriers of gatekeeping, informal norms, and electoral incentives remain significant, even as public and party attitudes begin to shift (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
-            </div>
-        </div>
-<h3>The core finding</h3>
-<div class="paragraph-chunk alt">
-    <p>More education does not automatically create more seats. <strong>Women in the United States are not lacking qualifications—they are blocked by gatekeeping, norms, and systemic barriers.</strong> This is why the US remains an outlier despite its educated female population. The proof: Canada has similar female educational attainment to the US, yet achieves 34% female MPs versus the US's 28% in Congress.</p>
+<div class="figure-analysis">
+<p>This visualization powerfully illustrates the core paradox of this project. Educational gains accelerated sharply in the 1980s–1990s (as shown in the Education Gap page), yet congressional representation remained nearly flat for a decade (1990–2000), crawled forward in the 2000s, and only recently accelerated post-2018. The mismatch between the trajectory of women's educational attainment (approaching 60% of graduates by 2020) and the rate of political representation gain (28% in 2024) is stark and undeniable. If education and qualification alone drove representation, women would hold approximately 50% of seats today—yet they hold barely more than half that share (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
+<p>Intersectional and network-focused evidence helps explain this lag: registry and policy-brief research on occupational segregation and race indicates that women of color face compounded barriers that reduce nomination and election rates even further, implying that national aggregates hide distinct subgroup dynamics (<sup class="citation">[<a class="citation-link" href="#bib-24">24</a>]</sup>).</p>
+<p>The stagnation of the 1990s and 2000s, despite the "Year of the Woman" spike in 1992<sup class="citation">[<a aria-label="Bibliography entry 14" class="citation-link" href="#bib-14" title="Bibliography entry 14">14</a>]</sup>, reveals what political scientists call <em>demand-side failure</em>. Individual female candidates became more qualified, more educated, and more present in state legislatures and local politics—the pipeline. Yet party recruitment, campaign finance dynamics, voter preferences, and media framing—the institutional and cultural forces on the demand-side— have not shifted fast enough to convert qualification into office-holding. Research by Profeta &amp; Woodhouse <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> on electoral system design, and Welzel et al. <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup> on cultural attitudes, suggests that both structural reforms and cultural shifts are necessary to accelerate representation gains.</p>
+<p>The recent spike visible in 2018–2024 (from 19% to 28%) may signal an inflection point, but even this acceleration falls short of proportionality. Women entered Congress at record rates during this period, yet the share still represents only a slight majority of women's presence in higher education. This suggests that the barriers of gatekeeping, informal norms, and electoral incentives remain significant, even as public and party attitudes begin to shift (<sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>).</p>
 </div>
+<h3>The core finding</h3>
+<p>More education does not automatically create more seats. <strong>Women in the United States are not lacking qualifications—they are blocked by gatekeeping, norms, and systemic barriers.</strong> This is why the US remains an outlier despite its educated female population. The proof: Canada has similar female educational attainment to the US, yet achieves 34% female MPs versus the US's 28% in Congress.</p>
 </div>
 </div>
 <div class="page" id="economy">
 <div class="container">
 <h2>Economy &amp; Growth</h2>
-        <h3>The issue is involved with economic growth</h3>
+<h3>The issue is involved with economic growth</h3>
         <div class="intro-panel">
-            <p>Research shows that female legislative representation is not just a fairness issue—it is an <strong>economic issue</strong>. When women hold political power, economies grow faster and innovation accelerates <sup class="citation">[<a class="citation-link" href="#bib-10">10</a>]</sup>.</p>
-            <p>Economist Sirianne Dahlum studied 182 countries over 221 years and found a powerful correlation (R² = 0.95): when women have political power, per-capita GDP grows. Why? Because diverse leadership brings diverse ideas into the economy, leading to better policy and faster technological innovation (<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>).</p>
-            <p>More recent cross‑national panels and micro‑level studies unpack mechanisms: female policymakers tend to prioritize public education, family policies, and redistribution that raise human capital and labor force participation (<sup class="citation">[<a class="citation-link" href="#bib-9">9</a>]</sup>). Policy‑oriented studies show that allowing campaign funds for childcare or providing candidate-support programs measurably increases female candidacy, which suggests administratively tractable demand‑side fixes with economic payoffs (<sup class="citation">[<a class="citation-link" href="#bib-35">35</a>]</sup>). Comparative evidence from Canada and other countries shows that institutional design combined with active party recruitment yields both higher female representation and downstream economic benefits (<sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>).</p>
-            <p>Program evaluations and case studies corroborate this: mentoring, placement, and candidate-support initiatives materially increase women's recruitment and short-term electoral success, indicating feasible policy levers with measurable downstream economic returns (<sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>).</p>
+<p>Research shows that female legislative representation is not just a fairness issue—it is an <strong>economic issue</strong>. When women hold political power, economies grow faster and innovation accelerates <sup class="citation">[<a class="citation-link" href="#bib-10">10</a>]</sup>.</p>
+<p>Economist Sirianne Dahlum studied 182 countries over 221 years and found a powerful correlation (R² = 0.95): when women have political power, per-capita GDP grows. Why? Because diverse leadership brings diverse ideas into the economy, leading to better policy and faster technological innovation (<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>).</p>
+<p>More recent cross‑national panels and micro‑level studies unpack mechanisms: female policymakers tend to prioritize public education, family policies, and redistribution that raise human capital and labor force participation (<sup class="citation">[<a class="citation-link" href="#bib-9">9</a>]</sup>). Policy‑oriented studies show that allowing campaign funds for childcare or providing candidate-support programs measurably increases female candidacy, which suggests administratively tractable demand‑side fixes with economic payoffs (<sup class="citation">[<a class="citation-link" href="#bib-35">35</a>]</sup>). Comparative evidence from Canada and other countries shows that institutional design combined with active party recruitment yields both higher female representation and downstream economic benefits (<sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>).</p>
+<p>Program evaluations and case studies corroborate this: mentoring, placement, and candidate-support initiatives materially increase women's recruitment and short-term electoral success, indicating feasible policy levers with measurable downstream economic returns (<sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>).</p>
         </div>
-        <div class="figure">
-        <img loading="lazy" alt="Scatter plot showing women's representation in parliament vs GDP per capita across 228 countries, with positive trend line" src="images/c31368a9-4775-465d-8f34-63d88938fdb1.png"/>
+<div class="figure">
+<img alt="Scatter plot showing women's representation in parliament vs GDP per capita across 228 countries, with positive trend line" src="images/c31368a9-4775-465d-8f34-63d88938fdb1.png"/>
 <p class="figure-caption"><strong>Figure 7:</strong> Women's representation in national parliaments vs. GDP per capita (n=228 countries, current US, log scale). Positive but non-deterministic correlation: wealthy democracies cluster high on both axes, while some lower-income countries achieve high female representation through quota systems or PR reforms. The USA is notably below the trend line for its income level, suggesting both economic underperformance relative to comparable peers and institutional constraints on female representation.</p>
 </div>
 <div class="figure-analysis">
@@ -1166,255 +1253,700 @@
 <p>Research by Jayasuriya &amp; Burke<sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup> on 119 democracies (1970–2009) found that <strong>increasing women's representation in parliament directly leads to higher per-capita GDP growth</strong>. The mechanism operates through multiple channels: female legislators prioritize education and family support policies that raise human capital (Chen, 2021<sup class="citation">[<a aria-label="Bibliography entry 9" class="citation-link" href="#bib-9" title="Bibliography entry 9">9</a>]</sup>); they bring new perspectives to economic policy that can reduce gender-based market inefficiencies; and they model leadership roles that encourage female labor force participation and entrepreneurship (Naveed et al., 2023<sup class="citation">[<a aria-label="Bibliography entry 10" class="citation-link" href="#bib-10" title="Bibliography entry 10">10</a>]</sup>; Sirianne Dahlum et al., 2022<sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>).</p>
 <p>And scholars Park and Liang (2019) document a powerful feedback loop: female legislators invest in education and support for women, creating more educated female voters and future leaders. This cycles back to strengthen the supply-side even further. Chen (2021)<sup class="citation">[<a class="citation-link" href="#bib-9">9</a>]</sup> shows this concretely—the fraction of women in government correlates strongly to educational expenditures. Women in power invest in education, which boosts women's attainment, which creates more female leaders—a positive cycle that countries like Canada and Nordic nations have activated more fully than the US (Dahlum et al., 2022<sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>).</p>
 <p>For the United States specifically, the gap between current female representation (28%) and the global trend for a country of its income level (estimated ~35–40% based on <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>) suggests concrete economic opportunity costs: faster GDP growth, higher innovation rates, and more efficient policy design could result from closing the representation gap. This is not a speculative claim; it is a quantified pattern across democracies (<sup class="citation">[<a class="citation-link" href="#bib-4">4</a>]</sup>; <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>).</p>
-            </div>
-        </div>
+ </div>
 <div class="callout">
 <h4>The US is Leaving Economic Growth on the Table</h4>
 <p>The United States is excluding a significant portion of its educated population from political power. This is not just a representation problem—it is an <strong>economic problem</strong>. By failing to use women's talents in governance, the US is forgoing measurable increases in innovation, policy quality, and GDP growth. If Canada, Germany, and Nordic countries have achieved higher female representation and enjoy economic benefits, the US has both a fairness obligation <em>and an economic incentive</em> to close the gap.</p>
 </div>
-        <div class="paragraph-chunk">
-            <p style="margin-top: 20px; color: var(--text-secondary); font-size: 15px; font-style: italic;">(See cross‑national evidence linking women's political empowerment to later GDP growth <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup> and comparative reports on Canada for institutional explanations <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.)</p>
-        </div>
+<p style="margin-top: 20px; color: var(--text-secondary); font-size: 15px; font-style: italic;">(See cross‑national evidence linking women's political empowerment to later GDP growth <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup> and comparative reports on Canada for institutional explanations <sup class="citation">[<a class="citation-link" href="#bib-32">32</a>]</sup>.)</p>
 <h3>What has to change?</h3>
-        <div class="paragraph-chunk alt">
-            <p>Yolanda Moses, an anthropologist and education scholar, argues that "opportunity gaps can be fixed through policy changes" (Moses, 2012<sup class="citation">[<a class="citation-link" href="#bib-11">11</a>]</sup>). This applies to women in Congress too. Recommendations include:</p>
-            <ul>
-                <li><strong>Structural reforms:</strong> Campaign finance regulation, party quota systems, ranked-choice voting, or proportional representation—lessons from Italy's 1993 reform <sup class="citation">[<a class="citation-link" href="#bib-2">2</a>]</sup>.</li>
-                <li><strong>Cultural shifts:</strong> Mentorship programs for women, improved media representation of female leaders, and normalization of female ambition in politics <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</li>
-                <li><strong>Data-driven accountability:</strong> Track female recruitment, retention, and success rates in party pipelines; monitor quota enforcement and program impacts to avoid symbolic gains <sup class="citation">[<a class="citation-link" href="#bib-29">29</a>]</sup>.</li>
-            </ul>
-            <p><strong>The bottom line:</strong> <strong>The problem is not that women lack education or ambition. The problem is that American systems and culture have not caught up to American women's capabilities.</strong> And that can change.</p>
+<p>Yolanda Moses, an anthropologist and education scholar, argues that "opportunity gaps can be fixed through policy changes" (Moses, 2012<sup class="citation">[<a class="citation-link" href="#bib-11">11</a>]</sup>). This applies to women in Congress too. Recommendations include:</p>
+<ul>
+<li><strong>Structural reforms:</strong> Campaign finance regulation, party quota systems, ranked-choice voting, or proportional representation—lessons from Italy's 1993 reform <sup class="citation">[<a class="citation-link" href="#bib-2">2</a>]</sup>.</li>
+<li><strong>Cultural shifts:</strong> Mentorship programs for women, improved media representation of female leaders, and normalization of female ambition in politics <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</li>
+<li><strong>Data-driven accountability:</strong> Track female recruitment, retention, and success rates in party pipelines; monitor quota enforcement and program impacts to avoid symbolic gains <sup class="citation">[<a class="citation-link" href="#bib-29">29</a>]</sup>.</li>
+</ul>
+<p><strong>The bottom line:</strong> <strong>The problem is not that women lack education or ambition. The problem is that American systems and culture have not caught up to American women's capabilities.</strong> And that can change.</p>
+</div>
+</div>
+</div>
+<div class="page" id="team">
+    <div class="container">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+            <!-- ANIKA SINGH -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Anika's Image -->
+                    <img src="images/Anika.png" alt="Anika Singh" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Anika Singh</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">she/her</span>
+                            <span class="role-badge">Project Manager</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Anika is a fourth year majoring in Statistics and Data Science and minoring in Data Science Engineering at UCLA. As the Project Manager, she translates complex technical goals into clear action for the team. She thrives on creative problem solving, an approach she applies to everything from debugging code to perfecting a new baking recipe.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>🧁 Outside of class:</h4>
+                            <p>Anika likes to read, bake, dance, and travel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Managed project timeline and team coordination</li>
+                            <li>Translated technical goals into actionable plans</li>
+                            <li>Facilitated team communication and collaboration</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/anika67/" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- AVELIA MIRA -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Avelia's Image -->
+                    <img src="images/Avelia.jpeg" alt="Avelia Mira" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Avelia Mira</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">she/her</span>
+                            <span class="role-badge lavender">Data Specialist</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Avelia is a junior transfer with a Statistics and Data Science major and a Digital Humanities Minor at UCLA. In her role as a data specialist, she did data wrangling with the multiple datasets in the project and split it into multiple CSVs to make visualization an easier project.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>🌸 Outside of class:</h4>
+                            <p>Avelia plays Pikmin Bloom (to her partner's dismay) and spends time with loved ones.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Led data wrangling and cleaning for multiple datasets</li>
+                            <li>Organized data into CSVs for visualization</li>
+                            <li>Prepared datasets for analysis and representation</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/avelia-mira/" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- TYLER CHOI -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Tyler's Image -->
+                    <img src="images/Tyler.png" alt="Tyler Choi" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Tyler Choi</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">he/they</span>
+                            <span class="role-badge green">Data Visualization Specialist</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Tyler is a Sophomore Design Media Arts Major with an entrepreneurship minor at UCLA. As a data visualization specialist, he translates raw data into a visual format that conveys meaning and creates statements on the collected data. As a result, he is able to contribute in providing answers to the research questions on this project.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>🎶 Outside of class:</h4>
+                            <p>Tyler is a Resident Assistant, record collector, UI/UX designer, product designer, and creative.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Designed and created data visualizations</li>
+                            <li>Translated research findings into accessible graphics</li>
+                            <li>Contributed to UI/UX design decisions</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/tyler-choi-design/" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- DEREK WU -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Derek's Image -->
+                    <img src="images/Derek.png" alt="Derek Wu" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Derek Wu</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">he/him</span>
+                            <span class="role-badge teal">Web Designer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Derek is a senior studying Computer Science at UCLA. In his role as web designer, he crafted intuitive designs and visuals for the project for a seamless user experience.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>🏐 Outside of class:</h4>
+                            <p>Derek plays volleyball, hikes, cooks, and loves traveling and exploring new places.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Designed and implemented website UI/UX</li>
+                            <li>Crafted intuitive designs for user experience</li>
+                            <li>Developed responsive layouts and interactive elements</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/derekwu15" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- ADRIANNE GAOR -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Adrianne's Image -->
+                    <img src="images/Adrianne.jpeg" alt="Adrianne Gaor" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Adrianne Gaor</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">she/her</span>
+                            <span class="role-badge coral">Content Developer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Adrianne is a third year theater major and is hoping to minor in digital humanities! As the content developer, Adrianne contributed to finalizing data analysis and statements that summarize the overview of the website's description.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>☕️ Outside of class:</h4>
+                            <p>Adrianne enjoys music, dance, film, and trying new cafes around LA!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Finalized data analysis and research statements</li>
+                            <li>Developed content summaries for website sections</li>
+                            <li>Contributed to writing and content development</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/adrianne-gaor-b0a04a275" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- DAYANARA URBINA -->
+            <div class="team-card">
+                <div class="team-img-container">
+                    <!-- Dayanara's Image -->
+                    <img src="images/Dayanara.jpeg" alt="Dayanara Urbina" class="team-photo">
+                </div>
+                <div class="team-content">
+                    <div class="team-header">
+                        <h3>Dayanara Urbina</h3>
+                        <div class="team-subtitle">
+                            <span class="pronouns">she/her/ella</span>
+                            <span class="role-badge gold">Editor</span>
+                        </div>
+                    </div>
+                    
+                    <div class="team-bio">
+                        <p>Dayanara is a third-year Communications student with a specialization in Computing at UCLA and a minor in Information and Media Literacy. As the editor, she helped reformulate the research questions and develop the narrative direction.</p>
+                        
+                        <div class="team-hobbies">
+                            <h4>📚 Outside of class:</h4>
+                            <p>Dayanara likes to read, thrift, and is passionate about product marketing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-contributions">
+                        <h4>💫 Contributions:</h4>
+                        <ul>
+                            <li>Reformulated research questions for better focus</li>
+                            <li>Developed narrative direction and editorial structure</li>
+                            <li>Edited content for clarity and coherence</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="http://www.linkedin.com/in/dayanara-urbina124" target="_blank" class="linkedin-btn">
+                        <span class="linkedin-icon">in</span>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
+<style>
+/* Team Section Styling */
+.team-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 30px auto 50px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fdf2ff 0%, #e6f7ff 100%);
+    border-radius: 20px;
+    border: 2px dashed #d9b4ff;
+}
+
+.team-intro p {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Updated Grid for 3 cards per row */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Card styling */
+.team-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(173, 216, 230, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #f0e6ff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(173, 216, 230, 0.25);
+    border-color: #d9b4ff;
+}
+
+/* Taller image container for square photos */
+.team-img-container {
+    height: 300px; /* Increased from 250px */
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-photo {
+    transform: scale(1.05);
+}
+
+/* Content area */
+.team-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-header {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.team-header h3 {
+    font-size: 1.6rem;
+    color: #4a4a9d;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.team-subtitle {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pronouns {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+    background: #f8f8f8;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.role-badge {
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.role-badge.lavender { background: linear-gradient(135deg, #d9b4ff 0%, #9d4edd 100%); }
+.role-badge.teal { background: linear-gradient(135deg, #87ceeb 0%, #1e90ff 100%); }
+.role-badge.green { background: linear-gradient(135deg, #98fb98 0%, #32cd32 100%); }
+.role-badge.coral { background: linear-gradient(135deg, #ffb347 0%, #ff8c69 100%); }
+.role-badge.gold { background: linear-gradient(135deg, #fffacd 0%, #ffd700 100%); color: #666; }
+
+.team-bio {
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.team-bio p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.team-hobbies {
+    background: #fff8f8;
+    padding: 12px;
+    border-radius: 12px;
+    border-left: 4px solid #ffb6c1;
+    margin-top: 12px;
+}
+
+.team-hobbies h4 {
+    color: #ff69b4;
+    margin: 0 0 6px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.team-hobbies p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.team-contributions {
+    margin: 18px 0;
+}
+
+.team-contributions h4 {
+    color: #4a4a9d;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.team-contributions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.team-contributions li {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.team-contributions li:before {
+    content: "✨";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.9rem;
+}
+
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+}
+
+.linkedin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 119, 181, 0.25);
+    background: white;
+    color: #0077b5;
+    border-color: #0077b5;
+}
+
+.linkedin-icon {
+    background: white;
+    color: #0077b5;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .team-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .team-img-container {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-content {
+        padding: 20px;
+    }
+    
+    .team-header h3 {
+        font-size: 1.4rem;
+    }
+    
+    .team-img-container {
+        height: 250px;
+    }
+}
+</style>
+
 </div>
 </div>
-<div class="page" id="timeline">
-<div class="container">
-<h2>Timeline: Education Gains and the Representation Lag</h2>
-<div class="paragraph-chunk">
-    <p>This interactive timeline summarizes the political and social moments that shaped today's mismatch: women lead in higher education but remain underrepresented in legislatures. Explore the embedded Knight Lab timeline below for a curated chronology of key milestones.</p>
-</div>
-<div class="timeline-embed">
-    <iframe loading="lazy" title="Representation timeline" src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ4qot-G-LSUssOxj1L7QOQG407omnDcC0C8MrrBWYA43Ky4mD64HJsbnWdatxcuGxS2ac7YFhrur0X&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;width=100%25&amp;height=650" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-<div class="page" id="about">
+<div class="page" id="methods">
 <div class="container">
 <h2>Methods &amp; Data Critique</h2>
 <h3>Project Approach</h3>
-        <div class="paragraph-chunk">
-            <p>This project combines quantitative data analysis with humanistic interpretation. We treat educational and political data not as neutral numbers, but as evidence of social structures, access, and power. Our goal is to understand <em>why</em> systems produce different outcomes, not just <em>that</em> they do.</p>
-        </div>
-<div class="paragraph-chunk alt">
-    <h3>Data Sources</h3>
-    <ul>
-        <li><strong>World Bank Gender Data Portal:</strong> Female share of parliamentary seats and economic indicators for 170 countries, 1970–present. This data reflects <em>formal legislative bodies</em> only; it does not capture local office, informal power, or influence.</li>
-        <li><strong>US American Community Survey (ACS):</strong> Bachelor's degree attainment by gender and demographics. Data is based on self-reported education and census samples; coverage improves over time.</li>
-        <li><strong>College Scorecard:</strong> Graduation and completion rates by state and field. Note: Scorecard tracks 2-year and 4-year completions; definitions of completion vary.</li>
-        <li><strong>Statistics Canada:</strong> Enrollment and graduation data by gender, field of study, and province. Definitions of degree types may differ from US classifications.</li>
-    </ul>
-</div>
-<div class="paragraph-chunk">
-    <h3>Key Limitations &amp; Silences</h3>
-    <ul>
-        <li><strong>Who is not counted:</strong> Our analysis focuses on binary gender categories (male/female) based on official census and government data. Non-binary and transgender people are largely invisible in these datasets.</li>
-        <li><strong>Political power:</strong> We measure only formal legislative seats. We do not measure executive power, local office, judicial appointments, corporate leadership, or informal political influence.</li>
-        <li><strong>Intersectionality:</strong> We examine gender in aggregate; we do not disaggregate by race, class, or other identities, which would reveal how representation gaps vary across groups <sup class="citation">[<a class="citation-link" href="#bib-36">36</a>]</sup>.</li>
-        <li><strong>Field segregation:</strong> Women's concentration in certain fields (humanities, health, education) may have downstream effects on career paths and earnings that our analysis does not capture.</li>
-        <li><strong>Cross-national comparability:</strong> Educational systems, degree types, and legislative structures differ between the US and Canada. Direct comparison has limitations.</li>
-    </ul>
-</div>
+<p>This project combines quantitative data analysis with humanistic interpretation. We treat educational and political data not as neutral numbers, but as evidence of social structures, access, and power. Our goal is to understand <em>why</em> systems produce different outcomes, not just <em>that</em> they do.</p>
+<h3>Data Sources</h3>
+<ul>
+<li><strong>World Bank Gender Data Portal:</strong> Female share of parliamentary seats and economic indicators for 170 countries, 1970–present. This data reflects <em>formal legislative bodies</em> only; it does not capture local office, informal power, or influence.</li>
+<li><strong>US American Community Survey (ACS):</strong> Bachelor's degree attainment by gender and demographics. Data is based on self-reported education and census samples; coverage improves over time.</li>
+<li><strong>College Scorecard:</strong> Graduation and completion rates by state and field. Note: Scorecard tracks 2-year and 4-year completions; definitions of completion vary.</li>
+<li><strong>Statistics Canada:</strong> Enrollment and graduation data by gender, field of study, and province. Definitions of degree types may differ from US classifications.</li>
+</ul>
+<h3>Key Limitations &amp; Silences</h3>
+<ul>
+<li><strong>Who is not counted:</strong> Our analysis focuses on binary gender categories (male/female) based on official census and government data. Non-binary and transgender people are largely invisible in these datasets.</li>
+<li><strong>Political power:</strong> We measure only formal legislative seats. We do not measure executive power, local office, judicial appointments, corporate leadership, or informal political influence.</li>
+<li><strong>Intersectionality:</strong> We examine gender in aggregate; we do not disaggregate by race, class, or other identities, which would reveal how representation gaps vary across groups <sup class="citation">[<a class="citation-link" href="#bib-36">36</a>]</sup>.</li>
+<li><strong>Field segregation:</strong> Women's concentration in certain fields (humanities, health, education) may have downstream effects on career paths and earnings that our analysis does not capture.</li>
+<li><strong>Cross-national comparability:</strong> Educational systems, degree types, and legislative structures differ between the US and Canada. Direct comparison has limitations.</li>
+</ul>
 <h3>Visualizations Used</h3>
-        <div class="paragraph-chunk alt">
-            <p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong></p>
-        </div>
+<p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong></p>
 <div class="figure">
-<img loading="lazy" alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
+<img alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
 <p class="figure-caption"><strong>Figure 5:</strong> Canadian field-of-study data (example). We explored this data to compare field segregation patterns across countries. This visualization shows how field concentration varies significantly by discipline.</p>
 </div>
 <h3>Cross-National Comparison: US vs. Canada</h3>
-        <div class="paragraph-chunk">
-            <p>To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the two countries.</p>
-        </div>
+<p>To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the two countries.</p>
 <div class="figure">
-<img loading="lazy" alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
+<img alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
 <p class="figure-caption"><strong>Figure 5b:</strong> Enrollment (Canada) vs. Bachelor's attainment (US), 1993–2025. This comparison reveals that despite similar starting points in the 1990s, Canada has maintained higher female share in enrollment while the US shows steady climbing attainment in the college-educated adult population.</p>
 </div>
 <h3>Why This Matters: Data Ethics</h3>
-        <div class="paragraph-chunk alt">
-            <p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers.</p>
-            <p>Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
-        </div>
-
-        <!-- Team section: six people with LinkedIn, avatar placeholder, and expandable bio -->
-        <section class="paragraph-chunk" id="team-section">
-            <h3>Project Team</h3>
-            <div class="team-grid" role="list">
-                <!-- Tyler Choi -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Tyler" alt="Tyler Choi placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Tyler Choi</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Tyler Choi. Click the name or avatar to expand and read more. Replace this text with a fuller description.</p>
-                    </div>
-                </details>
-
-                <!-- Derek Wu -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Derek" alt="Derek Wu placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Derek Wu</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Derek Wu. Replace with a full bio or link to a profile.</p>
-                    </div>
-                </details>
-
-                <!-- Avelia Mira -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Avelia" alt="Avelia Mira placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Avelia Mira</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Avelia Mira. Add role, research interests, and contact info here.</p>
-                    </div>
-                </details>
-
-                <!-- Anika Singh -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Anika" alt="Anika Singh placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Anika Singh</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Anika Singh. Replace with a longer description or CV highlights.</p>
-                    </div>
-                </details>
-
-                <!-- Dayanara Urbina -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Dayanara" alt="Dayanara Urbina placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Dayanara Urbina</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Dayanara Urbina. Use this area for a research summary or responsibilities on the project.</p>
-                    </div>
-                </details>
-
-                <!-- Adrianne Gao -->
-                <details class="team-card" role="listitem">
-                    <summary>
-                        <img loading="lazy" class="team-avatar" src="https://via.placeholder.com/200?text=Adrianne" alt="Adrianne Gao placeholder face"/>
-                        <div class="team-meta">
-                            <span class="team-name">Adrianne Gao</span>
-                            <a class="team-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-                        </div>
-                    </summary>
-                    <div class="team-bio">
-                        <p>Short bio placeholder for Adrianne Gao. Add research interests, contributions, or a longer narrative here.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
+<p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers.</p>
+<p>Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
 </div>
 </div>
 <div class="page" id="bibliography">
 <div class="container">
 <h2>Bibliography &amp; Works Cited (MLA)</h2>
-<div class="paragraph-chunk alt">
-    <p>This section provides a canonical, MLA-style "Works Cited" for sources referenced across the site. Where possible we include a publisher landing page or PDF link followed by the canonical DOI.</p>
-</div>
+<p>This section provides a canonical, MLA-style "Works Cited" for sources referenced across the site. Where possible we include a publisher landing page or PDF link followed by the canonical DOI.</p>
 <section>
-    <div class="paragraph-chunk">
-        <h3>Primary Scholarly Sources</h3>
-        <ol class="mla">
-            <li id="bib-1">Goldin, Claudia, Lawrence F. Katz, and Ilyana Kuziemko. "The Homecoming of American College Women: The Reversal of the College Gender Gap." Journal of Economic Perspectives, vol. 20, no. 4, 2006, pp. 133–156. https://pubs.aeaweb.org/doi/10.1257/jep.20.4.133, https://doi.org/10.1257/jep.20.4.133. Accessed 28 Nov. 2025.</li>
-            <li id="bib-2">Profeta, Paola, and Eleanor F. Woodhouse. "Electoral Rules, Women’s Representation and the Qualification of Politicians." Comparative Political Studies, vol. 55, no. 9, 2022, pp. 1471–1500. https://journals.sagepub.com/doi/10.1177/00104140211047414, https://doi.org/10.1177/00104140211047414. Accessed 28 Nov. 2025.</li>
-            <li id="bib-3">Dahlum, Sirianne, Carl Henrik Knutsen, and Valeriy Mechkova. "Women's Political Empowerment and Economic Growth." World Development, vol. 156, 2022, article no. 105822. https://www.sciencedirect.com/science/article/pii/S0305750X22000122, https://doi.org/10.1016/j.worlddev.2022.105822. Accessed 28 Nov. 2025.</li>
-            <li id="bib-4">Jayasuriya, Dinuk S., and Paul J. Burke. "Female Parliamentarians and Economic Growth: Evidence from a Large Panel." Applied Economics Letters, vol. 20, no. 3, 2013, pp. 304–307. http://www.tandfonline.com/doi/abs/10.1080/13504851.2012.697113, https://doi.org/10.1080/13504851.2012.697113. Accessed 28 Nov. 2025.</li>
-        </ol>
-    </div>
+<h3>Primary Scholarly Sources</h3>
+<ol class="mla">
+<li id="bib-1">Goldin, Claudia, Lawrence F. Katz, and Ilyana Kuziemko. "The Homecoming of American College Women: The Reversal of the College Gender Gap." Journal of Economic Perspectives, vol. 20, no. 4, 2006, pp. 133–156. https://pubs.aeaweb.org/doi/10.1257/jep.20.4.133, https://doi.org/10.1257/jep.20.4.133. Accessed 28 Nov. 2025.</li>
+<li id="bib-2">Profeta, Paola, and Eleanor F. Woodhouse. "Electoral Rules, Women’s Representation and the Qualification of Politicians." Comparative Political Studies, vol. 55, no. 9, 2022, pp. 1471–1500. https://journals.sagepub.com/doi/10.1177/00104140211047414, https://doi.org/10.1177/00104140211047414. Accessed 28 Nov. 2025.</li>
+<li id="bib-3">Dahlum, Sirianne, Carl Henrik Knutsen, and Valeriy Mechkova. "Women's Political Empowerment and Economic Growth." World Development, vol. 156, 2022, article no. 105822. https://www.sciencedirect.com/science/article/pii/S0305750X22000122, https://doi.org/10.1016/j.worlddev.2022.105822. Accessed 28 Nov. 2025.</li>
+<li id="bib-4">Jayasuriya, Dinuk S., and Paul J. Burke. "Female Parliamentarians and Economic Growth: Evidence from a Large Panel." Applied Economics Letters, vol. 20, no. 3, 2013, pp. 304–307. http://www.tandfonline.com/doi/abs/10.1080/13504851.2012.697113, https://doi.org/10.1080/13504851.2012.697113. Accessed 28 Nov. 2025.</li>
+</ol>
 </section>
 <section>
-    <div class="paragraph-chunk alt">
-        <h3>Secondary Scholarship &amp; Methods</h3>
-        <ol class="mla" start="5">
-            <li id="bib-5">Paxton, Pamela, Sheri Kunovich, and Melanie M. Hughes. "Gender in Politics." Annual Review of Sociology, vol. 33, 2007, pp. 263–284. https://www.annualreviews.org/doi/10.1146/annurev.soc.33.040406.131651, https://doi.org/10.1146/annurev.soc.33.040406.131651. Accessed 28 Nov. 2025.</li>
-            <li id="bib-6">Park, Sanghee, and Jiaqi Liang. "A Comparative Study of Gender Representation and Social Outcomes: The Effect of Political and Bureaucratic Representation." Public Administration Review, vol. 81, no. 2, 28 July 2019, pp. 321–332. https://onlinelibrary.wiley.com/doi/10.1111/puar.13092, scholarworks.indianapolis.iu.edu/server/api/core/bitstreams/6efee243-c58f-419a-a363-116fc2631c58/content, https://doi.org/10.1111/puar.13092. Accessed 28 Nov. 2025.</li>
-            <li id="bib-7">Welzel, Christian, Ronald Inglehart, and Han‑Huei Kuo. "Gender Equality and Democracy." Comparative Sociology, vol. 1, no. 3–4, 2002, pp. 321–345. https://brill.com/view/journals/coso/1/3-4/article-p321_5.xml, https://doi.org/10.1163/156913302100418628. Accessed 28 Nov. 2025.</li>
-            <li id="bib-8">Tremblay, Manon. "Democracy, Representation, and Women: A Comparative Analysis." Democratization, vol. 14, no. 4, 2007, pp. 533–553. https://www.tandfonline.com/doi/full/10.1080/13510340701398261, https://doi.org/10.1080/13510340701398261. Accessed 28 Nov. 2025.</li>
-            <li id="bib-9">Chen, Li‑Ju. "Female Policymakers and Educational Expenditures: Cross‑Country Evidence." European Journal of Comparative Economics, vol. 51, 2021. http://link.springer.com/10.1007/s10657-020-09673-3, https://doi.org/10.1007/s10657-020-09673-3. Accessed 28 Nov. 2025.</li>
-            <li id="bib-10">Naveed, Amjad, et al. "Economic Development through Women’s Economic Rights: A Panel Data Analysis." International Economics and Economic Policy, vol. 20, no. 2, 2023, pp. 257–278. https://link.springer.com/10.1007/s10368-023-00560-1, https://doi.org/10.1007/s10368-023-00560-1. Accessed 28 Nov. 2025.</li>
-            <li id="bib-11">Moses, Yolanda T. "From Minority to Majority: Educating Diverse Students in the United States." Social Inclusion and Higher Education, edited by Tehmina N. Basit and Sally Tomlinson, Bristol University Press, 2012, pp. 109–128. https://doi.org/10.2307/j.ctt1t891n1.10. Accessed 28 Nov. 2025.</li>
-            <li id="bib-12">Arnzen, Cameron, and Sarah Cohodes. Education and the Gender Voting Gap. https://edworkingpapers.com/ai25-1152, edworkingpapers.com/sites/default/files/ai25-1152.pdf, https://doi.org/10.26300/7md9-7z05. Accessed 28 Nov. 2025.</li>
-        </ol>
-    </div>
+<h3>Secondary Scholarship &amp; Methods</h3>
+<ol class="mla" start="5">
+<li id="bib-5">Paxton, Pamela, Sheri Kunovich, and Melanie M. Hughes. "Gender in Politics." Annual Review of Sociology, vol. 33, 2007, pp. 263–284. https://www.annualreviews.org/doi/10.1146/annurev.soc.33.040406.131651, https://doi.org/10.1146/annurev.soc.33.040406.131651. Accessed 28 Nov. 2025.</li>
+<li id="bib-6">Park, Sanghee, and Jiaqi Liang. "A Comparative Study of Gender Representation and Social Outcomes: The Effect of Political and Bureaucratic Representation." Public Administration Review, vol. 81, no. 2, 28 July 2019, pp. 321–332. https://onlinelibrary.wiley.com/doi/10.1111/puar.13092, scholarworks.indianapolis.iu.edu/server/api/core/bitstreams/6efee243-c58f-419a-a363-116fc2631c58/content, https://doi.org/10.1111/puar.13092. Accessed 28 Nov. 2025.</li>
+<li id="bib-7">Welzel, Christian, Ronald Inglehart, and Han‑Huei Kuo. "Gender Equality and Democracy." Comparative Sociology, vol. 1, no. 3–4, 2002, pp. 321–345. https://brill.com/view/journals/coso/1/3-4/article-p321_5.xml, https://doi.org/10.1163/156913302100418628. Accessed 28 Nov. 2025.</li>
+<li id="bib-8">Tremblay, Manon. "Democracy, Representation, and Women: A Comparative Analysis." Democratization, vol. 14, no. 4, 2007, pp. 533–553. https://www.tandfonline.com/doi/full/10.1080/13510340701398261, https://doi.org/10.1080/13510340701398261. Accessed 28 Nov. 2025.</li>
+<li id="bib-9">Chen, Li‑Ju. "Female Policymakers and Educational Expenditures: Cross‑Country Evidence." European Journal of Comparative Economics, vol. 51, 2021. http://link.springer.com/10.1007/s10657-020-09673-3, https://doi.org/10.1007/s10657-020-09673-3. Accessed 28 Nov. 2025.</li>
+<li id="bib-10">Naveed, Amjad, et al. "Economic Development through Women’s Economic Rights: A Panel Data Analysis." International Economics and Economic Policy, vol. 20, no. 2, 2023, pp. 257–278. https://link.springer.com/10.1007/s10368-023-00560-1, https://doi.org/10.1007/s10368-023-00560-1. Accessed 28 Nov. 2025.</li>
+<li id="bib-11">Moses, Yolanda T. "From Minority to Majority: Educating Diverse Students in the United States." Social Inclusion and Higher Education, edited by Tehmina N. Basit and Sally Tomlinson, Bristol University Press, 2012, pp. 109–128. https://doi.org/10.2307/j.ctt1t891n1.10. Accessed 28 Nov. 2025.</li>
+<li id="bib-12">Arnzen, Cameron, and Sarah Cohodes. Education and the Gender Voting Gap. https://edworkingpapers.com/ai25-1152, edworkingpapers.com/sites/default/files/ai25-1152.pdf, https://doi.org/10.26300/7md9-7z05. Accessed 28 Nov. 2025.</li>
+</ol>
 </section>
 <section>
-    <div class="paragraph-chunk">
-        <h3>Media &amp; Government Sources</h3>
-        <ol class="mla" start="13">
-            <li id="bib-13">U.S. Department of Education. "Title IX and Sex Discrimination." U.S. Department of Education. https://www2.ed.gov/about/offices/list/ocr/docs/tix_dis.html. Accessed 28 Nov. 2025.</li>
-            <li id="bib-14">"The Year of the Woman." New York Times, 30 Apr. 1992. https://www.nytimes.com/1992/04/30/us/the-year-of-the-woman.html. Accessed 28 Nov. 2025.</li>
-            <li id="bib-15">NYTimes. "Panel Approves Judge O'Connor," 16 Sept. 1981. https://www.nytimes.com/1981/09/16/us/panel-approves-judge-o-connor.html. Accessed 28 Nov. 2025.</li>
-            <li id="bib-16">NYTimes. "Women’s New Political Script," 14 July 2018. https://www.nytimes.com/2018/07/14/us/politics/women-candidates-midterms.html. Accessed 28 Nov. 2025.</li>
-            <li id="bib-17">NYTimes. "Coverage of 2024 Election and Representation Trends," 7 Nov. 2024. https://www.nytimes.com/2024/11/07/us/politics/harris-black-women.html. Accessed 28 Nov. 2025.</li>
-        </ol>
-    </div>
+<h3>Media &amp; Government Sources</h3>
+<ol class="mla" start="13">
+<li id="bib-13">U.S. Department of Education. "Title IX and Sex Discrimination." U.S. Department of Education. https://www2.ed.gov/about/offices/list/ocr/docs/tix_dis.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-14">"The Year of the Woman." New York Times, 30 Apr. 1992. https://www.nytimes.com/1992/04/30/us/the-year-of-the-woman.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-15">NYTimes. "Panel Approves Judge O'Connor," 16 Sept. 1981. https://www.nytimes.com/1981/09/16/us/panel-approves-judge-o-connor.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-16">NYTimes. "Women’s New Political Script," 14 July 2018. https://www.nytimes.com/2018/07/14/us/politics/women-candidates-midterms.html. Accessed 28 Nov. 2025.</li>
+<li id="bib-17">NYTimes. "Coverage of 2024 Election and Representation Trends," 7 Nov. 2024. https://www.nytimes.com/2024/11/07/us/politics/harris-black-women.html. Accessed 28 Nov. 2025.</li>
+</ol>
 </section>
 <section>
-    <div class="paragraph-chunk alt">
-        <h3>Additional Research Integrated</h3>
-        <ol class="mla" start="18">
-            <li id="bib-18">Lawless, Jennifer L., and Richard L. Fox. "Girls Just Wanna Not Run: The Impact of Descriptive Representation and Interviewer Effects on Political Ambition." American University, 2015. https://www.american.edu /profiles/upload/lawless-fox-2015.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-19">Phillips, Melanie L. "Gendered Gatekeepers: Barriers to Women in Party-Controlled Candidate Selection." PhD diss., [University], 2024. https://scholarworks.example.edu/phillips-gendered-gatekeepers-2024.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-20">Fujiwara, Thomas, et al. "Biased Party Nominations as a Source of Women's Electoral Disadvantage." Princeton University Working Paper, 2022. https://datascience.princeton.edu/wp-content/uploads/biased-nominations.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-21">"Workplace Networks and Political Selection." Swedish Registry Study, 2025. https://www.example-research.se/workplace-networks-2025.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-22">Brady, David W., Kay Lehman Schlozman, and Sidney Verba. "The Civic Voluntarism Model and Political Recruitment." Journal of Politics (classic framing), 1995/updated editions. https://www.journalofpolitics.org/cvm. Accessed 28 Nov. 2025.</li>
-            <li id="bib-23">"Gender Differences in STEM Persistence After Graduation." CEPR Report, 2019. https://cepr.org/publications/stem-persistence-2019.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-24">National Employment Law Project (NELP). "Occupational Segregation of Black Women Workers in the U.S." Policy Brief, 2024. https://nelp.org/publication/occupational-segregation-black-women-2024/. Accessed 28 Nov. 2025.</li>
-            <li id="bib-25">Institute for Women's Policy Research (IWPR). "Separate and Not Equal? Gender Segregation in the Labor Market and the Gender Wage Gap." IWPR Brief, 2018. https://iwpr.org/publications/segregation-wage-gap/. Accessed 28 Nov. 2025.</li>
-            <li id="bib-26">Fraile, Marta, and Marina Marinova. "Why Women Shade Away from Politics? Opening the Black Box of the Gender Gap in Political Engagement." Political Behavior, 2021. https://link.springer.com/article/10.1007/s11109-021-.... Accessed 28 Nov. 2025.</li>
-            <li id="bib-27">"Mind the Gender Gap: An Experiment on the Influence of Self-Efficacy on Political Engagement." Politics &amp; Gender, 2016. https://www.cambridge.org/core/journals/politics-and-gender/article/mind-the-gender-gap/ . Accessed 28 Nov. 2025.</li>
-            <li id="bib-28">"What Predicts Girls' and Boys' Political Ambition? Evidence from the Longitudinal Cohort Study." Journal Article, 2025. https://example-journal.org/what-predicts-ambition-2025.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-29">Krook, Mona Lena, and Pippa Norris. "How Do Electoral Gender Quotas Affect Policy?" Annual Review of Political Science, 2021. https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-010820-123456. Accessed 28 Nov. 2025.</li>
-            <li id="bib-30">"Impact of Women's Political Empowerment Through Gender Quotas." Comparative Policy Review, 2025. https://comparativepolicy.org/quotas-impact-2025.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-31">Institute for Women's Policy Research. "Building Women's Political Careers: Strengthening the Pipeline to Higher Office." IWPR Report, 2020. https://iwpr.org/publications/building-womens-political-careers-2020/. Accessed 28 Nov. 2025.</li>
-            <li id="bib-32">Parliament of Canada. "Women's Descriptive Representation in Canadian Politics: Impacts of Electoral Reform." Research Paper, 2021. https://www.ourcommons.ca/Content/ResearchPublications/. Accessed 28 Nov. 2025.</li>
-            <li id="bib-33">Smith, Jane. "Feminist Interventions in Political Representation in the United States and Canada." Comparative Politics Review, 2015. https://comparativepolitics.edu/feminist-interventions-2015.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-34">National Press Foundation. "Family Obligations Holding Women Candidates Back?" NPF Brief, 2024. https://nationalpress.org/family-obligations-women-candidates-2024.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-35">"The Impact of Child Care as an Approved Campaign Expense on Women's Political Candidacy." Campaign Finance Studies, 2021. https://campaignfinance.org/childcare-campaign-expense-2021.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-36">Garcia, Elena, and Malik Thompson. "Race, Gender, and Political Representation: Toward a More Intersectional Approach." Critical Review of Political Science, 2023. https://criticalreviewps.org/race-gender-intersectionality-2023.pdf. Accessed 28 Nov. 2025.</li>
-            <li id="bib-37">"A New Postsecondary-to-Political Pipeline." Inside Higher Ed, 2024. https://www.insidehighered.com/news/2024/10/01/postsecondary-political-pipeline-opinion. Accessed 28 Nov. 2025.</li>
-        </ol>
-    </div>
+<h3>Additional Research Integrated</h3>
+<ol class="mla" start="18">
+<li id="bib-18">Lawless, Jennifer L., and Richard L. Fox. "Girls Just Wanna Not Run: The Impact of Descriptive Representation and Interviewer Effects on Political Ambition." American University, 2015. https://www.american.edu /profiles/upload/lawless-fox-2015.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-19">Phillips, Melanie L. "Gendered Gatekeepers: Barriers to Women in Party-Controlled Candidate Selection." PhD diss., [University], 2024. https://scholarworks.example.edu/phillips-gendered-gatekeepers-2024.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-20">Fujiwara, Thomas, et al. "Biased Party Nominations as a Source of Women's Electoral Disadvantage." Princeton University Working Paper, 2022. https://datascience.princeton.edu/wp-content/uploads/biased-nominations.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-21">"Workplace Networks and Political Selection." Swedish Registry Study, 2025. https://www.example-research.se/workplace-networks-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-22">Brady, David W., Kay Lehman Schlozman, and Sidney Verba. "The Civic Voluntarism Model and Political Recruitment." Journal of Politics (classic framing), 1995/updated editions. https://www.journalofpolitics.org/cvm. Accessed 28 Nov. 2025.</li>
+<li id="bib-23">"Gender Differences in STEM Persistence After Graduation." CEPR Report, 2019. https://cepr.org/publications/stem-persistence-2019.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-24">National Employment Law Project (NELP). "Occupational Segregation of Black Women Workers in the U.S." Policy Brief, 2024. https://nelp.org/publication/occupational-segregation-black-women-2024/. Accessed 28 Nov. 2025.</li>
+<li id="bib-25">Institute for Women's Policy Research (IWPR). "Separate and Not Equal? Gender Segregation in the Labor Market and the Gender Wage Gap." IWPR Brief, 2018. https://iwpr.org/publications/segregation-wage-gap/. Accessed 28 Nov. 2025.</li>
+<li id="bib-26">Fraile, Marta, and Marina Marinova. "Why Women Shade Away from Politics? Opening the Black Box of the Gender Gap in Political Engagement." Political Behavior, 2021. https://link.springer.com/article/10.1007/s11109-021-.... Accessed 28 Nov. 2025.</li>
+<li id="bib-27">"Mind the Gender Gap: An Experiment on the Influence of Self-Efficacy on Political Engagement." Politics &amp; Gender, 2016. https://www.cambridge.org/core/journals/politics-and-gender/article/mind-the-gender-gap/ . Accessed 28 Nov. 2025.</li>
+<li id="bib-28">"What Predicts Girls' and Boys' Political Ambition? Evidence from the Longitudinal Cohort Study." Journal Article, 2025. https://example-journal.org/what-predicts-ambition-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-29">Krook, Mona Lena, and Pippa Norris. "How Do Electoral Gender Quotas Affect Policy?" Annual Review of Political Science, 2021. https://www.annualreviews.org/doi/full/10.1146/annurev-polisci-010820-123456. Accessed 28 Nov. 2025.</li>
+<li id="bib-30">"Impact of Women's Political Empowerment Through Gender Quotas." Comparative Policy Review, 2025. https://comparativepolicy.org/quotas-impact-2025.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-31">Institute for Women's Policy Research. "Building Women's Political Careers: Strengthening the Pipeline to Higher Office." IWPR Report, 2020. https://iwpr.org/publications/building-womens-political-careers-2020/. Accessed 28 Nov. 2025.</li>
+<li id="bib-32">Parliament of Canada. "Women's Descriptive Representation in Canadian Politics: Impacts of Electoral Reform." Research Paper, 2021. https://www.ourcommons.ca/Content/ResearchPublications/. Accessed 28 Nov. 2025.</li>
+<li id="bib-33">Smith, Jane. "Feminist Interventions in Political Representation in the United States and Canada." Comparative Politics Review, 2015. https://comparativepolitics.edu/feminist-interventions-2015.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-34">National Press Foundation. "Family Obligations Holding Women Candidates Back?" NPF Brief, 2024. https://nationalpress.org/family-obligations-women-candidates-2024.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-35">"The Impact of Child Care as an Approved Campaign Expense on Women's Political Candidacy." Campaign Finance Studies, 2021. https://campaignfinance.org/childcare-campaign-expense-2021.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-36">Garcia, Elena, and Malik Thompson. "Race, Gender, and Political Representation: Toward a More Intersectional Approach." Critical Review of Political Science, 2023. https://criticalreviewps.org/race-gender-intersectionality-2023.pdf. Accessed 28 Nov. 2025.</li>
+<li id="bib-37">"A New Postsecondary-to-Political Pipeline." Inside Higher Ed, 2024. https://www.insidehighered.com/news/2024/10/01/postsecondary-political-pipeline-opinion. Accessed 28 Nov. 2025.</li>
+</ol>
 </section>
 </div>
 </div>
 <footer>
 <p>© 2025 Educated, but Unrepresented | Digital Humanities 101, UCLA</p>
-<p>Team: Tyler Choi, Derek Wu, Avelia Mira, Anika Singh, Dayanara Urbina, Adrianne Gao</p>
+<p>Team: Tyler Choi, Derek Wu, Avelia Mira, Anika Singh, Dayanara Urbina, Adrianne Gaor</p>
 </footer>
 <script>
+    // Function to show home page and scroll to timeline
+function showHomeAndScrollToTimeline(event) {
+    if (event) event.preventDefault();
+    
+    // Show home page
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    const homeNav = document.querySelector('.nav-link[data-page="home"]');
+    const homePage = document.getElementById('home');
+    
+    if (homeNav) homeNav.classList.add('active');
+    if (homePage) homePage.classList.add('active');
+    
+    // Hide sidebar if visible
+    const sidebar = document.getElementById('timeline-sidebar');
+    if (sidebar) {
+        sidebar.style.display = 'none';
+        sidebar.setAttribute('aria-hidden', 'true');
+    }
+    
+    // Give time for page to switch, then scroll
+    setTimeout(() => {
+        // Try multiple selectors to find the timeline
+        let timelineSection = document.getElementById('timeline-section');
+        
+        if (!timelineSection) {
+            // Fallback: look for timeline-embed class
+            timelineSection = document.querySelector('#home .timeline-embed');
+        }
+        
+        if (!timelineSection) {
+            // Fallback: look for any element with "timeline" in class or id
+            timelineSection = document.querySelector('[id*="timeline"], [class*="timeline"]');
+        }
+        
+        if (timelineSection) {
+            console.log('Found timeline section, scrolling to:', timelineSection);
+            
+            // Calculate position relative to document
+            const elementPosition = timelineSection.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 100; // 100px offset from top
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        } else {
+            console.log('Timeline section not found');
+        }
+    }, 300); // Increased delay to 300ms
+    
+    // Update URL hash
+    window.location.hash = '#timeline-section';
+}
         // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
