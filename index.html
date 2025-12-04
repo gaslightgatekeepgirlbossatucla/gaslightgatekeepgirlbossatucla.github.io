@@ -322,10 +322,26 @@
             font-family: 'Inter', sans-serif;
             font-size: clamp(36px, 4vw, 48px);
             margin: var(--spacing-2xl) 0 var(--spacing-lg);
+            position: relative;
+            padding-left: 28px; /* room for left decorative bar */
             color: var(--text-primary);
             font-weight: 700;
             letter-spacing: -0.8px;
             line-height: 1.2;
+        }
+
+        /* Left vertical decorative bar for h2s, except timeline title */
+        h2:not(.timeline-title)::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 56px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            opacity: 0.95;
         }
 
         h3 {
@@ -1103,11 +1119,16 @@
 <!-- New container for the content after timeline -->
 <div class="container">
     <h2>The American Paradox, and the potential paths forward</h2>
-<p>This project scrutinizes a core paradox: women's high educational attainment, yet low representation in political office. To unpack this, we compare the US with other first-world democracies and analyze whether the crux of the problem is institutional (laws, systems) or cultural (attitudes, role models, representation).</p>
-<p>Does the US need to change its electoral systems, or instead foster cultural shifts for better representation? The comparison shows the United States is an exception, and not necessarily a natural outcome. It is one constructed by specific institutional and social dynamics.</p>
-<p>Evidence suggests that as women's political power rises, economies benefit; excluding women thus presents not only a social injustice, but also an economic drawback stifling innovation and growth. When women are the educated majority but a political minority, Congress does not fully represent the American people, overlooking gender and racial diversity even among the educated.</p>
-<p>What is the most effective solution? Reform in structure (electoral systems, campaign finance, quotas) or culture (mentoring, representation, changing norms)? Anthropologist Yolanda Moses advocates for policy as a fix for opportunity gaps, a principle that holds here.</p>
-<p><strong>The bottom line:</strong> The lack of ambition or qualification is not the problem; rather, systemic and cultural design determines who gets represented. This can, and must, change.</p>
+    <p>Our investigation reveals that this "American Paradox" is not a mystery of qualification, but a failure of infrastructure. While American women have successfully reversed the education gap, surpassing men in degrees and graduation rates, the political system has failed to capture this surplus of talent. Our comparison with peer nations like Canada and the Nordic countries confirms that the United States is an outlier—not by accident, but due to specific institutional and social dynamics that stifle representation.</p>
+
+    <p>The cost of this exclusion is high. As the data demonstrates, when women’s political power rises, economies innovate and grow. By allowing these barriers to persist, the US accepts not only a democratic deficit but a significant economic drawback. A Congress that does not reflect its educated majority cannot fully represent the American people.</p>
+
+    <p>The solution requires a dual approach: structural reform to our electoral pipelines and a cultural shift in how we value female leadership. As anthropologist Yolanda Moses argues, opportunity gaps are solved through policy, not just patience.</p>
+
+    <div class="callout">
+        <h4>The Bottom Line</h4>
+        <p>Women are not lacking in ambition or qualification; they are blocked by design. To close the gap, we must stop asking women to do more, and start building a system that lets them lead.</p>
+    </div>
 </div>
 </div>
 <div class="page" id="education">
