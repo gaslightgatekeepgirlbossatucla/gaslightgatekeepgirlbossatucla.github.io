@@ -397,6 +397,27 @@
             font-weight: 400;
         }
 
+        /* Visual gallery block for contextual images */
+        .visual-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .visual-gallery .figure {
+            padding: var(--spacing-lg);
+            border-radius: 16px;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .visual-gallery .figure img {
+            height: 230px;
+            width: 100%;
+            object-fit: cover;
+        }
+
         /* Question boxes */
         .questions-box {
             background: var(--pastel-indigo);
@@ -1006,7 +1027,7 @@
 </div>
 <div class="container">
 <div class="questions-box">
-<h3>Our Central Questions</h3>
+<h3>Our central questions</h3>
 <ul>
 <li><div>Why does the United States lag behind other wealthy democracies in terms of female political representation, in spite of having one of the highest female educational attainment rates and shares among developed nations?</div></li>
 <li>Does women's power contribute to economic growth in America, as it does in other countries?</li>
@@ -1074,7 +1095,7 @@
 </div>
 
 <div class="container" id="timeline-section">
-    <h2 class="timeline-title">A Timeline of Education Gains and the Representation Lag</h2>
+    <h2 class="timeline-title">A timeline of education gains and the representation lag</h2>
     
     <div class="timeline-embed">
         <iframe title="Representation timeline" src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vQ4qot-G-LSUssOxj1L7QOQG407omnDcC0C8MrrBWYA43Ky4mD64HJsbnWdatxcuGxS2ac7YFhrur0X&amp;font=Default&amp;lang=en&amp;initial_zoom=2&amp;width=100%25&amp;height=900&amp;color=%23ec4899&amp;text_color=%230f172a&amp;bg_color=%23f8fafc&amp;type_color=%238b5cf6&amp;tab_color=%236366f1" allowfullscreen></iframe>
@@ -1118,7 +1139,7 @@
 
 <!-- New container for the content after timeline -->
 <div class="container">
-    <h2>The American Paradox, and the potential paths forward</h2>
+    <h2>The american paradox, and the potential paths forward</h2>
     <p>Our investigation reveals that this "American Paradox" is not a mystery of qualification, but a failure of infrastructure. While American women have successfully reversed the education gap, surpassing men in degrees and graduation rates, the political system has failed to capture this surplus of talent. Our comparison with peer nations like Canada and the Nordic countries confirms that the United States is an outlier—not by accident, but due to specific institutional and social dynamics that stifle representation.</p>
 
     <p>The cost of this exclusion is high. As the data demonstrates, when women’s political power rises, economies innovate and grow. By allowing these barriers to persist, the US accepts not only a democratic deficit but a significant economic drawback. A Congress that does not reflect its educated majority cannot fully represent the American people.</p>
@@ -1133,7 +1154,7 @@
 </div>
 <div class="page" id="education">
 <div class="container">
-<h2>The Education Gap</h2>
+<h2>The education gap</h2>
 <h3>Women now earn the majority of degrees</h3>
         <div class="intro-panel">
 <p>Since the 1980s, American women have achieved what economist Claudia Goldin calls a "reversal of the college attainment gap." Women are now <em>more likely</em> than men to earn bachelors and masters degrees. This represents a historic shift in educational access and achievement. Young women vote at rates 5.8 times higher than young men, showing strong civic engagement <sup class="citation">[<a aria-label="Bibliography entry 12" class="citation-link" href="#bib-12" title="Bibliography entry 12">12</a>]</sup>.</p>
@@ -1167,7 +1188,7 @@
 <p>Policy differences, such as paid family leave, childcare, candidate quotas or centralized party recruiting, may help explain why similar educational inputs lead to different outputs. These are precisely the kinds of demand-side mechanisms that can be reformed to improve representation.</p>
 <p>In short, Figure 2b strengthens the argument that education is necessary but not sufficient: institutional design and social supports determine whether education translates into seats.</p>
 </div>
-<h3>Geographic variation, and education across the United States</h3>
+<h3>Geographic variation, and education across the united states</h3>
 <p>Women represent the majority of undergraduate enrollees across nearly every US state, ranging from 49–69%. This geographic consistency shows that women's educational advantage is not concentrated in a few "liberal" states. It is actually nationwide.</p>
 <p>State-level enrollment and completion patterns also interact with local labor markets and policy environments; longitudinal cohort work shows that regional labor demand and postsecondary supports affect long-run career trajectories for women, which in turn shape local pipelines into public life <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
 <div class="figure">
@@ -1251,7 +1272,7 @@
 </div>
 <div class="page" id="representation">
 <div class="container">
-<h2>The Representation Gap: Demand-Side Failure</h2>
+<h2>The representation gap: demand-side failure</h2>
 <h3>The paradox: that simply because there is supply, seats are not automatically created</h3>
         <div class="intro-panel">
 <p>Despite having one of the highest rates of female educational attainment among wealthy democracies, the United States has only 28% female representation in Congress—worse than Canada, Germany, and the Nordic countries <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>.</p>
@@ -1266,7 +1287,7 @@
 <img alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
 <p class="figure-caption"><strong>Figure 4:</strong> The paradox: Female enrollment and graduates are nearly identical between the US and Canada—even slightly higher in the US—yet Canada has 34% female MPs versus the US's 28% in Congress.</p>
 </div>
-<h3>The United States lags because of its institutional and cultural barriers</h3>
+<h3>The united states lags because of its institutional and cultural barriers</h3>
 <div class="figure-analysis">
 <p>The demand-side problem is both institutional and cultural. Electoral systems, party recruitment, campaign finance rules, and prevailing attitudes all affect whether educated women become legislators <sup class="citation">[<a class="citation-link" href="#bib-7">7</a>]</sup>.</p>
 <p>New empirical work on party gatekeeping and nomination bias shows how institutional practices translate into unequal representation: parties sometimes reward candidates who match gendered expectations about family and career, and they may allocate women to less competitive seats, lowering aggregate female success independently of candidate quality <sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>. Complementary workplace-network analyses and program evaluations further document how occupational ties and mentorship programs alter recruitment prospects, showing concrete entry points for policy intervention <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
@@ -1281,7 +1302,7 @@
 <p>However, in mature democracies like the United States, research suggests that <strong>cultural attitudes and norms</strong> are often the deeper barrier beyond institutional design <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup>. Discrimination, stereotypes about female leaders, media representation, and informal party gatekeeping all limit women's path to office—even when formal rules are equal <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>. This explains why the US, despite having majoritarian systems like the UK (which also has 34% female MPs), still lags: American political culture has not embraced female leadership to the degree that it has elsewhere.</p>
 <p><strong>The research consensus:</strong> In new democracies, fix the electoral system <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. In mature democracies like the US, cultural change is the priority <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup>.</p>
 </div>
-<h3>College Completion Gaps: Persistent Female Advantage</h3>
+<h3>College completion gaps: persistent female advantage</h3>
 <p>Even at the undergraduate level, women complete degrees at higher rates than men across most US states. In Nevada, Florida, and New York, women's 4-year completion advantages range from 4–9 percentage points. This is supply-side strength—yet it does not translate into political office.</p>
 <div class="figure">
 <img alt="Bar chart showing top 8 states with female advantage and top 8 states with male advantage in college completion" src="images/1cfecac8-b70e-4dcc-9a19-92e55ec0cc8e.png"/>
@@ -1304,7 +1325,7 @@
 </div>
 <div class="page" id="economy">
 <div class="container">
-<h2>Economy &amp; Growth</h2>
+<h2>Economy &amp; growth</h2>
 <h3>The issue is involved with economic growth</h3>
         <div class="intro-panel">
 <p>Research shows that female legislative representation is not just a fairness issue—it is an <strong>economic issue</strong>. When women hold political power, economies grow faster and innovation accelerates <sup class="citation">[<a class="citation-link" href="#bib-10">10</a>]</sup>.</p>
@@ -1348,7 +1369,7 @@
 </div>
 <div class="page" id="team">
     <div class="container">
-        <h2>Meet the Team</h2>
+        <h2>Meet the team</h2>
         <div class="team-grid">
             <!-- ANIKA SINGH -->
             <div class="team-card">
@@ -1865,44 +1886,56 @@
 </div>
 <div class="page" id="methods">
 <div class="container">
-<h2>Methods &amp; Data Critique</h2>
-<h3>Project Approach</h3>
+<h2>Methods &amp; data critique</h2>
+
+<h3>Project approach &amp; data sources</h3>
 <p>This project combines quantitative data analysis with humanistic interpretation. We treat educational and political data not as neutral numbers, but as evidence of social structures, access, and power. Our goal is to understand <em>why</em> systems produce different outcomes, not just <em>that</em> they do.</p>
-<h3>Data Sources</h3>
-<ul>
-<li><strong>World Bank Gender Data Portal:</strong> Female share of parliamentary seats and economic indicators for 170 countries, 1970–present. This data reflects <em>formal legislative bodies</em> only; it does not capture local office, informal power, or influence.</li>
-<li><strong>US American Community Survey (ACS):</strong> Bachelor's degree attainment by gender and demographics. Data is based on self-reported education and census samples; coverage improves over time.</li>
-<li><strong>College Scorecard:</strong> Graduation and completion rates by state and field. Note: Scorecard tracks 2-year and 4-year completions; definitions of completion vary.</li>
-<li><strong>Statistics Canada:</strong> Enrollment and graduation data by gender, field of study, and province. Definitions of degree types may differ from US classifications.</li>
-</ul>
-<h3>Key Limitations &amp; Silences</h3>
-<ul>
-<li><strong>Who is not counted:</strong> Our analysis focuses on binary gender categories (male/female) based on official census and government data. Non-binary and transgender people are largely invisible in these datasets.</li>
-<li><strong>Political power:</strong> We measure only formal legislative seats. We do not measure executive power, local office, judicial appointments, corporate leadership, or informal political influence.</li>
-<li><strong>Intersectionality:</strong> We examine gender in aggregate; we do not disaggregate by race, class, or other identities, which would reveal how representation gaps vary across groups <sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>.</li>
-<li><strong>Field segregation:</strong> Women's concentration in certain fields (humanities, health, education) may have downstream effects on career paths and earnings that our analysis does not capture.</li>
-<li><strong>Cross-national comparability:</strong> Educational systems, degree types, and legislative structures differ between the US and Canada. Direct comparison has limitations.</li>
-</ul>
-<h3>Visualizations Used</h3>
-<p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong></p>
+
+<p>Our project consists of several datasets from the World Bank Gender Data Portal, the World Development Indicators database, as well as the V-Dem dataset. Specifically, we obtained data from these sources on indicators such as percentage of women in parliament and GDP growth rates on the World Bank platform, and country-level democracy indicators to analyze the impact of political institutions on women's role in political participation and leadership from the V-Dem dataset. Additionally, we curated an annotated bibliography to understand our primary datasets further. Our study used numerous peer-reviewed journals and previous scholarship that provided context for the existing factors and limitations that contributed to the current gap between women in higher education and the political sphere, with an emphasis through an intersectional lens. These materials ranged from research, surveys, and reviews of gender equality projects.</p>
+
+<div class="figure">
+<img alt="Research team collaborating over laptops and printed charts" src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"/>
+<p class="figure-caption"><strong>Figure A:</strong> Collaborative data audit. Photo by WOCinTech Chat (Unsplash, free to use for non-commercial projects with attribution appreciated).</p>
+</div>
+<h3>Understanding the gender data portal: scope &amp; limitations</h3>
+<p>The Gender Data Portal collects gender-disaggregated data from international organizations (such as the IPU, ILO, UNESCO, WHO, and UNICEF) and national government agencies. Key indicators include the proportion of female parliamentarians, women's literacy and education levels, labor force participation rates, the proportion of women in leadership positions, as well as access to health and technology. Data on political participation are based on the IPU's monthly rankings, which record the number of women in unicameral parliaments and lower houses. Data on education are combined from censuses, opinion surveys, and administrative records and processed according to UNESCO's methodology. The portal is updated quarterly, allowing for various analyses to be done upon the data.</p>
+
+<p>This dataset identifies general patterns in gender inequality and enables comparative analysis across countries and time periods. It highlights regional differences (e.g., percentage of female parliamentarians: Americas 34.5% vs. Middle East and North Africa 16.7%) and tracks progress toward gender equality. Users can explore the relationship between women's education and their participation in the workforce, politics, and health. It also shows improving trends, with girls now outnumbering boys in secondary and tertiary education enrollment in many regions. This data is valuable for policymakers to justify equality efforts and for researchers analyzing macroeconomic and structural factors affecting women.</p>
+
+<p>However, the most serious flaw is the gender classification system. Based on sex at birth, this system uses a binary male/female framework and ignores transgender people, non-binary women, and other gender-diverse individuals. Collecting data on these identities, especially in criminalized cases, is challenging, leading to significant underreporting. Furthermore, this dataset lacks intersectionality. While it includes gender breakdowns, it fails to reflect the inequalities faced by racialized women, immigrants, and people with disabilities. This hinders analysis of the specific barriers they face and potentially perpetuates inequalities that favor privileged women.</p>
+
+<p>This dataset does not include unpaid care work for children and families, which severely hinders women's economic and political participation. This work is not considered work in traditional statistics, GDP, or labor force participation rates. This portal cannot quantify the value of care work or show how it limits paid work and political activity. Research has shown that unpaid care work is a significant structural variable that limits women's ability to run for public office. The dataset also fails to adequately reflect the informal economy, which is essential in low-income countries. Women's participation in the informal economy and domestic work is often underestimated, creating gaps in formal employment and distorting women's economic realities. Furthermore, this portal lacks qualitative data on women's lived experiences and structural barriers. Numerical data on political participation fails to explain why women are underrepresented due to factors such as discrimination, violence, partisan bias, and cultural norms, limiting our understanding of how inequality persists.</p>
+
+<div class="figure">
+<img alt="Row of archival boxes and folders representing data gaps" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80"/>
+<p class="figure-caption"><strong>Figure B:</strong> Missing stories in the archive. Photo by Samuel Zeller (Unsplash, free to use for non-commercial projects with attribution appreciated). Backup image source: Chuttersnap on Unsplash.</p>
+</div>
+
+<h3>Data generation, quality, &amp; information gaps</h3>
+<p>Governments (population and household surveys) and international organizations use standardized tools to collect data. Data collection involves interviews and communication between national statistical offices, providing metadata to document sources and methods. However, data quality and availability vary widely, resulting in "data gaps," particularly in low- and middle-income countries. Many IDA-supported countries have weak civil registration and vital statistics systems, hindering understanding. When up-to-date data are unavailable, model estimates (projections) should be used. While standardization facilitates comparisons, it can overlook contextual aspects of inequality and regional variations in definitions (e.g., "employment").</p>
+
+<p>Key data sources include national statistical offices, censuses, household surveys (e.g., DHS), administrative records (e.g., education, health, labor), and international organizations (political data) such as the Inter-Parliamentary Union (IPU). Major donors supporting gender data collection include Canada, Sweden, and the UK. The World Bank (Gender Group and DECDG) operates a portal and implements the Strengthening Gender Statistics Project (SGS Project) to support low-income countries. Globally, gender data is underfunded. Building a core system would cost approximately $500 million per year, nearly double current funding. Less than 0.5% of funding for COVID-19 response data is gender-related.</p>
+
+<p>Several information types are systematically excluded. The dataset lacks data on violence against women (e.g., sexual harassment, intimate partner violence, and political violence), which poses a major obstacle. Social norms, cultural attitudes, and gender ideology are not directly measured (although external datasets such as the World Values Survey provide indirect indicators). The portal also lacks information on infrastructure that affects participation, such as access to childcare and public transport. Data on discrimination in hiring, promotion, and credit are also missing, as is information on women's political networks and mentoring. Furthermore, it does not reflect the quality of policies. Gender quotas may be recorded, but their effectiveness and implementation are not. Focusing on quantifiable indicators like parliamentary representation and literacy rates prioritizes statistical analysis to the marginalization of other knowledge. This "tyranny of quantification" obscures qualitative aspects essential to understanding inequality, such as subjective discrimination, emotional labor, and internalized norms. The dataset's focus on country-level aggregates also obscures intersectional inequalities. Treating "women" as a single category obscures how policies may benefit some women while disadvantage women belonging to certain racial, ethnic, or religious groups. Research has shown that gender quotas can even reduce, rather than increase, the representation of minority women, and the World Bank's standard binary analysis fails to capture these dynamics.</p>
+
+<h3>Methodology &amp; presentation</h3>
+<p>In processing our data, our primary focus was on examining how gender influences political representation within the United States. Consequently, we excluded data from other countries to maintain a more targeted scope. The V-Dem dataset relies on evaluations from experts in the field of democracy and representation, and while this provides valuable insight, it also introduces potential bias. Expert opinions may differ significantly from the lived experiences of individuals within each country, potentially shaping interpretations in ways that overlook local nuances. The use of numerical data in the World Bank Gender Data Portal often hides the context as to why there is a lack of representation of women within government for each individual country. Additionally, much of the available data begins after 1994, limiting historical context and potentially affecting our analysis, as societal understandings of gender continue to evolve. Furthermore, our dataset does not include representation from non-binary or gender-fluid individuals, omitting an important demographic from our analysis. To address these limitations, we integrated secondary sources that provide additional context and help ensure a more inclusive understanding of gender representation.</p>
+
+<p>We selected visualizations based on clarity and accuracy. Some charts in our analysis were excluded because they lacked clear labeling, contained empty data, or mixed incomparable scales. Our principle: <strong>only use graphics that directly support the argument and are interpretable by readers.</strong> To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the United States and Canada.</p>
 <div class="figure">
 <img alt="Canadian field of study women's share across many fields" src="images/00f2aeff-0e71-4e4e-857f-e5f85f76be52.png"/>
 <p class="figure-caption"><strong>Figure 5:</strong> Canadian field-of-study data (example). We explored this data to compare field segregation patterns across countries. This visualization shows how field concentration varies significantly by discipline.</p>
 </div>
-<h3>Cross-National Comparison: US vs. Canada</h3>
-<p>To understand why the US lags in representation despite comparable female educational attainment, we examined the direct comparison of enrollment and graduation trends between the two countries.</p>
-<div class="figure">
-<img alt="Time series comparing Canada enrollment share vs US female bachelor's attainment" src="images/b81e3d6d-c63a-44d0-bb2f-873b31c4dcb1.png"/>
-<p class="figure-caption"><strong>Figure 5b:</strong> Enrollment (Canada) vs. Bachelor's attainment (US), 1993–2025. This comparison reveals that despite similar starting points in the 1990s, Canada has maintained higher female share in enrollment while the US shows steady climbing attainment in the college-educated adult population.</p>
-</div>
-<h3>Why This Matters: Data Ethics</h3>
-<p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers.</p>
-<p>Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
+<p>For our project, "Educated, but Unrepresented," we decided to publish an interactive web-based story on Github.io. We used a lightweight, custom single-page application structure and vanilla JavaScript. Instead of reloading the browser every time you navigate between pages, we use DOM manipulation to instantly switch active content sections (Home, Education, Representation, etc.). This creates a very responsive, app-like user experience. We used Python to scrape, clean, and analyze the data, and Tableau to create the final graphs and maps, which we exported and placed within the site. We also included an interactive iframe timeline (Timeline JS - Knight Lab) to illustrate the time lag between improved education and political representation.</p>
+
+<p>We used a color palette and high-contrast text to convey a serious tone. We used Playfair Display (a serif font) for headlines to create an editorial, journalistic feel, and Inter (a sans-serif font) for body copy to ensure readability. We also took inspiration from Glassmorphism, giving the navigation a modern frosted glass effect that is easy to see and doesn't block content. We also created a custom JavaScript algorithm that auto-detects superscripts in citations (e.g., [1]) and links directly to the bibliography entry, highlighting sources for users. The site uses CSS Grid and Flexbox in combination with media queries to ensure our data stories are easy to read on any device, from mobile to large desktop monitors.</p>
+
+<p>Data is not neutral. How we define "education," "representation," and "success" reflects values and choices. By being transparent about our data, limitations, and exclusions, we aim to show that this is an <em>argument</em> constructed from evidence—not an objective truth discovered in numbers. Our argument is that the United States is an outlier and that change is possible. The data supports this. But the data also has gaps, and our humanistic reading of these gaps is part of the project's contribution.</p>
 </div>
 </div>
 <div class="page" id="bibliography">
 <div class="container">
-<h2>Bibliography &amp; Works Cited (MLA)</h2>
+<h2>Bibliography &amp; works cited (mla)</h2>
 <p>This section provides a canonical, MLA-style "Works Cited" for sources referenced across the site. Where possible we include a publisher landing page or PDF link followed by the canonical DOI.</p>
 <style>
     /* Annotated bibliography styling */
