@@ -695,6 +695,21 @@
             box-shadow: var(--shadow-2xl);
         }
 
+            /* Highlight for conclusion when jumped to */
+            .conclusion-highlight {
+                animation: conclusionPulse 0.6s ease-in-out 0s 2;
+                box-shadow: 0 12px 36px rgba(99,92,246,0.14), 0 6px 18px rgba(99,92,246,0.08) !important;
+                border: 2px solid rgba(139,92,246,0.22) !important;
+                background: linear-gradient(180deg, rgba(139,92,246,0.03), rgba(99,102,241,0.02));
+                transition: box-shadow 240ms ease, border-color 240ms ease, background 240ms ease;
+            }
+
+            @keyframes conclusionPulse {
+                0% { transform: translateY(-4px); }
+                50% { transform: translateY(0); }
+                100% { transform: translateY(-2px); }
+            }
+
         #timeline-sidebar-svg { 
             display: block; 
         }
@@ -1005,6 +1020,7 @@
 <li><a class="nav-link" data-page="representation" href="#">Political Power</a></li>
 <li><a class="nav-link" data-page="economy" href="#">Economy &amp; Growth</a></li>
 <li><a class="nav-link" data-page="home" href="#" onclick="showHomeAndScrollToTimeline(event)">Timeline</a></li>
+<li><a class="nav-link" data-page="home" href="#" onclick="showHomeAndScrollToConclusion(event)">Conclusion</a></li>
 <li><a class="nav-link" data-page="team" href="#">The Team</a></li>
 <li><a class="nav-link" data-page="methods" href="#">About &amp; Methods</a></li>
 <li><a class="nav-link" data-page="bibliography" href="#">Bibliography</a></li>
@@ -1138,7 +1154,7 @@
 </style>
 
 <!-- New container for the content after timeline -->
-<div class="container">
+<div class="container" id="conclusion-section">
     <h2>The american paradox, and the potential paths forward</h2>
     <p>Our investigation reveals that this "American Paradox" is not a mystery of qualification, but a failure of infrastructure. While American women have successfully reversed the education gap, surpassing men in degrees and graduation rates, the political system has failed to capture this surplus of talent. Our comparison with peer nations like Canada and the Nordic countries confirms that the United States is an outlier—not by accident, but due to specific institutional and social dynamics that stifle representation.</p>
 
@@ -1168,22 +1184,22 @@
         </div>
 <div class="figure">
 <img alt="National time series showing women's share of graduates rising from 1990s to 2020s" src="images/20d5416c-7f9d-403f-8101-d21624b60bb0.png"/>
-<p class="figure-caption"><strong>Figure 1:</strong> Women's share of bachelors and masters degrees, 1993–2023. Women crossed the 50% threshold in the late 1980s and have remained the majority since <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+<p class="figure-caption"><strong>Figure 1:</strong> National graduates time series (1993–2023). Lines show Canada (completions flow) and the United States (ACS stock). Canada peaked near ~60% women among bachelor’s and master’s graduates in the early 2000s and is around ~56% by 2023; the U.S. series (available from about 2010) rises from roughly 50% to ~54% by 2023. Women crossed the 50% threshold decades ago and have remained a stable majority in degree attainment <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
 </div>
 <div class="figure-analysis">
-<p>Figure 1 shows a clear, sustained shift: women moved from parity to a durable majority of degree-holders by the late 1980s and have kept that advantage into the 2020s. This is not a short-lived blip but a structural change in who attains higher education in the United States <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
-<p>That sustained majority matters for the "supply-side" argument: there are simply more highly educated women now than men. That enlarges the pool of potential candidates with credentials that, in many democracies, would be expected to convert into political representation <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+<p>Figure 1 documents a sustained shift: women moved from parity to a durable majority of degree-holders decades ago and remain the majority today. The plotted series make two points explicit: Canada reaches the highest female graduate shares (near ~60% in the early 2000s, later settling near the mid-50s), while the U.S. series—shown from about 2010 onward—climbs from roughly 50% to about 54% by 2023. These are not short-lived fluctuations but persistent differences in graduates' gender composition <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
+<p>This sustained majority matters for the "supply-side" argument: there are simply more highly educated women now than men, and those numbers have been stable for decades. That enlarges the raw pool of potential candidates with the educational credentials that, in many democracies, contribute to electoral viability <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>.</p>
 <p>But degrees take time to translate into political careers. Many legislators are mid-career or older: the pipeline from degree to elected office typically runs through professional, civic, and party networks that develop over decades. The time lag between rising educational attainment and visible political power helps explain part of the gap. However, it does not explain decades-long underrepresentation by itself. Empirical work finds that political ambition, sponsorship, and workplace networks, rather than qualifications alone, are able to drive candidacy and nomination outcomes <sup class="citation">[<a class="citation-link" href="#bib-18">18</a>]</sup>.</p>
 <p>Importantly, the curve in Figure 1 does not tell us where graduates work, which fields they enter, or how their careers interact with political recruitment. A majority of degrees does not automatically change who parties recruit, who donors back, or how voters perceive candidates <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
 <p>Taken together, the time-series confirms a central project claim: supply-side strength is real and longstanding. The remaining question is why the demand-side, such as the institutions, party practices, and cultural attitudes, has not matched that supply.</p>
 </div>
 <div class="figure">
 <img alt="Pipeline comparison showing female share of enrollment and graduates for US vs Canada" src="images/ae2b8e28-6a33-41a4-9f24-27da1defd514.png"/>
-<p class="figure-caption"><strong>Figure 2:</strong> Female share of enrollment vs. graduates: US vs. Canada comparison. Both countries show women enrolling at ~55%, but varying completion rates—Canada hovering near 60%, while the US climbs toward that threshold. This direct comparison is key: if Canada achieves 34% female MPs with similar educational demographics to the US (which has only 28%), education alone cannot explain the representation gap.</p>
+<p class="figure-caption"><strong>Figure 2:</strong> Female share of enrollment (dotted) and graduates (solid) in the US and Canada. Enrollment shares for both nations hover around ~55–56% across most years; Canada shows a higher graduate share (often ~57–60% in the 2000s) while the U.S. graduate series increases from roughly 50% (circa 2010) to about 54% by 2023. The comparison emphasizes that similar enrollment levels do not guarantee identical political outcomes <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>.</p>
 </div>
 <div class="figure-analysis">
-<p>The US–Canada comparison isolates an important puzzle: similar enrollment and degree shares do not produce similar political outcomes. Canada outperforms the U.S. in female legislative representation even though both countries show comparable female shares among students and graduates <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>.</p>
-<p>This finding shifts attention from individual qualifications to the institutional choices that shape candidacy and election. If two countries start from similar educational inputs but diverge in representation, the difference is likely found in rules, party recruitment strategies, and public norms that either welcome or block women as viable candidates.</p>
+<p>The US–Canada comparison isolates an important puzzle: while both countries enroll a similar share of women (~55–56%), their graduate shares and political outcomes differ. Canada’s graduate series tends to be higher (mid-to-high 50s), whereas the U.S. graduate share only reaches the mid-50s after 2010. Despite these relatively modest numeric differences in educational outputs, Canada achieves substantially higher legislative representation—pointing away from education as the singular explanation <sup class="citation">[<a class="citation-link" href="#bib-3">3</a>]</sup>.</p>
+<p>This finding shifts attention from individual qualifications to the institutional choices and social supports that shape candidacy and election. If two countries start from comparable educational inputs but diverge in representation, the explanation is likely to be found in electoral rules, party recruitment strategies, candidate supports (childcare, leave), and public norms that affect who runs and who is selected as a candidate.</p>
 <p>Another important nuance is completion versus enrollment. Enrollment is an early indicator; completion reflects persistence and supports a stable pool of qualified adults. The Canadian pattern, which is slightly higher completion, suggests that post-enrollment conditions (student supports, labor market attachments, family policies) can deepen the pipeline, which in turn interacts with political opportunity structures <sup class="citation">[<a class="citation-link" href="#bib-11">11</a>]</sup>.</p>
 <p>Policy differences, such as paid family leave, childcare, candidate quotas or centralized party recruiting, may help explain why similar educational inputs lead to different outputs. These are precisely the kinds of demand-side mechanisms that can be reformed to improve representation.</p>
 <p>In short, Figure 2 strengthens the argument that education is necessary but not sufficient: institutional design and social supports determine whether education translates into seats.</p>
@@ -1196,7 +1212,7 @@
 <p class="figure-caption"><strong>Figure 3:</strong> Women's share of undergraduate enrollment by US state, 2023–2024. Women represent 49–69% of undergraduate enrollees across all regions, demonstrating that female educational strength is a national phenomenon, not regional.</p>
 </div>
 <div class="figure-analysis">
-<p>Figure 3 maps the impressive breadth of women's educational gains: nearly every state shows female majority enrollment, and the range (roughly 49–69%) demonstrates substantial state-level variation. This is not a pattern confined to coastal liberal enclaves. We can see that it is broadly distributed across regions.</p>
+<p>Figure 3 maps the breadth of women's educational gains: nearly every state shows female majority enrollment, with a range of roughly 49–69% and most states clustering in the mid-50s. This is not a pattern confined to coastal liberal enclaves but a broadly distributed national phenomenon.</p>
 <p>State-level variation matters because political recruitment and opportunity structures are often organized at the state level. Party organizations, primary systems, and state legislatures set the first gatekeeping rules for aspiring candidates. High female enrollment in a state does not guarantee that state parties will recruit or support female contenders.</p>
 <p>The map also points to strategic opportunities: states with higher female enrollment could be fertile ground for targeted recruitment, training programs, and candidate pipelines. Where enrollment and completion are high, short-term investments in recruitment or mentoring might yield visible gains in state legislatures and, later, federal delegations.</p>
 <p>Conversely, states with lower female enrollment may need more upstream interventions such as college access, retention supports, and economic policies that keep educated women in public-facing careers. Addressing representation therefore requires a mix of statewide and national strategies tailored to local conditions.</p>
@@ -1235,7 +1251,7 @@
         scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
     </script>
-    <p class="figure-caption"><strong>Figure 4:</strong> Canada - Field of Study Women Share 2023. Shows the distribution of women across major fields in Canada, highlighting areas of concentration and underrepresentation.</p>
+    <p class="figure-caption"><strong>Figure 4:</strong> Canada - Field of Study Women Share 2023. Women's share varies widely by field—roughly ~22% in engineering and some computer/technical fields, up to ~75–80% in education and health-related fields—highlighting clear areas of concentration and underrepresentation.</p>
     <!-- Figure 3b -->
     <div class='tableauPlaceholder' id='viz1764973568729' style='position: relative; width: 100%; min-height: 600px; margin-top: 32px;'>
         <noscript>
@@ -1253,12 +1269,12 @@
         scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
     </script>
-    <p class="figure-caption"><strong>Figure 5:</strong> United States - Field of Study Women Share 2024. Shows the distribution of women across major fields in the US, highlighting areas of concentration and underrepresentation.</p>
+    <p class="figure-caption"><strong>Figure 5:</strong> United States - Field of Study Women Share 2024. Women's shares span a wide range—about ~22–30% in computer, engineering, and some finance tracks, and very high shares (~75–90%) in nursing, health, and certain social science fields—underscoring how field segregation shapes occupational pipelines.</p>
 </div>
 </div>
 <div class="figure-analysis">
-<p>Figures 4 and 5 expose a different dimension of the supply-side: field segregation. Women dominate health, education, and many social sciences, while they remain strongly underrepresented in engineering, computer science, and some finance tracks <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
-<p>Field choices shape professional networks, earnings trajectories, and the types of public visibility that feed political careers. Women concentrated in caregiving and education fields may build different career-to-politics pathways than men concentrated in high-paying STEM or corporate leadership roles—paths that historically have provided easier access to donor networks and party elites. Longitudinal work on STEM persistence and occupational segregation shows women often transition out of STEM into education and health, reducing their pipeline access to high‑visibility networks <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
+<p>Figures 4 and 5 expose a clear dimension of the supply-side: field segregation. Women are heavily concentrated in health, education, and many social sciences (often exceeding 70–80% in leading subfields), while they remain underrepresented in engineering, computer science, and some finance tracks (often closer to 20–30%) <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
+<p>These field choices shape professional networks, earnings trajectories, and the types of public visibility that feed political careers. Women concentrated in caregiving and education fields often follow career-to-politics pathways different from those of men concentrated in high-paying STEM or corporate leadership roles—pathways that historically have provided easier access to donor networks and party elites. Longitudinal work on STEM persistence and occupational segregation shows women frequently transition out of STEM into education and health, reducing their pipeline access to high‑visibility networks <sup class="citation">[<a class="citation-link" href="#bib-23">23</a>]</sup>.</p>
 <p>These occupational shifts have direct implications for recruitment: registry-based research and employer-linked studies demonstrate that workplace ties to current officeholders and staff are powerful predictors of nomination success, which disadvantages those concentrated in lower-visibility sectors <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>. Where universities and regional colleges maintain alumni pipelines into public service, graduates see higher rates of political emergence—an institutional lever universities could strengthen to convert high female enrollment into candidacy pipelines <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
 <p>This segregation therefore matters for representation: it helps explain why a numerical majority of graduates does not immediately translate into equal access to political pipelines that favor certain occupational backgrounds. Candidate recruitment often privileges those with prior public profiles, corporate ties, or fundraising experience—areas where men remain overrepresented.</p>
 <p>Policy responses can target these structural effects: leadership training for women in underrepresented fields, incentives for parties to recruit across occupational backgrounds, and programs that increase the public visibility of women leaders from diverse fields can all help broaden the pool of viable candidates.</p>
@@ -1268,6 +1284,7 @@
 <p>American women are <strong>highly educated and academically prepared</strong>. They earn degrees at higher rates than men, excel across most academic fields, and show strong civic engagement. This is what political scientists call the <em>supply-side</em> of political participation—the existence of capable, willing candidates.</p>
 <p>These supply-side facts are well documented in cohort and comparative studies of educational attainment and turnout <sup class="citation">[<a class="citation-link" href="#bib-1">1</a>]</sup>; <sup class="citation">[<a class="citation-link" href="#bib-12">12</a>]</sup>, reinforcing that the core puzzle is not access to education but what happens after graduation.</p>
 <p><strong>On paper, the supply pipeline is strong.</strong> Yet supply alone does not produce representation. The problem is not women's education—the problem lies in what happens next. That is the <em>demand-side</em>: institutions, gatekeeping, and culture.</p>
+<p>Two concrete demand-side mechanisms highlighted in the figures are field segregation (women are overrepresented in health, education, and social fields and underrepresented in engineering, computer science, and finance) and the structure of party recruitment and campaign finance that privilege certain occupational networks—both factors that blunt the translation of educational gains into political candidacies <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
 </div>
 </div>
 <div class="page" id="representation">
@@ -1285,7 +1302,7 @@
         </div>
 <div class="figure">
 <img alt="Enrollment and graduates pipeline for US and Canada showing that US has higher female enrollment but lower representation" src="images/339a4d82-ee12-486b-88a9-b91986561cec.png"/>
-<p class="figure-caption"><strong>Figure 6:</strong> The paradox: Female enrollment and graduates are nearly identical between the US and Canada—even slightly higher in the US—yet Canada has 34% female MPs versus the US's 28% in Congress.</p>
+<p class="figure-caption"><strong>Figure 6:</strong> Enrollment (top panel) and graduates (bottom panel) for Canada and the United States. Enrollment shares remain close (about 55–56%); graduate shares are similar but Canada typically shows a modestly higher share through the 2000s. Despite these comparable educational indicators, Canada has ~34% female MPs while the U.S. Congress is ~28% female—highlighting a demand-side gap that education alone does not explain.</p>
 </div>
 <h3>The united states lags because of its institutional and cultural barriers</h3>
 <div class="figure-analysis">
@@ -1298,7 +1315,7 @@
 <p class="figure-caption"><strong>Figure 7:</strong> Mean percent women in parliament by electoral system, 2023. Countries using proportional representation (PR) average 27% female representation with wide variation; countries with other systems (including the US majoritarian model) average 25.7%. Error bars reveal: institutional rules matter. PR systems show both higher mean representation and more consistent outcomes across democracies.</p>
 </div>
 <div class="figure-analysis">
-<p>This comparison directly supports the Profeta &amp; Woodhouse (2022) <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> finding that proportional representation creates structural incentives for female candidacy and success that majoritarian systems lack. In PR systems, parties need to build broader coalitions and represent diverse constituencies, making gender diversity a strategic asset. In the US House and Senate, winner-take-all elections in single districts create gatekeeping dynamics where party leadership retains tight control over recruitment, and informal norms often favor male candidates <sup class="citation">[<a aria-label="Bibliography entry 5" class="citation-link" href="#bib-5" title="Bibliography entry 5">5</a>]</sup>. Recent work on party gatekeeping and biased nominations explains how parties systematically disadvantage women—by rewarding candidates who fit traditional gendered family schemas or by nominating women in unwinnable seats <sup class="citation">[<a class="citation-link" href="#bib-19">19</a>]</sup>.</p>
+<p>This comparison supports Profeta &amp; Woodhouse (2022) <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> that proportional representation creates structural incentives for female candidacy and success. The chart shows mean female shares of roughly 27% for PR systems versus about 25.7% for other systems, and the large error bars indicate substantial cross-national variation. In PR systems parties often need to build broader coalitions and represent diverse constituencies, which makes gender diversity a strategic asset. By contrast, winner‑take‑all, single‑district systems concentrate gatekeeping power in party leaders, where informal norms and nomination practices can favor men—e.g., allocating women to less competitive seats or prioritizing candidates who fit traditional gendered profiles <sup class="citation">[<a aria-label="Bibliography entry 5" class="citation-link" href="#bib-5" title="Bibliography entry 5">5</a>]</sup>.</p>
 <p>However, in mature democracies like the United States, research suggests that <strong>cultural attitudes and norms</strong> are often the deeper barrier beyond institutional design <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup>. Discrimination, stereotypes about female leaders, media representation, and informal party gatekeeping all limit women's path to office—even when formal rules are equal <sup class="citation">[<a class="citation-link" href="#bib-5">5</a>]</sup>. This explains why the US, despite having majoritarian systems like the UK (which also has 34% female MPs), still lags: American political culture has not embraced female leadership to the degree that it has elsewhere.</p>
 <p><strong>The research consensus:</strong> In new democracies, fix the electoral system <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup>. In mature democracies like the US, cultural change is the priority <sup class="citation">[<a aria-label="Bibliography entry 8" class="citation-link" href="#bib-8" title="Bibliography entry 8">8</a>]</sup>.</p>
 </div>
@@ -1310,11 +1327,42 @@
 </div>
 <h3>The congressional pipeline has been stalled, and there has only been 35 years of glacial progress</h3>
 <div class="figure">
-<img alt="US share of women in national legislature 1990-2025, stacked area chart" src="images/9de60390-243c-424c-8ff5-13518624e7fd.png"/>
-<p class="figure-caption"><strong>Figure 9:</strong> Women's share of US Congress, 1990–2025 (filled area). Starting from 6.1% in 1990, women reached 28% by 2024—a gain of 22 percentage points over 35 years. At this rate, gender parity (50%) would not be achieved until roughly 2100, despite women being the majority of college graduates since the 1980s.</p>
+<div class='tableauPlaceholder' id='viz1765137387965' style='position: relative'>
+    <noscript>
+        <a href='https://public.tableau.com/views/EducationParliament/Sheet16' target='_blank'>
+            <img alt='US Share of Women in National Legislature (1990-2025)' src='https://public.tableau.com/static/images/Ed/EducationParliament/Sheet16/1.png' style='border: none;' />
+        </a>
+    </noscript>
+    <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='EducationParliament/Sheet16' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https://public.tableau.com/static/images/Ed/EducationParliament/Sheet16/1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+        <param name='filter' value='publish=yes' />
+    </object>
+</div>
+<script type='text/javascript'>
+    var divElement = document.getElementById('viz1765137387965');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    vizElement.style.width = '100%';
+    vizElement.style.height = Math.max(divElement.offsetWidth * 0.75, 600) + 'px';
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+<p class="figure-caption"><strong>Figure 9:</strong> US share of women in the national legislature, 1990–2025 (interactive Tableau). Starting from ~6% in 1990, women reached ~28% by 2024—a gain of roughly 22 percentage points over 35 years. A simple linear extrapolation of the recent trend suggests parity would not be reached until around 2100, underscoring the slow pace of change without targeted institutional reforms.</p>
 </div>
 <div class="figure-analysis">
-<p>This visualization powerfully illustrates the core paradox of this project. Educational gains accelerated sharply in the 1980s–1990s (as shown in the Education Gap page), yet congressional representation remained nearly flat for a decade (1990–2000), crawled forward in the 2000s, and only recently accelerated post-2018. The mismatch between the trajectory of women's educational attainment (approaching 60% of graduates by 2020) and the rate of political representation gain (28% in 2024) is stark and undeniable. If education and qualification alone drove representation, women would hold approximately 50% of seats today—yet they hold barely more than half that share <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
+<p>This visualization illustrates the core paradox: educational gains accelerated sharply in the 1980s–1990s, yet congressional representation remained nearly flat through the 1990s, climbed slowly in the 2000s, and only more clearly accelerated after 2018. The mismatch between graduates (approaching ~60% women in some series by 2020) and congressional share (~28% in 2024) is large. If education alone determined seats, we would expect near parity today—yet representation remains well below that level <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
 <p>Intersectional and network-focused evidence helps explain this lag: registry and policy-brief research on occupational segregation and race indicates that women of color face compounded barriers that reduce nomination and election rates even further, implying that national aggregates hide distinct subgroup dynamics <sup class="citation">[<a class="citation-link" href="#bib-21">21</a>]</sup>.</p>
 <p>The stagnation of the 1990s and 2000s, despite the "Year of the Woman" spike in 1992<sup class="citation">[<a aria-label="Bibliography entry 18" class="citation-link" href="#bib-18" title="Bibliography entry 18">18</a>]</sup>, reveals what political scientists call <em>demand-side failure</em>. Individual female candidates became more qualified, more educated, and more present in state legislatures and local politics—the pipeline. Yet party recruitment, campaign finance dynamics, voter preferences, and media framing—the institutional and cultural forces on the demand-side— have not shifted fast enough to convert qualification into office-holding. Research by Profeta &amp; Woodhouse <sup class="citation">[<a aria-label="Bibliography entry 2" class="citation-link" href="#bib-2" title="Bibliography entry 2">2</a>]</sup> on electoral system design, and Welzel et al. <sup class="citation">[<a aria-label="Bibliography entry 7" class="citation-link" href="#bib-7" title="Bibliography entry 7">7</a>]</sup> on cultural attitudes, suggests that both structural reforms and cultural shifts are necessary to accelerate representation gains.</p>
 <p>The recent spike visible in 2018–2024 (from 19% to 28%) may signal an inflection point, but even this acceleration falls short of proportionality. Women entered Congress at record rates during this period, yet the share still represents only a slight majority of women's presence in higher education. This suggests that the barriers of gatekeeping, informal norms, and electoral incentives remain significant, even as public and party attitudes begin to shift <sup class="citation">[<a aria-label="Bibliography entry 6" class="citation-link" href="#bib-6" title="Bibliography entry 6">6</a>]</sup>.</p>
@@ -1334,16 +1382,39 @@
 <p>Program evaluations and case studies corroborate this: mentoring, placement, and candidate-support initiatives materially increase women's recruitment and short-term electoral success, indicating feasible policy levers with measurable downstream economic returns <sup class="citation">[<a class="citation-link" href="#bib-31">31</a>]</sup>.</p>
         </div>
 <div class="figure">
-<div class='tableauPlaceholder' id='viz1764975690258' style='position: relative'><noscript><a href='#'><img alt='International GDP vs % of women in Parliament ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ed&#47;EducationParliament&#47;Sheet6&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='EducationParliament&#47;Sheet6' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ed&#47;EducationParliament&#47;Sheet6&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>
-<script type='text/javascript'>
-    var divElement = document.getElementById('viz1764975690258');
-    var vizElement = divElement.getElementsByTagName('object')[0];
-    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
-    var scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-</script>
-<p class="figure-caption"><strong>Figure 10:</strong> Women's representation in national parliaments vs. GDP per capita (n=228 countries, current US, log scale). Positive but non-deterministic correlation: wealthy democracies cluster high on both axes, while some lower-income countries achieve high female representation through quota systems or PR reforms. The USA is notably below the trend line for its income level, suggesting both economic underperformance relative to comparable peers and institutional constraints on female representation.</p>
+    <div class='tableauPlaceholder' id='viz1765137387966' style='position: relative'>
+        <noscript>
+            <a href='https://public.tableau.com/views/EducationParliament/Sheet6' target='_blank'>
+                <img alt='Women\'s representation in national parliaments vs. GDP per capita' src='https://public.tableau.com/static/images/Ed/EducationParliament/Sheet6/1.png' style='border: none;' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='EducationParliament/Sheet6' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/Ed/EducationParliament/Sheet6/1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+        </object>
+    </div>
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1765137387966');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width = '100%';
+        vizElement.style.height = Math.max(divElement.offsetWidth * 0.75, 600) + 'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+    <p class="figure-caption"><strong>Figure 10:</strong> Women's representation in national parliaments versus national GDP (n=228 countries). X‑axis shows each country's GDP (trillions USD); y‑axis shows the share of seats held by women. The plot shows a weakly positive but very noisy relationship: wealthier countries tend to sit on the right, yet female seat shares vary widely. Notable patterns — some lower‑GDP countries (e.g., Rwanda, Nicaragua) have very high shares (often due to quotas or electoral system design), while the United States has one of the largest national GDPs but only about ~28–30% women, below many high‑income peers. Overall, the chart highlights that economic size alone does not determine women's representation; institutional choices and electoral systems matter strongly.</p>
 </div>
 <div class="figure-analysis">
 <p>This global comparison is crucial. The scatter plot reveals that while wealth and female representation are positively associated <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>; <sup class="citation">[<a aria-label="Bibliography entry 4" class="citation-link" href="#bib-4" title="Bibliography entry 4">4</a>]</sup>, they are not perfectly correlated—suggesting that policy and institutional choice matter independently of economic development. Rwanda, for instance, achieved 61% female parliamentary representation through quota policies, while maintaining a much lower GDP per capita than the US. Conversely, the US sits notably below the trend line, indicating that for its income level, it underperforms on female representation. This positioning reveals a dual failure: the US economy has not maximized the innovation and policy benefits that higher female representation could bring <sup class="citation">[<a aria-label="Bibliography entry 3" class="citation-link" href="#bib-3" title="Bibliography entry 3">3</a>]</sup>, and American institutions have not yet adopted the policy tools (quotas, PR, campaign finance reform) that other democracies use to increase female candidacy and success.</p>
@@ -2125,6 +2196,63 @@ function showHomeAndScrollToTimeline(event) {
     
     // Update URL hash
     window.location.hash = '#timeline-section';
+}
+
+// Function to show home page and scroll to conclusion
+function showHomeAndScrollToConclusion(event) {
+    if (event) event.preventDefault();
+    
+    // Show home page
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    const homeNav = document.querySelector('.nav-link[data-page="home"]');
+    const homePage = document.getElementById('home');
+    
+    if (homeNav) homeNav.classList.add('active');
+    if (homePage) homePage.classList.add('active');
+    
+    // Hide sidebar if visible
+    const sidebar = document.getElementById('timeline-sidebar');
+    if (sidebar) {
+        sidebar.style.display = 'none';
+        sidebar.setAttribute('aria-hidden', 'true');
+    }
+    
+    // Give time for page to switch, then scroll
+    setTimeout(() => {
+        // Try multiple selectors to find the conclusion
+        let conclusion = document.getElementById('conclusion-section');
+
+        if (!conclusion) {
+            // Fallback: look for container with the callout or a heading that matches text
+            conclusion = document.querySelector('#home .callout');
+            if (!conclusion) {
+                const headings = Array.from(document.querySelectorAll('#home h2'));
+                for (const h of headings) {
+                    if (h && h.textContent && /american paradox/i.test(h.textContent)) { conclusion = h.parentElement || h; break; }
+                }
+            }
+        }
+
+        if (conclusion) {
+            // Clear any previous conclusion highlight
+            document.querySelectorAll('.conclusion-highlight').forEach(el => el.classList.remove('conclusion-highlight'));
+
+            // Add highlight for a short time
+            conclusion.classList.add('conclusion-highlight');
+            window.setTimeout(() => { conclusion.classList.remove('conclusion-highlight'); }, 6000);
+
+            const elementPosition = conclusion.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 100; // 100px offset from top
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        } else {
+            console.log('Conclusion section not found');
+        }
+    }, 300);
+
+    // Update URL hash
+    window.location.hash = '#conclusion-section';
 }
         // Navigation scroll effect
         window.addEventListener('scroll', () => {
